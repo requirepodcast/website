@@ -80,9 +80,15 @@ const Hosts = () => {
       </Links>
       <Text>
         Copyright © {new Date().getFullYear()} The Require Podcast
+<<<<<<< HEAD
         <br />
         Strona stworzona przez Artura Dudka
         <br />
+=======
+        <br />
+        Strona zrobiona przez Artura Dudka
+        <br />
+>>>>>>> d11195c0e3d8a158a4cd4dd17c40a68d9f077d4c
         Kontakt: require@podcast.gq
       </Text>
     </Container>
