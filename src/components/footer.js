@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const Container = styled.div`
-  background-color: #222;
+  background-color: #141621;
   padding: 2em 3em;
   display: flex;
   align-items: center;
@@ -34,16 +34,30 @@ const Text = styled.p`
   color: #ffffff88;
   font-size: 1em;
   font-weight: 100;
-  text-align: right;
+  text-align: left;
   display: block;
   margin: 1em 0;
   @media (max-width: 700px) {
     text-align: center;
   }
+  &:before {
+    border-top: 2px solid #ff5370;
+    display: block;
+    width: 100%;
+    content: "";
+    margin: 0 auto 1em;
+  }
 `
 
 const Links = styled.div`
   margin: 1em 0;
+  &:before {
+    border-top: 2px solid #ff5370;
+    display: block;
+    width: 100%;
+    content: "";
+    margin: 0 auto 1em;
+  }
 `
 
 const Hosts = () => {
@@ -63,12 +77,13 @@ const Hosts = () => {
         <Link href="https://www.instagram.com/requirepodcast">Instagram</Link>
         <Link href="https://www.reddit.com/r/requirepodcast">Reddit</Link>
         <Link href="https://require.podcast.gq/discord">Discord</Link>
-        <Link href="mailto:require@podcast.gq">require@podcast.gq</Link>
       </Links>
       <Text>
-        Copyright © {new Date().getFullYear()} The Reuqire Podcast
+        Copyright © {new Date().getFullYear()} The Require Podcast
         <br />
         Strona zrobiona przez Artura Dudka
+        <br />
+        Kontakt: require@podcast.gq
       </Text>
     </Container>
   )
