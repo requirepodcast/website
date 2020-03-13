@@ -29,13 +29,14 @@ const Person = styled.div`
     border-left: 1px solid #ffffff33;
     @media (max-width: 550px) {
       border-left: none;
+      border-top: 1px solid #ffffff33;
     }
   }
 `
 
 const Avatar = styled.img`
   border-radius: 50%;
-  height: 7em;
+  height: 8em;
 `
 
 const Name = styled.h2`
