@@ -34,8 +34,9 @@ const Container = styled.div`
   position: relative;
   text-align: center;
   background-image: url(${background});
-  background-size: cover;
+  /* background-size: cover; */
   background-position: center;
+  background-size: contain;
   flex-direction: column;
   &::before {
     content: "╲╱";

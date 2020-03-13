@@ -62,6 +62,7 @@ const Hosts = () => {
         <Link href="https://twitter.com/requirepodcast">Twitter</Link>
         <Link href="https://www.instagram.com/requirepodcast">Instagram</Link>
         <Link href="https://www.reddit.com/r/requirepodcast">Reddit</Link>
+        <Link href="https://require.podcast.gq/discord">Discord</Link>
         <Link href="mailto:require@podcast.gq">require@podcast.gq</Link>
       </Links>
       <Text>
