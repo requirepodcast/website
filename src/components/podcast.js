@@ -3,13 +3,14 @@ import styled from "styled-components"
 
 const Container = styled.div`
   background-color: #0f111a;
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   text-align: center;
   flex-direction: column;
+  padding: 3em 0;
 `
 
 const Player = styled.iframe`
