@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
+import { useHeadingAnimation } from "../utils/useHeadingAnimation"
+import gsap from "gsap"
+import { ScrollScene } from "scrollscene"
 
 const Container = styled.div`
   background-color: #0f111a;
@@ -42,8 +45,34 @@ const Heading = styled.h1`
 `
 
 const Podcast = () => {
+  const wrapperRef = useRef()
+  useHeadingAnimation(wrapperRef)
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current
+    const player = wrapper.querySelector("iframe")
+
+    gsap.set(player, { autoAlpha: 0, scale: 0.95 })
+
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { ease: "power3.inOut" },
+    })
+    tl.to(player, { autoAlpha: 1, scale: 1 })
+
+    new ScrollScene({
+      triggerElement: wrapper,
+      gsap: { timeline: tl },
+      offset: wrapper.querySelector("h1").clientHeight,
+      triggerHook: 0.5,
+      controller: {
+        addIndicators: true,
+      },
+    })
+  }, [])
+
   return (
-    <Container>
+    <Container ref={wrapperRef}>
       <Heading>Posłuchaj</Heading>
       <Player
         scrolling="no"

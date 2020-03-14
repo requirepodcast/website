@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
+import { useHeadingAnimation } from "../utils/useHeadingAnimation"
+import gsap from "gsap"
+import { ScrollScene } from "scrollscene"
 
 const Container = styled.div`
   background-color: #0f111a;
@@ -78,10 +81,34 @@ const Heading = styled.h1`
 `
 
 const Hosts = () => {
+  const wrapperRef = useRef()
+  const hostsRef = useRef()
+  useHeadingAnimation(wrapperRef)
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current
+    const hosts = hostsRef.current
+
+    gsap.set(hosts, { autoAlpha: 0, scale: 0.95 })
+
+    const tl = gsap.timeline({
+      paused: true,
+      defaults: { ease: "power3.inOut" },
+    })
+    tl.to(hosts, { autoAlpha: 1, scale: 1 })
+
+    new ScrollScene({
+      triggerElement: wrapper,
+      gsap: { timeline: tl },
+      offset: wrapper.querySelector("h1").clientHeight,
+      triggerHook: 0.5,
+    })
+  }, [])
+
   return (
-    <Container>
+    <Container ref={wrapperRef}>
       <Heading>Prowadzący</Heading>
-      <Wrapper>
+      <Wrapper ref={hostsRef}>
         <Person>
           <Avatar src="https://lh3.googleusercontent.com/91rA7nuK8toYIHgfqh-9M4eucalemHK4XCtpSmGbAEgZuJqw48JOp-2MClsOsLmTy2TJ89PsU-X25o1b=w966-h969-rw-no" />
           <Name>Artur Dudek</Name>
