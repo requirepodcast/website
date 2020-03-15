@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const Container = styled.div`
   background-color: #141621;
-  padding: 2em 3em;
+  padding: 2em 6em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,6 +11,7 @@ const Container = styled.div`
   @media (max-width: 700px) {
     flex-direction: column;
     text-align: center;
+    padding: 1em 2em;
   }
 `
 
@@ -60,7 +61,7 @@ const Links = styled.div`
   }
 `
 
-const Hosts = () => {
+const Footer = () => {
   return (
     <Container>
       <Links>
@@ -89,4 +90,4 @@ const Hosts = () => {
   )
 }
 
-export default Hosts
+export default Footer
