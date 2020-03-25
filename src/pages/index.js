@@ -7,9 +7,11 @@ import Landing from "../components/landing"
 import Podcast from "../components/podcast"
 import Hosts from "../components/hosts"
 
+import logo from "../images/logo.png"
+
 const IndexPage = () => (
   <Layout>
-    <SEO title="require('podcast');" />
+    <SEO title="require('podcast');" ogImage={logo} />
     <Landing />
     <Podcast />
     <Hosts />
