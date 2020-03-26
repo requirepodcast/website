@@ -88,8 +88,6 @@ const Footer = () => {
       <Text>
         Copyright © {new Date().getFullYear()} The Require Podcast
         <br />
-        Strona stworzona przez Artura Dudka
-        <br />
         Kontakt: require@podcast.gq
       </Text>
     </Container>
