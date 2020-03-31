@@ -18,9 +18,15 @@ const Wrapper = styled.div`
 const Player = ({ data, location }) => {
   const episodes = data.allContentfulEpisode.nodes
 
-  let episodeNumber = parseInt(location.search.e) || 0
-  if (episodeNumber > episodes.length) {
-    episodeNumber = 0
+  let episodeNumber = episodes.length - 1
+  if (location.search.e) {
+    const numberParsed = parseInt(location.search.e)
+
+    if (!isNaN(numberParsed) && numberParsed < episodes.number) {
+      episodeNumber = numberParsed
+    } else {
+      window.location.search = ""
+    }
   }
 
   return (
