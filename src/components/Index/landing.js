@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 
-import background from "../images/background.png"
+import background from "../../images/background.png"
 
 const bounce = keyframes`
 	50% {

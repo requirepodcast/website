@@ -10,3 +10,7 @@ body {
   margin: 0;
   background-color: #0f111a;
 }
+
+* {
+  box-sizing: border-box;
+}

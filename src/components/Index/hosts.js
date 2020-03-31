@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
-import { useHeadingAnimation } from "../utils/useHeadingAnimation"
+import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
 import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
 
 const Container = styled.div`
   background-color: #0f111a;
-  min-height: 75vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,6 @@ const Wrapper = styled.div`
 
 const Person = styled.div`
   display: inline-block;
-  width: 10em;
   padding: 3em;
   &:last-child {
     border-left: 1px solid #ffffff33;

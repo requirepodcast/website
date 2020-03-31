@@ -3,15 +3,13 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Landing from "../components/landing"
-import Podcast from "../components/podcast"
-import Hosts from "../components/hosts"
-
-import logo from "../images/logo.png"
+import Landing from "../components/Index/landing"
+import Podcast from "../components/Index/podcast"
+import Hosts from "../components/Index/hosts"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="require('podcast');" ogImage={logo} />
+    <SEO title="require('podcast');" />
     <Landing />
     <Podcast />
     <Hosts />

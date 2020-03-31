@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `require('podcast');`,
@@ -15,6 +17,27 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      plugins: [
+        {
+          resolve: `gatsby-remark-images-contentful`,
+          options: {
+            maxWidth: 900,
+            linkImagesToOriginal: false,
+            backgroundColor: "transparent",
+            withWebp: true,
+          },
+        },
+      ],
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `1c70c9hxb66i`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
