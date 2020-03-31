@@ -46,10 +46,10 @@ const ListContainer = styled.div`
 
 const ItemHeading = styled.a`
   cursor: pointer;
-  display: inline;
   font-size: 1.2em;
   text-decoration: none;
   color: white;
+  margin: 0;
 
   :hover {
     text-decoration: underline;
@@ -64,10 +64,10 @@ const List = ({ episodes }) => (
         .map((episode, i) => (
           <ListItem key={episode.id}>
             <ItemHeading href={`?e=${i}`}>{episode.title}</ItemHeading>
-            <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
+            <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
               {" "}
               {episode.publicationDate}
-            </span>
+            </p>
             <p>{episode.shortDescription}</p>
           </ListItem>
         ))

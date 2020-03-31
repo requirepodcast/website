@@ -27,7 +27,7 @@ const Player = ({ data, location }) => {
     <Layout>
       <SEO title="require('podcast')" />
       <Wrapper>
-        <List episodes={episodes.reverse()} />
+        <List episodes={episodes} />
         <Episode episode={episodes[episodeNumber]} />
       </Wrapper>
     </Layout>
@@ -36,18 +36,18 @@ const Player = ({ data, location }) => {
 
 export const query = graphql`
   query EpisodesQuery {
-    allContentfulEpisode {
+    allContentfulEpisode(sort: { order: ASC, fields: publicationDate }) {
       nodes {
         longDescription {
           childMarkdownRemark {
             html
           }
         }
-        title
-        publicationDate
         shortDescription
-        soundcloudEmbedUrl
+        publicationDate
+        title
         id
+        soundcloudEmbedUrl
       }
     }
   }
