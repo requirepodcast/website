@@ -1,40 +1,41 @@
 import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
+import { Router } from "@reach/router"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import List from "../components/Player/list"
 import Episode from "../components/Player/episode"
 
-import withLocation from "../utils/withLocation"
+import { titleUrlParser } from "../utils/titleUrlParser"
 
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
+  flex-direction: row;
   padding: 25px;
 `
 
-const Player = ({ data, location }) => {
+const Player = ({ data }) => {
   const episodes = data.allContentfulEpisode.nodes
 
-  let episodeNumber = episodes.length - 1
-  if (location.search.e) {
-    const numberParsed = parseInt(location.search.e)
-
-    if (!isNaN(numberParsed) && numberParsed < episodes.number) {
-      episodeNumber = numberParsed
-    } else {
-      window.location.search = ""
-    }
-  }
+  console.log(encodeURI(titleUrlParser(episodes[1].title)))
 
   return (
     <Layout>
       <SEO title="require('podcast')" />
       <Wrapper>
         <List episodes={episodes} />
-        <Episode episode={episodes[episodeNumber]} />
+        <Router basepath="/archive" style={{ flexGrow: 1 }}>
+          <Episode episode={episodes[episodes.length - 1]} path="/" />
+          {episodes.map((episode, i) => (
+            <Episode
+              episode={episode}
+              path={`/${i}/${titleUrlParser(episode.title)}`}
+            />
+          ))}
+        </Router>
       </Wrapper>
     </Layout>
   )
@@ -59,4 +60,4 @@ export const query = graphql`
   }
 `
 
-export default withLocation(Player)
+export default Player

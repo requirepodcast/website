@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import { navigate } from "gatsby"
+
+import { titleUrlParser } from "../../utils/titleUrlParser"
 
 const Wrapper = styled.div`
   height: 100%;
   width: 25%;
+  flex-shrink: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -44,7 +48,7 @@ const ListContainer = styled.div`
   text-align: left;
 `
 
-const ItemHeading = styled.a`
+const ItemHeading = styled.h3`
   cursor: pointer;
   font-size: 1.2em;
   text-decoration: none;
@@ -63,7 +67,13 @@ const List = ({ episodes }) => (
       {episodes
         .map((episode, i) => (
           <ListItem key={episode.id}>
-            <ItemHeading href={`?e=${i}`}>{episode.title}</ItemHeading>
+            <ItemHeading
+              onClick={() =>
+                navigate(`/archive/${i}/${titleUrlParser(episode.title)}`)
+              }
+            >
+              {episode.title}
+            </ItemHeading>
             <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
               {" "}
               {episode.publicationDate}

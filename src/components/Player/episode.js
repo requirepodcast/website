@@ -4,8 +4,7 @@ import styled from "styled-components"
 const Wrapper = styled.div`
   background-color: #181a25;
   height: 100%;
-  width: 100%;
-  overflow: auto;
+  overflow-y: auto;
   padding: 25px;
 
   h1 {
