@@ -26,8 +26,6 @@ const Wrapper = styled.div`
 const Player = ({ data }) => {
   const episodes = data.allContentfulEpisode.nodes
 
-  console.log(encodeURI(titleUrlParser(episodes[1].title)))
-
   return (
     <Layout>
       <SEO title="require('podcast')" />
