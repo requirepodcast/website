@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
 `
 
 const NotFoundPage = () => {
@@ -22,6 +23,8 @@ const NotFoundPage = () => {
 
     gsap.set(title, { y: "-=60vh" })
     gsap.set(caption, { autoAlpha: 0 })
+    gsap.set(wrapperRef.current, { visibility: "visible" })
+
     const tl = gsap.timeline()
     tl.to(title, {
       y: "+=60vh",

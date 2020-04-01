@@ -14,6 +14,11 @@ const Wrapper = styled.div`
   background-color: #141621;
   padding: 10px;
   text-align: center;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    height: 50vh;
+  }
 `
 
 const Heading = styled.h1`

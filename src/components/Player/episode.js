@@ -10,6 +10,12 @@ const Wrapper = styled.div`
   h1 {
     margin: 0;
   }
+
+  @media screen and (max-width: 800px) {
+    h1 {
+      font-size: 1.4em;
+    }
+  }
 `
 
 const Player = styled.iframe`

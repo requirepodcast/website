@@ -15,6 +15,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 25px;
+
+  @media screen and (max-width: 1200px) {
+    height: unset;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 `
 
 const Player = ({ data }) => {
@@ -33,6 +39,7 @@ const Player = ({ data }) => {
             <Episode
               episode={episode}
               path={`/${i}/${titleUrlParser(episode.title)}`}
+              key={i}
             />
           ))}
         </Router>

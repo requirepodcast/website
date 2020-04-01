@@ -44,6 +44,15 @@ const Heading = styled.h1`
   }
 `
 
+const H3 = styled.h3`
+  color: #ff5370;
+  padding: 0 30px;
+
+  a {
+    color: white;
+  }
+`
+
 const Podcast = () => {
   const wrapperRef = useRef()
   useHeadingAnimation(wrapperRef)
@@ -51,14 +60,15 @@ const Podcast = () => {
   useEffect(() => {
     const wrapper = wrapperRef.current
     const player = wrapper.querySelector("iframe")
+    const caption = wrapper.querySelector("h3")
 
-    gsap.set(player, { autoAlpha: 0, scale: 0.95 })
+    gsap.set([player, caption], { autoAlpha: 0, scale: 0.95 })
 
     const tl = gsap.timeline({
       paused: true,
       defaults: { ease: "power3.inOut" },
     })
-    tl.to(player, { autoAlpha: 1, scale: 1 })
+    tl.to([player, caption], { autoAlpha: 1, scale: 1 })
 
     new ScrollScene({
       triggerElement: wrapper,
@@ -79,7 +89,11 @@ const Podcast = () => {
         frameborder="no"
         allow="autoplay"
         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/790825027&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-      ></Player>
+      />
+      <H3>
+        Więcej odcinków, timestampy, linki i dodatkowe informacje w{" "}
+        <a href="/archive">archiwum</a>
+      </H3>
     </Container>
   )
 }
