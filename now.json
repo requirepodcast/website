@@ -3,5 +3,9 @@
     "env": {
       "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
     }
-  }
+  },
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/404" }
+  ]
 }
