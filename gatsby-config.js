@@ -54,7 +54,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/archive/*`],
+        prefixes: [`/archive/*/*`],
       },
     },
   ],
