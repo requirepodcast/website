@@ -6,6 +6,7 @@
   },
   "routes": [
     { "handle": "filesystem" },
+    { "src": "/archive/.*", "dest": "/archive/index.html" },
     { "src": "/(.*)", "status": 404, "dest": "/404" }
   ]
 }

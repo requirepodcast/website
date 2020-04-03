@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { navigate } from "gatsby"
+import { navigate, useStaticQuery, graphql } from "gatsby"
 
 import { titleUrlParser } from "../../utils/titleUrlParser"
 
@@ -65,30 +65,47 @@ const ItemHeading = styled.h3`
   }
 `
 
-const List = ({ episodes }) => (
-  <Wrapper>
-    <Heading>Odcinki</Heading>
-    <ListContainer>
-      {episodes
-        .map((episode, i) => (
-          <ListItem key={episode.id}>
-            <ItemHeading
-              onClick={() =>
-                navigate(`/archive/${i}/${titleUrlParser(episode.title)}`)
-              }
-            >
-              {episode.title}
-            </ItemHeading>
-            <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
-              {" "}
-              {episode.publicationDate}
-            </p>
-            <p>{episode.shortDescription}</p>
-          </ListItem>
-        ))
-        .reverse()}
-    </ListContainer>
-  </Wrapper>
-)
+const List = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulEpisode(sort: { order: ASC, fields: publicationDate }) {
+        nodes {
+          title
+          publicationDate
+          shortDescription
+          id
+        }
+      }
+    }
+  `)
+
+  const episodes = data.allContentfulEpisode.nodes
+
+  return (
+    <Wrapper>
+      <Heading>Odcinki</Heading>
+      <ListContainer>
+        {episodes
+          .map((episode, i) => (
+            <ListItem key={episode.id}>
+              <ItemHeading
+                onClick={() =>
+                  navigate(`/archive/${i}/${titleUrlParser(episode.title)}`)
+                }
+              >
+                {episode.title}
+              </ItemHeading>
+              <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
+                {" "}
+                {episode.publicationDate}
+              </p>
+              <p>{episode.shortDescription}</p>
+            </ListItem>
+          ))
+          .reverse()}
+      </ListContainer>
+    </Wrapper>
+  )
+}
 
 export default List
