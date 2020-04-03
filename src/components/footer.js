@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link as GatsbyLink } from "gatsby"
 
 const Container = styled.div`
   background-color: #141621;
@@ -64,6 +65,7 @@ const Links = styled.div`
 const Footer = () => (
   <Container>
     <Links>
+      <GatsbyLink to="/">Home</GatsbyLink>
       <Link href="https://soundcloud.com/requirepodcast">SoundCloud</Link>
       <Link href="https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ">
         YouTube
