@@ -11,12 +11,14 @@ const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   padding: 25px;
 
   @media screen and (max-width: 1200px) {
     height: unset;
     min-height: 100vh;
     flex-direction: column;
+    justify-content: flex-start;
   }
 `
 

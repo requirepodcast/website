@@ -6,7 +6,7 @@ import { titleUrlParser } from "../../utils/titleUrlParser"
 
 const Wrapper = styled.div`
   height: 100%;
-  width: 25%;
+  width: 500px;
   flex-shrink: 0;
   overflow: hidden;
   display: flex;

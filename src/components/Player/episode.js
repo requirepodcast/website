@@ -6,6 +6,8 @@ const Wrapper = styled.div`
   height: 100%;
   overflow-y: auto;
   padding: 25px;
+  max-width: 1200px;
+  width: 100%;
 
   h1 {
     margin: 0;
