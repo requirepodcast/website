@@ -15,6 +15,13 @@ const Wrapper = styled.div`
     color: white;
   }
 
+  ul,
+  ol {
+    p {
+      margin: 0;
+    }
+  }
+
   @media screen and (max-width: 800px) {
     h1 {
       font-size: 1.4em;
