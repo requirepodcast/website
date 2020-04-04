@@ -1,6 +1,5 @@
 import React from "react"
-import styled from "styled-components"
-import { Link as GatsbyLink } from "gatsby"
+import styled, { css } from "styled-components"
 
 const Container = styled.div`
   background-color: #141621;
@@ -11,7 +10,6 @@ const Container = styled.div`
   position: relative;
   @media (max-width: 700px) {
     flex-direction: column;
-    text-align: center;
     padding: 1em 2em;
   }
 `
@@ -19,16 +17,11 @@ const Container = styled.div`
 const Link = styled.a`
   color: #ffffff88;
   font-size: 1em;
-  text-align: center;
   text-decoration: none;
   display: block;
   font-weight: 100;
-  text-align: left;
   &:hover {
     color: #ffffff;
-  }
-  @media (max-width: 700px) {
-    text-align: center;
   }
 `
 
@@ -36,12 +29,14 @@ const Text = styled.p`
   color: #ffffff88;
   font-size: 1em;
   font-weight: 100;
-  text-align: left;
+  text-align: right;
   display: block;
   margin: 1em 0;
+
   @media (max-width: 700px) {
     text-align: center;
   }
+
   &:before {
     border-top: 2px solid #ff5370;
     display: block;
@@ -52,20 +47,26 @@ const Text = styled.p`
 `
 
 const Links = styled.div`
+  text-align: left;
   margin: 1em 0;
+
+  @media (max-width: 700px) {
+    text-align: center;
+  }
+
   &:before {
     border-top: 2px solid #ff5370;
     display: block;
     width: 100%;
     content: "";
     margin: 0 auto 1em;
+    text-align: center;
   }
 `
 
 const Footer = () => (
   <Container>
     <Links>
-      <GatsbyLink to="/">Home</GatsbyLink>
       <Link href="https://soundcloud.com/requirepodcast">SoundCloud</Link>
       <Link href="https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ">
         YouTube
