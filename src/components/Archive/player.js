@@ -103,11 +103,11 @@ class Player extends React.Component {
     this.onPlay = this.onPlay.bind(this)
     this.onPause = this.onPause.bind(this)
     this.jump = this.jump.bind(this)
-
-    this.audioContext = new (window.AudioContext || window.webkitAudioContext)()
   }
 
   componentDidMount() {
+    this.audioContext = new (window.AudioContext || window.webkitAudioContext)()
+
     const audio = this.audioRef.current
     const spectrum = this.spectrumRef.current
     const audioContext = this.audioContext
