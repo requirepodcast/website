@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
+import Player from "./player"
 
 const Wrapper = styled.div`
   background-color: #181a25;
   height: 100%;
   overflow-y: auto;
-  padding: 25px;
   max-width: 1200px;
   width: 100%;
 
@@ -31,23 +31,23 @@ const Wrapper = styled.div`
   }
 `
 
-const Player = styled.iframe`
-  border: none;
-  width: 100%;
-  margin-bottom: 2em;
+const ContentConatiner = styled.div`
+  padding: 25px;
 `
 
 const Episode = ({ episode }) => (
   <Wrapper>
-    <Player src={episode.soundcloudEmbedUrl} />
-    <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
-      {episode.publicationDate}
-    </span>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: episode.longDescription.childMarkdownRemark.html,
-      }}
-    ></div>
+    <Player url={episode.audioUrl} />
+    <ContentConatiner>
+      <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
+        {episode.publicationDate}
+      </span>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: episode.longDescription.childMarkdownRemark.html,
+        }}
+      />
+    </ContentConatiner>
   </Wrapper>
 )
 

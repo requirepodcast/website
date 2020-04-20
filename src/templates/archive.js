@@ -4,8 +4,8 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import List from "../components/Player/list"
-import Episode from "../components/Player/episode"
+import List from "../components/Archive/list"
+import Episode from "../components/Archive/episode"
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -23,12 +23,11 @@ const Wrapper = styled.div`
 `
 
 const Archive = ({ data }) => {
-  console.log(data)
   return (
     <Layout>
-      <SEO title="require('podcast')" />
+      <SEO title={data.contentfulEpisode.title} />
       <Wrapper>
-        <List episodes={[]} />
+        <List />
         <Episode episode={data.contentfulEpisode} />
       </Wrapper>
     </Layout>
@@ -48,6 +47,7 @@ export const query = graphql`
       publicationDate
       title
       soundcloudEmbedUrl
+      audioUrl
     }
   }
 `
