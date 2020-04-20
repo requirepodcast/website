@@ -5,9 +5,11 @@ import Player from "./player"
 const Wrapper = styled.div`
   background-color: #181a25;
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
   max-width: 1200px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 
   h1 {
     margin: 0;
@@ -33,6 +35,8 @@ const Wrapper = styled.div`
 
 const ContentConatiner = styled.div`
   padding: 25px;
+  flex: 1;
+  overflow: auto;
 `
 
 const Episode = ({ episode }) => (

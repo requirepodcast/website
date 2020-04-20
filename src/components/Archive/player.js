@@ -21,6 +21,7 @@ const PlayerWrapper = styled.div`
   display: flex;
   padding: 10px;
   background-color: #1d1f2d;
+  flex-shrink: 0;
 `
 
 const ControlsWrapper = styled.div`

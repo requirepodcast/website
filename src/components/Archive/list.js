@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 `
 
 const Heading = styled.h1`
-  margin: 0 0 0.5em 0;
+  margin: 0.5em 0;
   color: #ff5370;
   font-size: 2.5em;
   font-weight: 800;
