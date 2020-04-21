@@ -249,6 +249,8 @@ class Player extends React.Component {
     this.setState((prevState) => {
       return {
         currentTime: prevState.currentTime + t,
+        currentTimePercent:
+          ((prevState.currentTime + t) / this.audioRef.current.duration) * 100,
       }
     })
   }
