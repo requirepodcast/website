@@ -10,6 +10,7 @@ import {
   mdiFastForward30,
 } from "@mdi/js"
 import { format, addSeconds } from "date-fns"
+import Spinner from "react-spinner-material"
 
 const avoidCors = (uri) => `https://cors-anywhere.herokuapp.com/${uri}`
 
@@ -17,11 +18,15 @@ const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
 
 const PlayerWrapper = styled.div`
   width: 100%;
-  height: 200px;
   display: flex;
   padding: 10px;
   background-color: #1d1f2d;
   flex-shrink: 0;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 `
 
 const ControlsWrapper = styled.div`
@@ -37,6 +42,7 @@ const SpectrumWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
 const PlayButton = styled.button`
@@ -44,7 +50,7 @@ const PlayButton = styled.button`
   width: 50px;
   height: 50px;
   border: none;
-  margin: 0 auto;
+  margin: 5px auto;
   background-color: white;
   color: #1d1f2d;
   font-family: unset;
@@ -56,6 +62,7 @@ const PlayButton = styled.button`
 
   > * {
     vertical-align: middle;
+    margin: 0 auto;
   }
 
   &:hover {
@@ -63,14 +70,16 @@ const PlayButton = styled.button`
   }
 `
 
-const DurationTooltip = styled.div`
+const DurationInfo = styled.div`
   margin-top: 1em;
   font-size: 12px;
-  color: #dddddd;
+  color: white;
 `
 
 const TimeButtons = styled.div`
   color: white;
+  height: 30px;
+  padding: 5px;
 
   > * {
     margin: 0 5px;
@@ -87,23 +96,46 @@ const TimeButton = styled(Icon)`
   }
 `
 
+const Slider = styled.div`
+  width: 100%;
+  margin-top: 7px;
+  margin-bottom: 3px;
+  height: 20px;
+  cursor: crosshair;
+  background-color: #141621;
+  overflow: hidden;
+  position: relative;
+`
+
+const SliderTime = styled.div`
+  width: ${({ width }) => width}%;
+  height: 100%;
+  background: linear-gradient(30deg, #ff5370 0%, #ff97b4 100%);
+  transition: width 0.1s ease-in-out;
+  min-width: 10px;
+`
+
 class Player extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
       playing: false,
-      tooltipDuration: 0,
+      episodeDuration: 0,
       currentTime: 0,
+      currentTimePercent: 0,
+      isLoading: true,
     }
 
     this.audioRef = createRef()
     this.spectrumRef = createRef()
+    this.sliderRef = createRef()
 
     this.triggerPlayer = this.triggerPlayer.bind(this)
     this.onPlay = this.onPlay.bind(this)
     this.onPause = this.onPause.bind(this)
-    this.jump = this.jump.bind(this)
+    this.jumpBy = this.jumpBy.bind(this)
+    this.sliderJump = this.sliderJump.bind(this)
   }
 
   componentDidMount() {
@@ -191,7 +223,17 @@ class Player extends React.Component {
     this.audioRef.current.currentTime = this.state.currentTime
     this.setState({ playing: true })
     this.currentTimeInterval = setInterval(() => {
-      this.setState({ currentTime: this.audioRef.current.currentTime })
+      this.setState((prevState) => {
+        return {
+          currentTime: this.audioRef.current.currentTime,
+          currentTimePercent:
+            (this.audioRef.current.currentTime /
+              this.audioRef.current.duration) *
+            100,
+          isLoading:
+            prevState.currentTime === this.audioRef.current.currentTime,
+        }
+      })
     }, 500)
   }
 
@@ -200,7 +242,7 @@ class Player extends React.Component {
     clearInterval(this.currentTimeInterval)
   }
 
-  jump(t) {
+  jumpBy(t) {
     this.audioRef.current.currentTime = this.state.currentTime + t
     this.setState((prevState) => {
       return {
@@ -209,60 +251,82 @@ class Player extends React.Component {
     })
   }
 
+  sliderJump(e) {
+    this.audioRef.current.currentTime =
+      (e.nativeEvent.offsetX / this.sliderRef.current.clientWidth) *
+      this.audioRef.current.duration
+    this.setState({
+      currentTimePercent:
+        (e.nativeEvent.offsetX / this.sliderRef.current.clientWidth) * 100,
+      currentTime:
+        (e.nativeEvent.offsetX / this.sliderRef.current.clientWidth) *
+        this.audioRef.current.duration,
+    })
+  }
+
   render() {
+    console.log(this.state.isLoading)
     return (
       <PlayerWrapper>
         <ControlsWrapper>
           <div />
           <div>
             <PlayButton onClick={this.triggerPlayer}>
-              <Icon path={this.state.playing ? mdiPause : mdiPlay} />
+              {this.state.isLoading ? (
+                <Spinner color="#1d1f2d" radius={30} />
+              ) : (
+                <Icon path={this.state.playing ? mdiPause : mdiPlay} />
+              )}
             </PlayButton>
-            <DurationTooltip>
+            <DurationInfo>
               {formatSeconds(this.state.currentTime)}/
-              {formatSeconds(this.state.tooltipDuration)}
-            </DurationTooltip>
+              {formatSeconds(this.state.episodeDuration)}
+            </DurationInfo>
           </div>
           <TimeButtons>
             <TimeButton
               path={mdiRewind30}
               size={1}
-              onClick={() => this.jump(-30)}
+              onClick={() => this.jumpBy(-30)}
             />
             <TimeButton
               path={mdiRewind10}
               size={1}
-              onClick={() => this.jump(-10)}
+              onClick={() => this.jumpBy(-10)}
             />
             <TimeButton
               path={mdiFastForward10}
               size={1}
-              onClick={() => this.jump(10)}
+              onClick={() => this.jumpBy(10)}
             />
             <TimeButton
               path={mdiFastForward30}
               size={1}
-              onClick={() => this.jump(30)}
+              onClick={() => this.jumpBy(30)}
             />
           </TimeButtons>
         </ControlsWrapper>
         <SpectrumWrapper>
-          <canvas
-            ref={this.spectrumRef}
-            style={{ width: "100%", height: "100%" }}
-          />
+          <canvas ref={this.spectrumRef} style={{ width: "100%", flex: 1 }} />
+          <Slider
+            onClick={this.sliderJump}
+            ref={this.sliderRef}
+          >
+            <SliderTime width={this.state.currentTimePercent} />
+          </Slider>
           <audio
             ref={this.audioRef}
             src={avoidCors(this.props.url)}
             crossOrigin="anonymous"
+            preload="metadata"
             onPlay={this.onPlay}
             onPause={this.onPause}
-            onLoadedMetadata={() =>
+            onLoadedMetadata={(e) =>
               this.setState({
-                tooltipDuration: this.audioRef.current.duration,
+                episodeDuration: e.target.duration,
+                isLoading: false,
               })
             }
-            preload="metadata"
           />
         </SpectrumWrapper>
       </PlayerWrapper>
