@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 const ContentConatiner = styled.div`
   padding: 25px;
   flex: 1;
-  overflow: auto;
+  overflow-y: auto;
 `
 
 const Episode = ({ episode }) => (

@@ -11,111 +11,21 @@ import {
 } from "@mdi/js"
 import { format, addSeconds } from "date-fns"
 import Spinner from "react-spinner-material"
+import {
+  PlayerWrapper,
+  DurationInfo,
+  TimeButton,
+  TimeButtons,
+  ControlsWrapper,
+  PlayButton,
+  Slider,
+  SliderTime,
+  SpectrumWrapper,
+  Tooltip,
+} from "./player.styles"
 
 const avoidCors = (uri) => `https://cors-anywhere.herokuapp.com/${uri}`
-
 const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
-
-const PlayerWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 10px;
-  background-color: #1d1f2d;
-  flex-shrink: 0;
-
-  @media screen and (max-width: 800px) {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-`
-
-const ControlsWrapper = styled.div`
-  width: 200px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const SpectrumWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`
-
-const PlayButton = styled.button`
-  display: block;
-  width: 50px;
-  height: 50px;
-  border: none;
-  margin: 5px auto;
-  background-color: white;
-  color: #1d1f2d;
-  font-family: unset;
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  transition: background-color 0.3s;
-  padding: 0;
-  text-align: center;
-
-  > * {
-    vertical-align: middle;
-    margin: 0 auto;
-  }
-
-  &:hover {
-    background-color: #dddddd;
-  }
-`
-
-const DurationInfo = styled.div`
-  margin-top: 1em;
-  font-size: 12px;
-  color: white;
-`
-
-const TimeButtons = styled.div`
-  color: white;
-  height: 30px;
-  padding: 5px;
-
-  > * {
-    margin: 0 5px;
-  }
-`
-
-const TimeButton = styled(Icon)`
-  transition: color 0.3s;
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    color: #dddddd;
-  }
-`
-
-const Slider = styled.div`
-  width: 100%;
-  margin-top: 7px;
-  margin-bottom: 3px;
-  height: 20px;
-  cursor: crosshair;
-  background-color: #141621;
-  overflow: hidden;
-  position: relative;
-`
-
-const SliderTime = styled.div`
-  width: ${({ width }) => width}%;
-  height: 100%;
-  background: linear-gradient(30deg, #ff5370 0%, #ff97b4 100%);
-  transition: width 0.1s ease-in-out;
-  min-width: 10px;
-`
 
 class Player extends React.Component {
   constructor(props) {
@@ -127,17 +37,22 @@ class Player extends React.Component {
       currentTime: 0,
       currentTimePercent: 0,
       isLoading: true,
+      tooltipTime: 0,
+      tooltipPosition: 0,
+      showTooltip: false,
     }
 
     this.audioRef = createRef()
     this.spectrumRef = createRef()
     this.sliderRef = createRef()
+    this.tooltipRef = createRef()
 
     this.triggerPlayer = this.triggerPlayer.bind(this)
     this.onPlay = this.onPlay.bind(this)
     this.onPause = this.onPause.bind(this)
     this.jumpBy = this.jumpBy.bind(this)
     this.sliderJump = this.sliderJump.bind(this)
+    this.onSeek = this.onSeek.bind(this)
   }
 
   componentDidMount() {
@@ -268,8 +183,20 @@ class Player extends React.Component {
     })
   }
 
+  onSeek(e) {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const offsetX = e.nativeEvent.clientX - rect.left
+    if (e.nativeEvent.clientX >= rect.left && e.nativeEvent.clientX <= rect.right) {
+      this.setState({
+        tooltipPosition: offsetX,
+        tooltipTime:
+          (offsetX / this.sliderRef.current.clientWidth) *
+          this.audioRef.current.duration,
+      })
+    }
+  }
+
   render() {
-    console.log(this.state.isLoading)
     return (
       <PlayerWrapper>
         <ControlsWrapper>
@@ -312,8 +239,24 @@ class Player extends React.Component {
         </ControlsWrapper>
         <SpectrumWrapper>
           <canvas ref={this.spectrumRef} style={{ width: "100%", flex: 1 }} />
-          <Slider onClick={this.sliderJump} ref={this.sliderRef}>
+          <Slider
+            onClick={this.sliderJump}
+            ref={this.sliderRef}
+            onMouseEnter={() => this.setState({ showTooltip: true })}
+            onMouseLeave={() => this.setState({ showTooltip: false })}
+            onMouseMove={this.onSeek}
+          >
             <SliderTime width={this.state.currentTimePercent} />
+            {this.state.showTooltip && (
+              <Tooltip
+                ref={this.tooltipRef}
+                style={{
+                  left: this.state.tooltipPosition,
+                }}
+              >
+                {formatSeconds(this.state.tooltipTime)}
+              </Tooltip>
+            )}
           </Slider>
           <audio
             ref={this.audioRef}
