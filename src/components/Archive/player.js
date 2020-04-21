@@ -59,6 +59,8 @@ const PlayButton = styled.button`
   cursor: pointer;
   appearance: none;
   transition: background-color 0.3s;
+  padding: 0;
+  text-align: center;
 
   > * {
     vertical-align: middle;
@@ -308,10 +310,7 @@ class Player extends React.Component {
         </ControlsWrapper>
         <SpectrumWrapper>
           <canvas ref={this.spectrumRef} style={{ width: "100%", flex: 1 }} />
-          <Slider
-            onClick={this.sliderJump}
-            ref={this.sliderRef}
-          >
+          <Slider onClick={this.sliderJump} ref={this.sliderRef}>
             <SliderTime width={this.state.currentTimePercent} />
           </Slider>
           <audio
