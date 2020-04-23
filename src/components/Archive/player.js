@@ -1,5 +1,4 @@
-import React, { createRef } from "react"
-import styled from "styled-components"
+import React from "react"
 import { Icon } from "@mdi/react"
 import {
   mdiPause,
@@ -16,252 +15,141 @@ import {
   DurationInfo,
   TimeButton,
   TimeButtons,
-  ControlsWrapper,
+  PlayerSectionCenter,
+  PlayerSectionLeft,
   PlayButton,
   Slider,
   SliderTime,
-  SpectrumWrapper,
-  Tooltip,
+  PlayerSectionRight,
 } from "./player.styles"
+import VolumeBars from "./volumeBars"
 
-const avoidCors = (uri) => `https://cors-anywhere.herokuapp.com/${uri}`
 const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
 
-class Player extends React.Component {
+class NewPlayer extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      playing: false,
-      episodeDuration: 0,
+      isLoading: false,
+      isPlaying: false,
       currentTime: 0,
       currentTimePercent: 0,
-      isLoading: true,
-      tooltipTime: 0,
-      tooltipPosition: 0,
-      showTooltip: false,
+      episodeDuration: 0,
+      currentVolume: 0.6,
     }
-
-    this.audioRef = createRef()
-    this.spectrumRef = createRef()
-    this.sliderRef = createRef()
-    this.tooltipRef = createRef()
 
     this.triggerPlayer = this.triggerPlayer.bind(this)
+    this.onButtonJump = this.onButtonJump.bind(this)
     this.onPlay = this.onPlay.bind(this)
     this.onPause = this.onPause.bind(this)
-    this.jumpBy = this.jumpBy.bind(this)
-    this.sliderJump = this.sliderJump.bind(this)
-    this.onSeek = this.onSeek.bind(this)
-  }
-
-  componentDidMount() {
-    this.audioContext = new (window.AudioContext || window.webkitAudioContext)()
-
-    const audio = this.audioRef.current
-    const spectrum = this.spectrumRef.current
-    const audioContext = this.audioContext
-
-    // Responsive canvas
-    const resizeCanvas = () => {
-      spectrum.width = spectrum.clientWidth
-      spectrum.height = spectrum.clientHeight
-    }
-    window.addEventListener("resize", resizeCanvas)
-    resizeCanvas()
-
-    const analyser = audioContext.createAnalyser()
-    const audioSource = audioContext.createMediaElementSource(audio)
-
-    audioSource.connect(analyser)
-    analyser.connect(audioContext.destination)
-
-    const spectrumContext = spectrum.getContext("2d")
-
-    const renderFrame = () => {
-      requestAnimationFrame(renderFrame)
-
-      const freqData = new Uint8Array(analyser.frequencyBinCount)
-      analyser.getByteFrequencyData(freqData)
-
-      spectrumContext.clearRect(0, 0, spectrum.width, spectrum.height)
-      spectrumContext.fillStyle = spectrumContext.createLinearGradient(
-        0,
-        spectrum.height,
-        0,
-        0
-      )
-      spectrumContext.fillStyle.addColorStop(0, "#ff5370")
-      spectrumContext.fillStyle.addColorStop(1, "#ff97b4")
-
-      const barWidth = 5
-      const barMargin = 2
-      const baseHeight = 15
-
-      // calculate the number of bars
-      let bars = Math.floor(spectrum.width / (barWidth + barMargin))
-      if (spectrum.width % (barWidth + barMargin) >= barWidth) {
-        bars += 1
-      }
-
-      const heightMultiplier = spectrum.height / 256
-
-      for (let i = 0; i < bars; i++) {
-        spectrumContext.fillRect(
-          i * (barWidth + barMargin),
-          spectrum.height,
-          barWidth,
-          freqData[i] > baseHeight
-            ? -(freqData[i] * heightMultiplier)
-            : -baseHeight
-        )
-      }
-    }
-
-    renderFrame()
-  }
-
-  componentWillUnmount() {
-    if (this.currentTimeInterval) {
-      clearInterval(this.currentTimeInterval)
-    }
+    this.onSliderJump = this.onSliderJump.bind(this)
   }
 
   triggerPlayer() {
-    if (!this.state.playing) {
-      this.audioContext.resume()
-      this.audioRef.current.play()
-    } else {
-      this.audioRef.current.pause()
-    }
-  }
-
-  onPlay() {
-    this.audioRef.current.currentTime = this.state.currentTime
-    this.setState({ playing: true })
-    this.currentTimeInterval = setInterval(() => {
-      this.setState((prevState) => {
-        return {
-          currentTime: this.audioRef.current.currentTime,
-          currentTimePercent:
-            (this.audioRef.current.currentTime /
-              this.audioRef.current.duration) *
-            100,
-          isLoading:
-            prevState.currentTime === this.audioRef.current.currentTime,
-        }
-      })
-    }, 500)
-  }
-
-  onPause() {
-    this.setState({ playing: false })
-    clearInterval(this.currentTimeInterval)
-  }
-
-  jumpBy(t) {
-    this.audioRef.current.currentTime = this.state.currentTime + t
+    this.state.isPlaying ? this.audioRef.pause() : this.audioRef.play()
     this.setState((prevState) => {
       return {
-        currentTime: prevState.currentTime + t,
-        currentTimePercent:
-          ((prevState.currentTime + t) / this.audioRef.current.duration) * 100,
+        isPlaying: !prevState.isPlaying,
       }
     })
   }
 
-  sliderJump(e) {
-    this.audioRef.current.currentTime =
-      (e.nativeEvent.offsetX / this.sliderRef.current.clientWidth) *
-      this.audioRef.current.duration
-    this.setState({
-      currentTimePercent:
-        (e.nativeEvent.offsetX / this.sliderRef.current.clientWidth) * 100,
-      currentTime:
-        (e.nativeEvent.offsetX / this.sliderRef.current.clientWidth) *
-        this.audioRef.current.duration,
+  onPlay() {
+    this.playingInterval = setInterval(() => {
+      this.setState({
+        currentTime: this.audioRef.currentTime,
+        currentTimePercent:
+          (this.audioRef.currentTime / this.audioRef.duration) * 100,
+      })
+      if (this.audioRef.currentTime >= this.audioRef.duration) {
+        this.setState({ isPlaying: false })
+        clearInterval(this.playingInterval)
+      }
     })
   }
 
-  onSeek(e) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const offsetX = e.nativeEvent.clientX - rect.left
-    if (e.nativeEvent.clientX >= rect.left && e.nativeEvent.clientX <= rect.right) {
+  onPause() {
+    clearInterval(this.playingInterval)
+  }
+
+  onButtonJump(t) {
+    if (this.audioRef.duration) {
+      this.audioRef.currentTime = this.state.currentTime + t
       this.setState({
-        tooltipPosition: offsetX,
-        tooltipTime:
-          (offsetX / this.sliderRef.current.clientWidth) *
-          this.audioRef.current.duration,
+        currentTime: this.audioRef.currentTime,
+        currentTimePercent:
+          (this.audioRef.currentTime / this.audioRef.duration) * 100,
+      })
+    }
+  }
+
+  onSliderJump(e) {
+    if (this.audioRef.duration) {
+      this.audioRef.currentTime =
+        (e.nativeEvent.offsetX / this.sliderRef.clientWidth) *
+        this.audioRef.duration
+      this.setState({
+        currentTime: this.audioRef.currentTime,
+        currentTimePercent:
+          (this.audioRef.currentTime / this.audioRef.duration) * 100,
       })
     }
   }
 
   render() {
+    const {
+      isLoading,
+      isPlaying,
+      currentTime,
+      episodeDuration,
+      currentTimePercent,
+      currentVolume,
+    } = this.state
+
     return (
       <PlayerWrapper>
-        <ControlsWrapper>
-          <div />
-          <div>
-            <PlayButton onClick={this.triggerPlayer}>
-              {this.state.isLoading ? (
-                <Spinner color="#1d1f2d" radius={30} />
-              ) : (
-                <Icon path={this.state.playing ? mdiPause : mdiPlay} />
-              )}
-            </PlayButton>
-            <DurationInfo>
-              {formatSeconds(this.state.currentTime)}/
-              {formatSeconds(this.state.episodeDuration)}
-            </DurationInfo>
-          </div>
+        <PlayerSectionLeft>
+          <PlayButton onClick={this.triggerPlayer}>
+            {isLoading ? (
+              <Spinner color="#1d1f2d" radius={30} />
+            ) : (
+              <Icon path={isPlaying ? mdiPause : mdiPlay} />
+            )}
+          </PlayButton>
+          <DurationInfo>
+            {formatSeconds(currentTime)}/{formatSeconds(episodeDuration)}
+          </DurationInfo>
+        </PlayerSectionLeft>
+        <PlayerSectionCenter>
+          <Slider ref={(x) => (this.sliderRef = x)} onClick={this.onSliderJump}>
+            <SliderTime style={{ width: `${currentTimePercent}%` }} />
+          </Slider>
           <TimeButtons>
             <TimeButton
               path={mdiRewind30}
               size={1}
-              onClick={() => this.jumpBy(-30)}
+              onClick={() => this.onButtonJump(-30)}
             />
             <TimeButton
               path={mdiRewind10}
               size={1}
-              onClick={() => this.jumpBy(-10)}
+              onClick={() => this.onButtonJump(-10)}
             />
             <TimeButton
               path={mdiFastForward10}
               size={1}
-              onClick={() => this.jumpBy(10)}
+              onClick={() => this.onButtonJump(10)}
             />
             <TimeButton
               path={mdiFastForward30}
               size={1}
-              onClick={() => this.jumpBy(30)}
+              onClick={() => this.onButtonJump(30)}
             />
           </TimeButtons>
-        </ControlsWrapper>
-        <SpectrumWrapper>
-          <canvas ref={this.spectrumRef} style={{ width: "100%", flex: 1 }} />
-          <Slider
-            onClick={this.sliderJump}
-            ref={this.sliderRef}
-            onMouseEnter={() => this.setState({ showTooltip: true })}
-            onMouseLeave={() => this.setState({ showTooltip: false })}
-            onMouseMove={this.onSeek}
-          >
-            <SliderTime width={this.state.currentTimePercent} />
-            {this.state.showTooltip && (
-              <Tooltip
-                ref={this.tooltipRef}
-                style={{
-                  left: this.state.tooltipPosition,
-                }}
-              >
-                {formatSeconds(this.state.tooltipTime)}
-              </Tooltip>
-            )}
-          </Slider>
           <audio
-            ref={this.audioRef}
-            src={avoidCors(this.props.url)}
-            crossOrigin="anonymous"
+            ref={(x) => (this.audioRef = x)}
+            src={this.props.url}
             preload="metadata"
             onPlay={this.onPlay}
             onPause={this.onPause}
@@ -272,10 +160,19 @@ class Player extends React.Component {
               })
             }
           />
-        </SpectrumWrapper>
+        </PlayerSectionCenter>
+        <PlayerSectionRight>
+          <VolumeBars
+            volume={currentVolume}
+            setVolume={(vol) => {
+              this.audioRef.volume = vol
+              this.setState({ currentVolume: vol })
+            }}
+          />
+        </PlayerSectionRight>
       </PlayerWrapper>
     )
   }
 }
 
-export default Player
+export default NewPlayer

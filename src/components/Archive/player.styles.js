@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { Icon } from "@mdi/react"
+import {lighten} from "polished"
 
 export const PlayerWrapper = styled.div`
   width: 100%;
   display: flex;
-  padding: 10px;
   background-color: #1d1f2d;
   flex-shrink: 0;
 
@@ -14,20 +14,28 @@ export const PlayerWrapper = styled.div`
   }
 `
 
-export const ControlsWrapper = styled.div`
-  width: 200px;
+export const PlayerSectionLeft = styled.div`
+  width: 100px;
+  height: 100px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  border-right: solid 1px #141621;
 `
 
-export const SpectrumWrapper = styled.div`
+export const PlayerSectionCenter = styled.div`
   flex: 1;
+  height: 100px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+`
+
+export const PlayerSectionRight = styled.div`
+  width: 75px;
+  height: 100px;
+  border-left: solid 1px #141621;
 `
 
 export const PlayButton = styled.button`
@@ -35,17 +43,16 @@ export const PlayButton = styled.button`
   width: 50px;
   height: 50px;
   border: none;
-  margin: 5px auto;
-  background-color: white;
-  color: #1d1f2d;
+  margin: 0 auto;
+  color: white;
   font-family: unset;
-  border-radius: 50%;
   outline: none;
   cursor: pointer;
   appearance: none;
-  transition: background-color 0.3s;
+  transition: color 0.3s;
   padding: 0;
   text-align: center;
+  background-color: transparent;
 
   > * {
     vertical-align: middle;
@@ -53,20 +60,22 @@ export const PlayButton = styled.button`
   }
 
   &:hover {
-    background-color: #dddddd;
+    color: #bbbbbb;
   }
 `
 
 export const DurationInfo = styled.div`
-  margin-top: 1em;
-  font-size: 12px;
+  font-size: 10px;
   color: white;
 `
 
 export const TimeButtons = styled.div`
   color: white;
-  height: 30px;
-  padding: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   > * {
     margin: 0 5px;
@@ -85,8 +94,6 @@ export const TimeButton = styled(Icon)`
 
 export const Slider = styled.div`
   width: 100%;
-  margin-top: 7px;
-  margin-bottom: 3px;
   height: 20px;
   cursor: pointer;
   background-color: #141621;
@@ -94,24 +101,9 @@ export const Slider = styled.div`
 `
 
 export const SliderTime = styled.div`
-  width: ${({ width }) => width}%;
   height: 100%;
-  background: linear-gradient(30deg, #ff5370 0%, #ff97b4 100%);
+  background: linear-gradient(30deg, #ff5370 0%, ${lighten(0.15, '#ff5370')} 100%);
   transition: width 0.1s ease-in-out;
   min-width: 10px;
-`
-
-export const Tooltip = styled.div`
-  position: absolute;
-  height: 100%;
-  border-right: 2px solid white;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  font-size: 10px;
-  color: white;
-  z-index: 2;
-  top: 0;
-  padding: 0 2px;
-  transform: translateX(-100%);
+  width: 0%;
 `
