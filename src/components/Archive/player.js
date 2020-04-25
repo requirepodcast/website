@@ -36,7 +36,7 @@ class NewPlayer extends React.Component {
       currentTime: 0,
       currentTimePercent: 0,
       episodeDuration: 0,
-      currentVolume: 0.6,
+      currentVolume: 1,
     }
 
     this.triggerPlayer = this.triggerPlayer.bind(this)

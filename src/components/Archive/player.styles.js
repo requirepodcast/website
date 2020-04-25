@@ -7,11 +7,6 @@ export const PlayerWrapper = styled.div`
   display: flex;
   background-color: #1d1f2d;
   flex-shrink: 0;
-
-  @media screen and (max-width: 800px) {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
 `
 
 export const PlayerSectionLeft = styled.div`
