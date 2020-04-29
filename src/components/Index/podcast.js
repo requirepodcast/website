@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
 import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
+import IndexPagePlayer from "./indexPagePlayer"
 
 const Container = styled.div`
   background-color: #0f111a;
@@ -14,14 +15,6 @@ const Container = styled.div`
   text-align: center;
   flex-direction: column;
   padding: 3em 0;
-`
-
-const Player = styled.iframe`
-  height: 450;
-  max-width: 800px;
-  width: 90%;
-  margin: 3em auto;
-  border: none;
 `
 
 const Heading = styled.h1`
@@ -55,12 +48,13 @@ const H3 = styled.h3`
 
 const Podcast = () => {
   const wrapperRef = useRef()
+  const playerRef = useRef()
   useHeadingAnimation(wrapperRef)
 
   useEffect(() => {
     const wrapper = wrapperRef.current
-    const player = wrapper.querySelector("iframe")
     const caption = wrapper.querySelector("h3")
+    const player = playerRef.current
 
     gsap.set([player, caption], { autoAlpha: 0, scale: 0.95 })
 
@@ -84,12 +78,7 @@ const Podcast = () => {
   return (
     <Container ref={wrapperRef}>
       <Heading>Posłuchaj</Heading>
-      <Player
-        scrolling="no"
-        frameborder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/790825027&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-      />
+      <IndexPagePlayer ref={playerRef} />
       <H3>
         Więcej odcinków, timestampy, linki i dodatkowe informacje w{" "}
         <a href="/archive">archiwum</a>

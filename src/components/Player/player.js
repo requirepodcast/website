@@ -22,7 +22,7 @@ import {
   SliderTime,
   PlayerSectionRight,
 } from "./player.styles"
-import VolumeBars from "./volumeBars"
+import VolumeBars from "../Archive/volumeBars"
 
 const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
 
@@ -56,6 +56,7 @@ class NewPlayer extends React.Component {
   }
 
   onPlay() {
+    this.props.onPlay && this.props.onPlay()
     this.playingInterval = setInterval(() => {
       this.setState({
         currentTime: this.audioRef.currentTime,
@@ -70,6 +71,7 @@ class NewPlayer extends React.Component {
   }
 
   onPause() {
+    this.props.onPause && this.props.onPause()
     clearInterval(this.playingInterval)
   }
 

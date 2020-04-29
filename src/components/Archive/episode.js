@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Player from "./player"
+import Player from "../Player/player"
 
 const Wrapper = styled.div`
   background-color: #181a25;
