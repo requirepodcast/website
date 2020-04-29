@@ -24,10 +24,9 @@ const H4 = styled.h4`
 
 const Marquee = styled.p`
   white-space: nowrap;
-  color: #ff5370;
-  font-size: 1em;
-  margin-top: 8px;
+  margin-top: 3px;
   margin-bottom: 8px;
+  color: #bbbbbb;
 `
 
 const IndexPagePlayer = forwardRef((props, ref) => {
