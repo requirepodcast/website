@@ -1,4 +1,4 @@
-export const titleUrlParser = title =>
+export const titleUrlParser = (title) =>
   encodeURI(
     title
       .split(" - ")[1]
@@ -11,5 +11,6 @@ export const titleUrlParser = title =>
       .replace("ć", "c")
       .replace("ę", "e")
       .replace("ś", "s")
+      .replace("ą", "a")
       .replace(/ /g, "-")
   )

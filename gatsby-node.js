@@ -11,6 +11,7 @@ const titleUrlParser = (title) =>
       .replace("ć", "c")
       .replace("ę", "e")
       .replace("ś", "s")
+      .replace("ą", "a")
       .replace(/ /g, "-")
   )
 
