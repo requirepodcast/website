@@ -31,7 +31,7 @@ class NewPlayer extends React.Component {
     super(props)
 
     this.state = {
-      isLoading: false,
+      isLoading: true,
       isPlaying: false,
       currentTime: 0,
       currentTimePercent: 0,
@@ -58,10 +58,13 @@ class NewPlayer extends React.Component {
   onPlay() {
     this.props.onPlay && this.props.onPlay()
     this.playingInterval = setInterval(() => {
-      this.setState({
-        currentTime: this.audioRef.currentTime,
-        currentTimePercent:
-          (this.audioRef.currentTime / this.audioRef.duration) * 100,
+      this.setState(({ currentTime: prevTime }) => {
+        return {
+          currentTime: this.audioRef.currentTime,
+          currentTimePercent:
+            (this.audioRef.currentTime / this.audioRef.duration) * 100,
+          isLoading: prevTime >= this.audioRef.currentTime,
+        }
       })
       if (this.audioRef.currentTime >= this.audioRef.duration) {
         this.setState({ isPlaying: false })
@@ -78,11 +81,12 @@ class NewPlayer extends React.Component {
   onButtonJump(t) {
     if (this.audioRef.duration) {
       this.audioRef.currentTime = this.state.currentTime + t
-      this.setState({
+      this.setState(({ isPlaying }) => ({
         currentTime: this.audioRef.currentTime,
         currentTimePercent:
           (this.audioRef.currentTime / this.audioRef.duration) * 100,
-      })
+        isLoading: isPlaying,
+      }))
     }
   }
 
@@ -91,11 +95,12 @@ class NewPlayer extends React.Component {
       this.audioRef.currentTime =
         (e.nativeEvent.offsetX / this.sliderRef.clientWidth) *
         this.audioRef.duration
-      this.setState({
+      this.setState(({ isPlaying }) => ({
         currentTime: this.audioRef.currentTime,
         currentTimePercent:
           (this.audioRef.currentTime / this.audioRef.duration) * 100,
-      })
+        isLoading: isPlaying,
+      }))
     }
   }
 
@@ -114,7 +119,7 @@ class NewPlayer extends React.Component {
         <PlayerSectionLeft>
           <PlayButton onClick={this.triggerPlayer}>
             {isLoading ? (
-              <Spinner color="#1d1f2d" radius={30} />
+              <Spinner color="white" radius={30} />
             ) : (
               <Icon path={isPlaying ? mdiPause : mdiPlay} />
             )}
