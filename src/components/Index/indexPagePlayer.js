@@ -16,16 +16,20 @@ const EpisodeInfo = styled.div`
   padding: 20px 20px 5px 20px;
   border-bottom: 1px solid #141621;
   text-align: left;
+
+  .ticker {
+    margin: 5px 0;
+    height: 20px !important;
+  }
 `
 
 const H4 = styled.h4`
   margin: 0;
 `
 
-const Marquee = styled.p`
+const MarqueeContent = styled.p`
   white-space: nowrap;
-  margin-top: 3px;
-  margin-bottom: 8px;
+  margin: 0;
   color: #bbbbbb;
 `
 
@@ -57,8 +61,8 @@ const IndexPagePlayer = forwardRef((props, ref) => {
     <Wrapper {...props} ref={ref}>
       <EpisodeInfo>
         <H4>{title}</H4>
-        <Ticker move={playing}>
-          {() => <Marquee>{shortDescription}</Marquee>}
+        <Ticker speed={10} mode="await" move={playing}>
+          {() => <MarqueeContent>{shortDescription}</MarqueeContent>}
         </Ticker>
       </EpisodeInfo>
       <Player

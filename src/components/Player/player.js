@@ -157,12 +157,13 @@ class NewPlayer extends React.Component {
             preload="metadata"
             onPlay={this.onPlay}
             onPause={this.onPause}
-            onLoadedMetadata={(e) =>
+            onLoadedMetadata={(e) => {
+              console.log("dupa")
               this.setState({
                 episodeDuration: e.target.duration,
                 isLoading: false,
               })
-            }
+            }}
           />
         </PlayerSectionCenter>
         <PlayerSectionRight>
