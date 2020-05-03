@@ -58,19 +58,18 @@ class NewPlayer extends React.Component {
   onPlay() {
     this.props.onPlay && this.props.onPlay()
     this.playingInterval = setInterval(() => {
-      this.setState(({ currentTime: prevTime }) => {
-        return {
-          currentTime: this.audioRef.currentTime,
-          currentTimePercent:
-            (this.audioRef.currentTime / this.audioRef.duration) * 100,
-          isLoading: prevTime >= this.audioRef.currentTime,
-        }
-      })
+      this.setState(({ currentTime: prevTime }) => ({
+        currentTime: this.audioRef.currentTime,
+        currentTimePercent:
+          (this.audioRef.currentTime / this.audioRef.duration) * 100,
+        isLoading: this.audioRef.currentTime === prevTime,
+      }))
+
       if (this.audioRef.currentTime >= this.audioRef.duration) {
-        this.setState({ isPlaying: false })
+        this.setState({ isPlaying: false, isLoading: false })
         clearInterval(this.playingInterval)
       }
-    })
+    }, 100)
   }
 
   onPause() {
@@ -81,12 +80,11 @@ class NewPlayer extends React.Component {
   onButtonJump(t) {
     if (this.audioRef.duration) {
       this.audioRef.currentTime = this.state.currentTime + t
-      this.setState(({ isPlaying }) => ({
+      this.setState({
         currentTime: this.audioRef.currentTime,
         currentTimePercent:
           (this.audioRef.currentTime / this.audioRef.duration) * 100,
-        isLoading: isPlaying,
-      }))
+      })
     }
   }
 
@@ -95,12 +93,11 @@ class NewPlayer extends React.Component {
       this.audioRef.currentTime =
         (e.nativeEvent.offsetX / this.sliderRef.clientWidth) *
         this.audioRef.duration
-      this.setState(({ isPlaying }) => ({
+      this.setState({
         currentTime: this.audioRef.currentTime,
         currentTimePercent:
           (this.audioRef.currentTime / this.audioRef.duration) * 100,
-        isLoading: isPlaying,
-      }))
+      })
     }
   }
 
