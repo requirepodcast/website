@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: flex-start;
   }
-  
+
   @media screen and (max-width: 800px) {
     padding: 0;
   }
@@ -51,6 +51,7 @@ export const query = graphql`
       publicationDate
       title
       audioUrl
+      youtubeUrl
     }
   }
 `

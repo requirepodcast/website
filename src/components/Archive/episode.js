@@ -39,6 +39,25 @@ const ContentConatiner = styled.div`
   overflow-y: auto;
 `
 
+const EpisodeActionButton = styled.a`
+  background-color: #2e2f3e;
+  color: white;
+  font-size: 1em;
+  font-family: inherit;
+  margin: 16px 10px 0 0;
+  padding: 5px 15px;
+  cursor: pointer;
+  display: inline-block;
+  height: 31px;
+  vertical-align: top;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #3f3f4f;
+  }
+`
+
 const Episode = ({ episode }) => (
   <Wrapper>
     <Player url={episode.audioUrl} />
@@ -46,6 +65,19 @@ const Episode = ({ episode }) => (
       <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
         {episode.publicationDate}
       </span>
+      <h1>{episode.title}</h1>
+      <EpisodeActionButton href={episode.audioUrl} download>
+        Pobierz odcinek{" "}
+        <span role="img" aria-label="download icon">
+          💾
+        </span>
+      </EpisodeActionButton>
+      <EpisodeActionButton href={episode.youtubeUrl}>
+        Odcinek na YouTube{" "}
+        <span role="img" aria-label="download icon">
+          📹
+        </span>
+      </EpisodeActionButton>
       <div
         dangerouslySetInnerHTML={{
           __html: episode.longDescription.childMarkdownRemark.html,
