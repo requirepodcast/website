@@ -83,7 +83,7 @@ const Episode = ({ episode }) => (
       <EpisodeActionButton href={episode.youtubeUrl}>
         Odcinek na YouTube{" "}
         <span role="img" aria-label="download icon">
-          🎞
+          📺
         </span>
       </EpisodeActionButton>
       <div
