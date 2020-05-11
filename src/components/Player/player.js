@@ -55,8 +55,9 @@ class NewPlayer extends React.Component {
     })
   }
 
-  onPlay() {
+  onPlay(e) {
     this.props.onPlay && this.props.onPlay()
+
     this.playingInterval = setInterval(() => {
       this.setState(({ currentTime: prevTime }) => ({
         currentTime: this.audioRef.currentTime,
@@ -157,7 +158,7 @@ class NewPlayer extends React.Component {
             preload="metadata"
             onPlay={this.onPlay}
             onPause={this.onPause}
-            onLoadedMetadata={(e) => {
+            onLoadedData={(e) => {
               console.log("dupa")
               this.setState({
                 episodeDuration: e.target.duration,
