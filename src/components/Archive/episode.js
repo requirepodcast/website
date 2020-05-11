@@ -58,6 +58,11 @@ const EpisodeActionButton = styled.a`
   }
 `
 
+function getDownloadLink(link) {
+  const [uri] = link.split("/").slice(-1)
+  return decodeURIComponent(uri)
+}
+
 const Episode = ({ episode }) => (
   <Wrapper>
     <Player url={episode.audioUrl} />
@@ -66,7 +71,10 @@ const Episode = ({ episode }) => (
         {episode.publicationDate}
       </span>
       <h1>{episode.title}</h1>
-      <EpisodeActionButton href={episode.audioUrl} download>
+      <EpisodeActionButton
+        href={getDownloadLink(episode.audioUrl)}
+        download="download"
+      >
         Pobierz odcinek{" "}
         <span role="img" aria-label="download icon">
           💾
