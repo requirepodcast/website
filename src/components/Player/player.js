@@ -26,7 +26,7 @@ import VolumeBars from "../Archive/volumeBars"
 
 const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
 
-class NewPlayer extends React.Component {
+class Player extends React.Component {
   constructor(props) {
     super(props)
 
@@ -158,8 +158,13 @@ class NewPlayer extends React.Component {
             preload="metadata"
             onPlay={this.onPlay}
             onPause={this.onPause}
-            onLoadedData={(e) => {
-              console.log("dupa")
+            onLoadedMetadata={(e) => {
+              this.setState({
+                episodeDuration: e.target.duration,
+                isLoading: false,
+              })
+            }}
+            onTimeUpdate={(e) => {
               this.setState({
                 episodeDuration: e.target.duration,
                 isLoading: false,
@@ -181,4 +186,4 @@ class NewPlayer extends React.Component {
   }
 }
 
-export default NewPlayer
+export default Player
