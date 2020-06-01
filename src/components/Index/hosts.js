@@ -115,7 +115,7 @@ const Hosts = () => {
           <Link href="https://twitter.com/arturdudek_">@arturdudek_</Link>
         </Person>
         <Person>
-          <Avatar src="61705df93cba5524efc30b48f402c9e0" />
+          <Avatar src="https://gravatar.com/avatar/74a5ec816e9fd6b196d1dc8ae4ae6115?s=500" />
           <Name>Adam Siekierski</Name>
           <Link href="mailto:a@siekierski.ml">a@siekierski.ml</Link>
           <Link href="https://twitter.com/a_siekierski">@a_siekierski</Link>
