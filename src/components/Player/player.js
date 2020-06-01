@@ -102,6 +102,15 @@ class Player extends React.Component {
     }
   }
 
+  componentDidMount() {
+    if (this.audioRef.readyState > 0) {
+      this.setState({
+        episodeDuration: this.audioRef.duration,
+        isLoading: false,
+      })
+    }
+  }
+
   render() {
     const {
       isLoading,
