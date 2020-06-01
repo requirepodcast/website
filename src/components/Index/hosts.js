@@ -109,13 +109,13 @@ const Hosts = () => {
       <Heading>Prowadzący</Heading>
       <Wrapper ref={hostsRef}>
         <Person>
-          <Avatar src="https://lh3.googleusercontent.com/91rA7nuK8toYIHgfqh-9M4eucalemHK4XCtpSmGbAEgZuJqw48JOp-2MClsOsLmTy2TJ89PsU-X25o1b=w966-h969-rw-no" />
+          <Avatar src="https://lh3.googleusercontent.com/91rA7nuK8toYIHgfqh-9M4eucalemHK4XCtpSmGbAEgZuJqw48JOp-2MClsOsLmTy2TJ89PsU-X25o1b" />
           <Name>Artur Dudek</Name>
           <Link href="mailto:artur@dudek.ga">artur@dudek.ga</Link>
           <Link href="https://twitter.com/arturdudek_">@arturdudek_</Link>
         </Person>
         <Person>
-          <Avatar src="https://i.imgur.com/MbU9fGr.jpg" />
+          <Avatar src="61705df93cba5524efc30b48f402c9e0" />
           <Name>Adam Siekierski</Name>
           <Link href="mailto:a@siekierski.ml">a@siekierski.ml</Link>
           <Link href="https://twitter.com/a_siekierski">@a_siekierski</Link>
