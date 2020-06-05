@@ -2,8 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { navigate, useStaticQuery, graphql } from "gatsby"
 
-import { titleUrlParser } from "../../utils/titleUrlParser"
-
 const Wrapper = styled.div`
   height: 100%;
   width: 500px;
@@ -67,39 +65,52 @@ const ItemHeading = styled.h3`
 
 const List = () => {
   const data = useStaticQuery(graphql`
-    query {
-      allContentfulEpisode(sort: { order: ASC, fields: publicationDate }) {
+    query EpisodeList {
+      allFile(
+        filter: { sourceInstanceName: { eq: "episodes" } }
+        sort: {
+          order: ASC
+          fields: childMarkdownRemark___frontmatter___publicationDate
+        }
+      ) {
         nodes {
-          title
-          publicationDate
-          shortDescription
           id
+          childMarkdownRemark {
+            frontmatter {
+              title
+              slug
+              shortDescription
+              publicationDate
+            }
+          }
         }
       }
     }
   `)
 
-  const episodes = data.allContentfulEpisode.nodes
+  const episodes = data.allFile.nodes
 
   return (
     <Wrapper>
       <Heading>Odcinki</Heading>
       <ListContainer>
         {episodes
-          .map((episode, i) => (
+          .map((episode) => (
             <ListItem key={episode.id}>
               <ItemHeading
                 onClick={() =>
-                  navigate(`/archive/${i}/${titleUrlParser(episode.title)}`)
+                  navigate(
+                    `/archive${episode.childMarkdownRemark.frontmatter.slug}`
+                  )
                 }
               >
-                {episode.title}
+                {episode.childMarkdownRemark.frontmatter.title}
               </ItemHeading>
               <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
                 {" "}
-                {episode.publicationDate}
+                {episode.childMarkdownRemark.frontmatter.publicationDate}
               </p>
-              <p>{episode.shortDescription}</p>
+              <p>{episode.childMarkdownRemark.frontmatter.shortDescription}</p>
             </ListItem>
           ))
           .reverse()}

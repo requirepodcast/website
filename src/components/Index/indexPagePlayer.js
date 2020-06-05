@@ -37,15 +37,23 @@ const IndexPagePlayer = forwardRef((props, ref) => {
   const [playing, setPlaying] = useState(false)
 
   const data = useStaticQuery(graphql`
-    query IndexPageEpisodeQuery {
-      allContentfulEpisode(
-        sort: { fields: publicationDate, order: DESC }
+    query IndexPageQuery {
+      allFile(
+        filter: { sourceInstanceName: { eq: "episodes" } }
+        sort: {
+          order: DESC
+          fields: childMarkdownRemark___frontmatter___publicationDate
+        }
         limit: 1
       ) {
         nodes {
-          title
-          shortDescription
-          audioUrl
+          childMarkdownRemark {
+            frontmatter {
+              title
+              audioUrl
+              shortDescription
+            }
+          }
         }
       }
     }
@@ -55,7 +63,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
     title,
     shortDescription,
     audioUrl,
-  } = data.allContentfulEpisode.nodes[0]
+  } = data.allFile.nodes[0].childMarkdownRemark.frontmatter
 
   return (
     <Wrapper {...props} ref={ref}>

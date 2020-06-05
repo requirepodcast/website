@@ -65,14 +65,14 @@ function getDownloadLink(link) {
 
 const Episode = ({ episode }) => (
   <Wrapper>
-    <Player url={episode.audioUrl} />
+    <Player url={episode.frontmatter.audioUrl} />
     <ContentConatiner>
       <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
-        {episode.publicationDate}
+        {episode.frontmatter.publicationDate}
       </span>
-      <h1>{episode.title}</h1>
+      <h1>{episode.frontmatter.title}</h1>
       <EpisodeActionButton
-        href={getDownloadLink(episode.audioUrl)}
+        href={getDownloadLink(episode.frontmatter.audioUrl)}
         download="download"
       >
         Pobierz odcinek{" "}
@@ -80,7 +80,7 @@ const Episode = ({ episode }) => (
           💾
         </span>
       </EpisodeActionButton>
-      <EpisodeActionButton href={episode.youtubeUrl}>
+      <EpisodeActionButton href={episode.frontmatter.youtubeUrl}>
         Odcinek na YouTube{" "}
         <span role="img" aria-label="download icon">
           📺
@@ -88,7 +88,7 @@ const Episode = ({ episode }) => (
       </EpisodeActionButton>
       <div
         dangerouslySetInnerHTML={{
-          __html: episode.longDescription.childMarkdownRemark.html,
+          __html: episode.html,
         }}
       />
     </ContentConatiner>

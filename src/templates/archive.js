@@ -27,12 +27,14 @@ const Wrapper = styled.div`
 `
 
 const Archive = ({ data }) => {
+  const episode = data.file.childMarkdownRemark
+
   return (
     <Layout>
-      <SEO title={data.contentfulEpisode.title} />
+      <SEO title={episode.frontmatter.title} />
       <Wrapper>
         <List />
-        <Episode episode={data.contentfulEpisode} />
+        <Episode episode={episode} />
       </Wrapper>
     </Layout>
   )
@@ -40,18 +42,19 @@ const Archive = ({ data }) => {
 
 export const query = graphql`
   query EpisodeQuery($id: String!) {
-    contentfulEpisode(id: { eq: $id }) {
-      id
-      longDescription {
-        childMarkdownRemark {
-          html
+    file(id: { eq: $id }) {
+      childMarkdownRemark {
+        frontmatter {
+          youtubeUrl
+          title
+          spotifyUrl
+          slug
+          shortDescription
+          publicationDate
+          audioUrl
         }
+        html
       }
-      shortDescription
-      publicationDate
-      title
-      audioUrl
-      youtubeUrl
     }
   }
 `

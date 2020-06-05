@@ -1,36 +1,30 @@
-const titleUrlParser = (title) =>
-  encodeURI(
-    title
-      .split(" - ")[1]
-      .toLowerCase()
-      .replace("ó", "o")
-      .replace("ł", "l")
-      .replace("ń", "n")
-      .replace("ż", "z")
-      .replace("ź", "z")
-      .replace("ć", "c")
-      .replace("ę", "e")
-      .replace("ś", "s")
-      .replace("ą", "a")
-      .replace(/ /g, "-")
-  )
-
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
-    query {
-      allContentfulEpisode(sort: { order: ASC, fields: publicationDate }) {
+    query EpisodesQuery {
+      allFile(
+        filter: { sourceInstanceName: { eq: "episodes" } }
+        sort: {
+          order: ASC
+          fields: childMarkdownRemark___frontmatter___publicationDate
+        }
+      ) {
         nodes {
-          title
           id
+          childMarkdownRemark {
+            frontmatter {
+              slug
+            }
+            html
+          }
         }
       }
     }
   `)
 
-  const allEpisodes = data.allContentfulEpisode.nodes
+  const allEpisodes = data.allFile.nodes
 
-  allEpisodes.map((episode, i) => {
-    const path = `/archive/${i}/${titleUrlParser(episode.title)}`
+  for (let episode of allEpisodes) {
+    const path = `/archive${episode.childMarkdownRemark.frontmatter.slug}`
     const id = episode.id
 
     actions.createPage({
@@ -38,7 +32,7 @@ exports.createPages = async function ({ actions, graphql }) {
       component: require.resolve("./src/templates/archive.js"),
       context: { id },
     })
-  })
+  }
 
   actions.createPage({
     path: "/archive",

@@ -32,10 +32,11 @@ module.exports = {
       ],
     },
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: `gatsby-source-git`,
       options: {
-        spaceId: `1c70c9hxb66i`,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        name: `episodes`,
+        remote: `https://github.com/requirepodcast/episodes.git`,
+        patterns: `episodes/*.md`,
       },
     },
     {
