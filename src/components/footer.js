@@ -67,7 +67,6 @@ const Links = styled.div`
 const Footer = () => (
   <Container>
     <Links>
-      <Link href="https://soundcloud.com/requirepodcast">SoundCloud</Link>
       <Link href="https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ">
         YouTube
       </Link>
@@ -80,6 +79,7 @@ const Footer = () => (
       <Link href="https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8xMzlkZjg5Yy9wb2RjYXN0L3Jzcw==">
         Google Podcasts
       </Link>
+      <Link href="https://anchor.fm/s/139df89c/podcast/rss">RSS</Link>
       <Link href="https://anchor.fm/require">Anchor</Link>
       <Link href="https://require.podcast.gq/discord">Discord</Link>
       <Link href="https://twitter.com/requirepodcast">Twitter</Link>
