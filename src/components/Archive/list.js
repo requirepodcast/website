@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { navigate, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 const Wrapper = styled.aside`
   height: 100%;
@@ -51,7 +51,8 @@ const ListContainer = styled.div`
   text-align: left;
 `
 
-const ItemHeading = styled.h3`
+const ItemHeading = styled(Link)`
+  display: block;
   cursor: pointer;
   font-size: 1.2em;
   text-decoration: none;
@@ -98,11 +99,7 @@ const List = () => {
           .map((episode) => (
             <ListItem key={episode.id}>
               <ItemHeading
-                onClick={() =>
-                  navigate(
-                    `/archive${episode.childMarkdownRemark.frontmatter.slug}`
-                  )
-                }
+                to={`/archive${episode.childMarkdownRemark.frontmatter.slug}`}
               >
                 {episode.childMarkdownRemark.frontmatter.title}
               </ItemHeading>

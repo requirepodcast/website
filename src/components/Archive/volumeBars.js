@@ -12,7 +12,9 @@ const BarsWrapper = styled.div`
   padding: 10px;
 `
 
-const Bar = styled.div`
+const Bar = styled.button`
+  display: block;
+  border: none;
   width: 100%;
   height: calc(20% - 4px);
   margin: 2px 0;

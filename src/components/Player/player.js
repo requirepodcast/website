@@ -13,8 +13,9 @@ import Spinner from "react-spinner-material"
 import {
   PlayerWrapper,
   DurationInfo,
-  TimeButton,
+  TimeButtonIcon,
   TimeButtons,
+  TimeButton,
   PlayerSectionCenter,
   PlayerSectionLeft,
   PlayButton,
@@ -140,26 +141,18 @@ class Player extends React.Component {
             <SliderTime style={{ width: `${currentTimePercent}%` }} />
           </Slider>
           <TimeButtons>
-            <TimeButton
-              path={mdiRewind30}
-              size={1}
-              onClick={() => this.onButtonJump(-30)}
-            />
-            <TimeButton
-              path={mdiRewind10}
-              size={1}
-              onClick={() => this.onButtonJump(-10)}
-            />
-            <TimeButton
-              path={mdiFastForward10}
-              size={1}
-              onClick={() => this.onButtonJump(10)}
-            />
-            <TimeButton
-              path={mdiFastForward30}
-              size={1}
-              onClick={() => this.onButtonJump(30)}
-            />
+            <TimeButton onClick={() => this.onButtonJump(-30)}>
+              <TimeButtonIcon path={mdiRewind30} size={1} />
+            </TimeButton>
+            <TimeButton onClick={() => this.onButtonJump(-10)}>
+              <TimeButtonIcon path={mdiRewind10} size={1} />
+            </TimeButton>
+            <TimeButton onClick={() => this.onButtonJump(10)}>
+              <TimeButtonIcon path={mdiFastForward10} size={1} />
+            </TimeButton>
+            <TimeButton onClick={() => this.onButtonJump(30)}>
+              <TimeButtonIcon path={mdiFastForward30} size={1} />
+            </TimeButton>
           </TimeButtons>
           <audio
             ref={(x) => (this.audioRef = x)}

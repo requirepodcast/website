@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Icon } from "@mdi/react"
-import {lighten} from "polished"
+import { lighten } from "polished"
 
 export const PlayerWrapper = styled.div`
   width: 100%;
@@ -41,7 +41,6 @@ export const PlayButton = styled.button`
   margin: 0 auto;
   color: white;
   font-family: unset;
-  outline: none;
   cursor: pointer;
   appearance: none;
   transition: color 0.3s;
@@ -77,14 +76,22 @@ export const TimeButtons = styled.div`
   }
 `
 
-export const TimeButton = styled(Icon)`
+export const TimeButtonIcon = styled(Icon)`
   transition: color 0.3s;
   color: white;
-  cursor: pointer;
 
   &:hover {
     color: #dddddd;
   }
+`
+
+export const TimeButton = styled.button`
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  padding: none;
+  margin: 0;
+  cursor: pointer;
 `
 
 export const Slider = styled.div`
@@ -97,7 +104,11 @@ export const Slider = styled.div`
 
 export const SliderTime = styled.div`
   height: 100%;
-  background: linear-gradient(30deg, #ff5370 0%, ${lighten(0.15, '#ff5370')} 100%);
+  background: linear-gradient(
+    30deg,
+    #ff5370 0%,
+    ${lighten(0.15, "#ff5370")} 100%
+  );
   transition: width 0.1s ease-in-out;
   min-width: 10px;
   width: 0%;
