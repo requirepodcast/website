@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Player from "../Player/player"
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   background-color: #181a25;
   height: 100%;
   overflow: hidden;

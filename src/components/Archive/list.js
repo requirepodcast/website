@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { navigate, useStaticQuery, graphql } from "gatsby"
 
-const Wrapper = styled.div`
+const Wrapper = styled.aside`
   height: 100%;
   width: 500px;
   flex-shrink: 0;

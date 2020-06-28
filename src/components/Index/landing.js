@@ -17,6 +17,7 @@ const Title = styled.h1`
   color: #ff5370;
   font-size: 5em;
   font-weight: 800;
+
   @media (max-width: 750px) {
     font-size: 4em;
   }
@@ -25,7 +26,7 @@ const Title = styled.h1`
   }
 `
 
-const Container = styled.div`
+const Container = styled.header`
   background-color: #0f111a;
   height: 100vh;
   display: flex;
@@ -37,6 +38,7 @@ const Container = styled.div`
   background-position: center;
   background-size: contain;
   flex-direction: column;
+
   &::before {
     content: "╲╱";
     font-family: Arial;
@@ -50,9 +52,9 @@ const Container = styled.div`
     line-height: 4rem;
     text-align: center;
     bottom: 2rem;
-    margin-left: -3rem;
-    left: 50%;
+    margin: 0 auto;
     animation: ${bounce} 1s ease infinite;
+
     @media (max-height: 550px) {
       display: none;
     }
@@ -64,7 +66,7 @@ const Subtitle = styled.h2`
   font-size: 1.5em;
   font-weight: 400;
   max-width: 800px;
-  margin: 0px auto;
+  margin: 0 auto;
   text-align: center;
   padding: 0 2em;
   @media (max-width: 750px) {
