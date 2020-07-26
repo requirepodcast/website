@@ -5,6 +5,7 @@ module.exports = {
     title: `require('podcast');`,
     description: `Przemyślenia dwójki programistów - Adama i Artura - na temat nowości i wydarzeń w świecie frontendu, backendu i nie tylko.`,
     author: `Adam Siekierski & Artur Dudek`,
+    siteUrl: `https://require.podcast.gq`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -52,5 +53,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
   ],
 }
