@@ -7,7 +7,7 @@ import IndexPagePlayer from "./indexPagePlayer"
 
 const Container = styled.div`
   background-color: #0f111a;
-  min-height: 75vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

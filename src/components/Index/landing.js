@@ -39,17 +39,15 @@ const Container = styled.header`
   background-size: contain;
   flex-direction: column;
 
-  &::before {
-    content: "╲╱";
-    font-family: Arial;
+  &::after {
+    content: "⌄";
+    font-weight: 100;
     color: #fff;
     position: absolute;
     opacity: 0.8;
     text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-    width: 6rem;
-    font-size: 2rem;
+    font-size: 5rem;
     height: 4rem;
-    line-height: 4rem;
     text-align: center;
     bottom: 2rem;
     margin: 0 auto;

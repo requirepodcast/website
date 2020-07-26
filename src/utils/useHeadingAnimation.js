@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { ScrollScene } from "scrollscene"
 import gsap from "gsap"
 
-export const useHeadingAnimation = ref => {
+export const useHeadingAnimation = (ref) => {
   useEffect(() => {
     const wrapper = ref.current
     const heading = ref.current.querySelector("h1")
