@@ -1,3 +1,5 @@
+const fs = require("fs")
+
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
     query EpisodesQuery {
@@ -11,10 +13,16 @@ exports.createPages = async function ({ actions, graphql }) {
         nodes {
           id
           childMarkdownRemark {
-            frontmatter {
-              slug
-            }
+            rawMarkdownBody
             html
+            frontmatter {
+              audioUrl
+              publicationDate
+              shortDescription
+              title
+              youtubeUrl
+              spotifyUrl
+            }
           }
         }
       }
@@ -39,4 +47,22 @@ exports.createPages = async function ({ actions, graphql }) {
     component: require.resolve("./src/templates/archive.js"),
     context: { id: allEpisodes[allEpisodes.length - 1].id },
   })
+
+  fs.writeFileSync(
+    "./public/episodes.json",
+    JSON.stringify(
+      {
+        episodes: allEpisodes.map((episode) => ({
+          id: episode.id,
+          description: {
+            html: episode.childMarkdownRemark.html,
+            markdown: episode.childMarkdownRemark.rawMarkdownBody,
+          },
+          ...episode.childMarkdownRemark.frontmatter,
+        })),
+      },
+      null,
+      2
+    )
+  )
 }
