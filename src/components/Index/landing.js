@@ -75,7 +75,7 @@ const Subtitle = styled.h2`
 const Landing = () => {
   return (
     <Container>
-      <Title>The Require Podcast</Title>
+      <Title>Require Podcast</Title>
       <Subtitle>
         Przemyślenia dwójki programistów - Adama i Artura - na temat nowości i
         wydarzeń w świecie frontendu, backendu i nie tylko.
