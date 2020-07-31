@@ -58,6 +58,7 @@ class Player extends React.Component {
 
   onPlay(e) {
     this.props.onPlay && this.props.onPlay()
+    this.setState({ isPlaying: true })
 
     this.playingInterval = setInterval(() => {
       this.setState(({ currentTime: prevTime }) => ({
@@ -76,6 +77,7 @@ class Player extends React.Component {
 
   onPause() {
     this.props.onPause && this.props.onPause()
+    this.setState({ isPlaying: false })
     clearInterval(this.playingInterval)
   }
 
