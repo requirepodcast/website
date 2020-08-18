@@ -30,7 +30,7 @@ const Heading = styled.h1`
 const Container = styled.div`
   background-color: #0f111a;
   min-height: 100vh;
-  padding: 3em 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
