@@ -4,6 +4,8 @@ import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
 import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
 
+import artur from "../../images/artur.jpg"
+
 const Container = styled.div`
   background-color: #0f111a;
   min-height: 100vh;
@@ -109,7 +111,7 @@ const Hosts = () => {
       <Heading>Prowadzący</Heading>
       <Wrapper ref={hostsRef}>
         <Person>
-          <Avatar src="https://lh3.googleusercontent.com/91rA7nuK8toYIHgfqh-9M4eucalemHK4XCtpSmGbAEgZuJqw48JOp-2MClsOsLmTy2TJ89PsU-X25o1b" />
+          <Avatar src={artur} />
           <Name>Artur Dudek</Name>
           <Link href="mailto:artur@dudek.ga">artur@dudek.ga</Link>
           <Link href="https://twitter.com/arturdudek_">@arturdudek_</Link>

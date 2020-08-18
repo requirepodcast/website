@@ -35,6 +35,7 @@ const MarqueeContent = styled.p`
 
 const IndexPagePlayer = forwardRef((props, ref) => {
   const [playing, setPlaying] = useState(false)
+  const [mouseOver, setMouseOver] = useState(false)
 
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
@@ -67,9 +68,12 @@ const IndexPagePlayer = forwardRef((props, ref) => {
 
   return (
     <Wrapper {...props} ref={ref}>
-      <EpisodeInfo>
+      <EpisodeInfo
+        onMouseEnter={() => setMouseOver(true)}
+        onMouseLeave={() => setMouseOver(false)}
+      >
         <H4>{title}</H4>
-        <Ticker speed={10} mode="await" move={playing}>
+        <Ticker speed={10} mode="await" move={playing || mouseOver}>
           {() => <MarqueeContent>{shortDescription}</MarqueeContent>}
         </Ticker>
       </EpisodeInfo>
