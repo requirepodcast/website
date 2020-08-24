@@ -22,6 +22,7 @@ exports.createPages = async function ({ actions, graphql }) {
               title
               youtubeUrl
               spotifyUrl
+              slug
             }
           }
         }
