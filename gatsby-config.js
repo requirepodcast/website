@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `require('podcast');`,
-    description: `Przemyślenia dwójki programistów - Adama i Artura - na temat nowości i wydarzeń w świecie frontendu, backendu i nie tylko.`,
+    description: `Przemyślenia dwójki programistów - Adama i Artura - na temat JavaScriptu i nie tylko. Od technologii frontendowych, przez nowości w świecie IT po frameworki na backendzie.`,
     author: `Adam Siekierski & Artur Dudek`,
     siteUrl: `https://require.podcast.gq`,
   },

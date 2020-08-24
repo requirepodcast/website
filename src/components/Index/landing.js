@@ -2,6 +2,7 @@ import React from "react"
 import styled, { keyframes } from "styled-components"
 
 import background from "../../images/background.png"
+import { useStaticQuery, graphql } from "gatsby"
 
 const bounce = keyframes`
 	50% {
@@ -73,13 +74,22 @@ const Subtitle = styled.h2`
 `
 
 const Landing = () => {
+  const {
+    site: { siteMetadata },
+  } = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          description
+        }
+      }
+    }
+  `)
+
   return (
     <Container>
       <Title>Require Podcast</Title>
-      <Subtitle>
-        Przemyślenia dwójki programistów - Adama i Artura - na temat nowości i
-        wydarzeń w świecie frontendu, backendu i nie tylko.
-      </Subtitle>
+      <Subtitle>{siteMetadata.description}</Subtitle>
     </Container>
   )
 }
