@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
 import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
-
-import artur from "../../images/artur.jpg"
+import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
 
 const Container = styled.div`
   background-color: #0f111a;
@@ -38,9 +38,9 @@ const Person = styled.div`
   }
 `
 
-const Avatar = styled.img`
+const Avatar = styled(Img)`
   border-radius: 50%;
-  height: 8em;
+  height: 200px;
 `
 
 const Name = styled.h2`
@@ -106,18 +106,37 @@ const Hosts = () => {
     })
   }, [])
 
+  const data = useStaticQuery(graphql`
+    query {
+      artur: file(relativePath: { eq: "artur.jpg" }) {
+        childImageSharp {
+          fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      adam: file(relativePath: { eq: "adam.png" }) {
+        childImageSharp {
+          fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Container ref={wrapperRef}>
       <Heading>Prowadzący</Heading>
       <Wrapper ref={hostsRef}>
         <Person>
-          <Avatar src={artur} />
+          <Avatar fixed={data.artur.childImageSharp.fixed} />
           <Name>Artur Dudek</Name>
           <Link href="mailto:artur@dudek.ga">artur@dudek.ga</Link>
           <Link href="https://twitter.com/arturdudek_">@arturdudek_</Link>
         </Person>
         <Person>
-          <Avatar src="https://gravatar.com/avatar/74a5ec816e9fd6b196d1dc8ae4ae6115?s=500" />
+          <Avatar fixed={data.adam.childImageSharp.fixed} />
           <Name>Adam Siekierski</Name>
           <Link href="mailto:a@siekierski.ml">a@siekierski.ml</Link>
           <Link href="https://twitter.com/a_siekierski">@a_siekierski</Link>
