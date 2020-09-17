@@ -25,7 +25,11 @@ import {
 } from "./player.styles"
 import VolumeBars from "../Archive/volumeBars"
 
-const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
+const formatSeconds = (sec) => {
+  const date = addSeconds(new Date(0), sec)
+
+  return format(date, date.getHours() > 0 ? "HH:mm:ss" : "mm:ss")
+}
 
 class Player extends React.Component {
   constructor(props) {
