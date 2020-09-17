@@ -8,7 +8,6 @@ import {
   mdiRewind30,
   mdiFastForward30,
 } from "@mdi/js"
-import { format, addSeconds } from "date-fns"
 import Spinner from "react-spinner-material"
 import {
   PlayerWrapper,
@@ -25,10 +24,15 @@ import {
 } from "./player.styles"
 import VolumeBars from "../Archive/volumeBars"
 
-const formatSeconds = (sec) => {
-  const date = addSeconds(new Date(0), sec)
+const pad = (num) =>
+  num.toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false })
 
-  return format(date, date.getHours() > 0 ? "HH:mm:ss" : "mm:ss")
+const formatSeconds = (sec) => {
+  const hours = Math.floor(sec / 3600)
+  const minutes = Math.floor((sec - hours * 3600) / 60)
+  const seconds = Math.floor(sec - hours * 3600 - minutes * 60)
+
+  return `${hours ? `${hours}:` : ""}${pad(minutes)}:${pad(seconds)}`
 }
 
 class Player extends React.Component {

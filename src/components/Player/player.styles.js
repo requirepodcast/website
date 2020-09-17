@@ -59,7 +59,7 @@ export const PlayButton = styled.button`
 `
 
 export const DurationInfo = styled.div`
-  font-size: 10px;
+  font-size: 8px;
   color: white;
 `
 
