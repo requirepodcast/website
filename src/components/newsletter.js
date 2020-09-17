@@ -18,6 +18,10 @@ const Wrapper = styled.a`
   :focus {
     box-shadow: 0px 0px 0px 3px #ff5370;
   }
+
+  @media (max-width: 700px) {
+    visibility: hidden;
+  }
 `
 
 const RedText = styled.span`

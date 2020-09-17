@@ -67,6 +67,7 @@ const Links = styled.div`
 const Footer = () => (
   <Container>
     <Links>
+      <Link href="https://letter.podcast.gq">Newsletter</Link>
       <Link href="https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ">
         YouTube
       </Link>
