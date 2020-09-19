@@ -1,7 +1,5 @@
-@import "../fonts/fira_code.css";
-
 html {
-  font-family: "Fira Code", monospace;
+  font-family: "Quicksand", monospace;
   font-weight: 800;
   color: #fff;
 }

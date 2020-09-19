@@ -55,6 +55,15 @@ module.exports = {
         icon: `src/images/logo.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          { family: `Sofia` },
+          { family: `Quicksand` },
+        ],
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
