@@ -67,11 +67,13 @@ const Links = styled.div`
 const Footer = () => (
   <Container>
     <Links>
+      <Link href="http://salafybpp.com">Info Ma'had</Link>
       <Link href="https://www.youtube.com/channel/UCb2N_NeM9B8DqiePrsYAmWg">
         YouTube
       </Link>
+      <Link href="https://anchor.fm/nasir-bilal">Podcast</Link>
       <Link href="https://t.me/AudioThalabIlmuSyar_i">Telegram</Link>
-      <Link href="http://salafybpp.com">Info Ma'had</Link>
+      
     </Links>
     <Text>
       Copyright © {new Date().getFullYear()} Ma'had Ibnul Qoyyim
