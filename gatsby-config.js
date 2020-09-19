@@ -2,10 +2,10 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `require('podcast');`,
-    description: `Przemyślenia dwójki programistów - Adama i Artura - na temat JavaScriptu i nie tylko. Od technologii frontendowych, przez nowości w świecie IT po frameworki na backendzie.`,
-    author: `Adam Siekierski & Artur Dudek`,
-    siteUrl: `https://require.podcast.gq`,
+    title: `Ponpes Ibnul Qoyyim`,
+    description: `Ma'had Ahlussunnah wal Jama'ah di Balikpapan Utara.`,
+    author: `أبو عبدالمجيد الأمريكي`,
+    siteUrl: `https://ppiq.info`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -17,7 +17,18 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        icon: `${__dirname}/src/images/logo.png`
+      }
+    },
+    {
+      resolve: 'gatsby-source-anchor',
+      options: {
+        rss: 'https://anchor.fm/s/3770c8bc/podcast/rss',
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       plugins: [
@@ -33,18 +44,10 @@ module.exports = {
       ],
     },
     {
-      resolve: `gatsby-source-git`,
-      options: {
-        name: `episodes`,
-        remote: `https://github.com/requirepodcast/episodes.git`,
-        patterns: `episodes/*.md`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `require('podcast');`,
-        short_name: `The Require Podcast`,
+        name: `Ponpes Ibnul Qoyyim`,
+        short_name: `t`,
         start_url: `/`,
         background_color: `#0f111a`,
         theme_color: `#FF5370`,

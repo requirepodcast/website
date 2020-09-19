@@ -64,14 +64,12 @@ const PodcastApp = () => {
 
   return (
     <Container ref={wrapperRef}>
-      <Heading>Pobierz apkę</Heading>
+      <Heading>Unduh Aplikasi</Heading>
       <Wrapper>
         <p>
-          Oficjalna aplikacja Require Podcast jest już dostępna w wersji beta!
-          By wygodniej słuchać naszego podcastu, móc sprawdzać archiwum podczas
-          słuchania i wiele więcej, pobierz Require Podcast App!
+          Untuk mendengar kajian langsung melalui aplikasi Radio Islami, klik disini!
         </p>
-        <DownloadButton href="https://app.podcast.gq">Pobierz</DownloadButton>
+        <DownloadButton href="https://play.google.com/store/apps/details?id=com.radioislami.hanifcamp">Unduh</DownloadButton>
       </Wrapper>
     </Container>
   )

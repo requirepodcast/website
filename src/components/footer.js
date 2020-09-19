@@ -67,30 +67,16 @@ const Links = styled.div`
 const Footer = () => (
   <Container>
     <Links>
-      <Link href="https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ">
+      <Link href="https://www.youtube.com/channel/UCb2N_NeM9B8DqiePrsYAmWg">
         YouTube
       </Link>
-      <Link href="https://open.spotify.com/show/55IXMbPmncm67FA5ZAydtL">
-        Spotify
-      </Link>
-      <Link href="https://podcasts.apple.com/podcast/id1502694357">
-        Apple Podcasts
-      </Link>
-      <Link href="https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8xMzlkZjg5Yy9wb2RjYXN0L3Jzcw==">
-        Google Podcasts
-      </Link>
-      <Link href="https://anchor.fm/s/139df89c/podcast/rss">RSS</Link>
-      <Link href="https://anchor.fm/require">Anchor</Link>
-      <Link href="https://require.podcast.gq/discord">Discord</Link>
-      <Link href="https://twitter.com/requirepodcast">Twitter</Link>
-      <Link href="https://www.instagram.com/requirepodcast">Instagram</Link>
-      <Link href="https://github.com/requirepodcast">GitHub</Link>
-      <Link href="https://www.reddit.com/r/requirepodcast">Reddit</Link>
+      <Link href="https://t.me/AudioThalabIlmuSyar_i">Telegram</Link>
+      <Link href="http://salafybpp.com">Info Ma'had</Link>
     </Links>
     <Text>
-      Copyright © {new Date().getFullYear()} The Require Podcast
+      Copyright © {new Date().getFullYear()} Ma'had Ibnul Qoyyim
       <br />
-      Kontakt: require@podcast.gq
+      Kontak: salafybpp@gmail.com
     </Text>
   </Container>
 )

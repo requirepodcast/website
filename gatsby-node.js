@@ -2,38 +2,25 @@ const fs = require("fs")
 
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
-    query EpisodesQuery {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: {
-          order: ASC
-          fields: childMarkdownRemark___frontmatter___publicationDate
-        }
-      ) {
-        nodes {
-          id
-          childMarkdownRemark {
-            rawMarkdownBody
-            html
-            frontmatter {
-              audioUrl
-              publicationDate
-              shortDescription
-              title
-              youtubeUrl
-              spotifyUrl
-              slug
-            }
-          }
-        }
+  query IndexPageQuery {
+    allAnchorEpisode {
+      nodes {
+        content
+        contentSnippet
+        title
+        pubDate
+        link
+        id
+        guid
       }
     }
+  }
   `)
 
-  const allEpisodes = data.allFile.nodes
+  const allEpisodes = data.allAnchorEpisode.nodes
 
   for (let episode of allEpisodes) {
-    const path = `/archive${episode.childMarkdownRemark.frontmatter.slug}`
+    const path = `/archive${episode.guid}`
     const id = episode.id
 
     actions.createPage({
@@ -56,10 +43,10 @@ exports.createPages = async function ({ actions, graphql }) {
         episodes: allEpisodes.map((episode) => ({
           id: episode.id,
           description: {
-            html: episode.childMarkdownRemark.html,
-            markdown: episode.childMarkdownRemark.rawMarkdownBody,
+            html: episode.content,
+            markdown: episode.contentSnippet,
           },
-          ...episode.childMarkdownRemark.frontmatter,
+          ...episode,
         })),
       },
       null,

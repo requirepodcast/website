@@ -27,11 +27,11 @@ const Wrapper = styled.div`
 `
 
 const Archive = ({ data }) => {
-  const episode = data.file.childMarkdownRemark
+  const episode = data.allAnchorEpisode.nodes[0]
 
   return (
     <Layout>
-      <SEO title={episode.frontmatter.title} />
+      <SEO title={episode.title} />
       <Wrapper>
         <List />
         <Episode episode={episode} />
@@ -41,22 +41,18 @@ const Archive = ({ data }) => {
 }
 
 export const query = graphql`
-  query EpisodeQuery($id: String!) {
-    file(id: { eq: $id }) {
-      childMarkdownRemark {
-        frontmatter {
-          youtubeUrl
-          title
-          spotifyUrl
-          slug
-          shortDescription
-          publicationDate
-          audioUrl
-        }
-        html
-      }
+query MyQuery($my_guid: String) {
+  allAnchorEpisode(filter: {guid: {eq: $my_guid}}) {
+    nodes {
+      contentSnippet
+      title
+      pubDate
+      link
+      id
+      guid
     }
   }
+}
 `
 
 export default Archive

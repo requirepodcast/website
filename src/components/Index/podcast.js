@@ -77,11 +77,11 @@ const Podcast = () => {
 
   return (
     <Container ref={wrapperRef}>
-      <Heading>Posłuchaj</Heading>
+      <Heading>Radio</Heading>
       <IndexPagePlayer ref={playerRef} />
       <H3>
-        Więcej odcinków, timestampy, linki i dodatkowe informacje w{" "}
-        <a href="/archive">archiwum</a>
+        Untuk audio kajian sebelumnya, bisa klik disini {" "}
+        <a href="/archive">arsip</a>
       </H3>
     </Container>
   )

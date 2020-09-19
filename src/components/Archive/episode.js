@@ -33,7 +33,7 @@ const Wrapper = styled.article`
   }
 `
 
-const ContentConatiner = styled.div`
+const ContentContainer = styled.div`
   padding: 25px;
   flex: 1;
   overflow-y: auto;
@@ -65,33 +65,22 @@ function getDownloadLink(link) {
 
 const Episode = ({ episode }) => (
   <Wrapper>
-    <Player url={episode.frontmatter.audioUrl} />
-    <ContentConatiner>
+    <Player url={episode.link} />
+    <ContentContainer>
       <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
-        {episode.frontmatter.publicationDate}
+        {episode.pubDate}
       </span>
-      <h1>{episode.frontmatter.title}</h1>
+      <h1>{episode.title}</h1>
       <EpisodeActionButton
-        href={getDownloadLink(episode.frontmatter.audioUrl)}
+        href={getDownloadLink(episode.link)}
         download="download"
       >
-        Pobierz odcinek{" "}
+        Unduh audio{" "}
         <span role="img" aria-label="download icon">
           💾
         </span>
       </EpisodeActionButton>
-      <EpisodeActionButton href={episode.frontmatter.youtubeUrl}>
-        Odcinek na YouTube{" "}
-        <span role="img" aria-label="download icon">
-          📺
-        </span>
-      </EpisodeActionButton>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: episode.html,
-        }}
-      />
-    </ContentConatiner>
+    </ContentContainer>
   </Wrapper>
 )
 

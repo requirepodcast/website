@@ -65,49 +65,64 @@ const ItemHeading = styled(Link)`
 `
 
 const List = () => {
+  // const data = useStaticQuery(graphql`
+  //   query EpisodeList {
+  //     allFile(
+  //       filter: { sourceInstanceName: { eq: "episodes" } }
+  //       sort: {
+  //         order: ASC
+  //         fields: childMarkdownRemark___frontmatter___publicationDate
+  //       }
+  //     ) {
+  //       nodes {
+  //         id
+  //         childMarkdownRemark {
+  //           frontmatter {
+  //             title
+  //             slug
+  //             shortDescription
+  //             publicationDate
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
   const data = useStaticQuery(graphql`
-    query EpisodeList {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: {
-          order: ASC
-          fields: childMarkdownRemark___frontmatter___publicationDate
-        }
-      ) {
+    query {
+      allAnchorEpisode {
         nodes {
+          title
           id
-          childMarkdownRemark {
-            frontmatter {
-              title
-              slug
-              shortDescription
-              publicationDate
-            }
-          }
+          guid
+          link
+          pubDate
+          contentSnippet
         }
       }
     }
+    
   `)
-
-  const episodes = data.allFile.nodes
+  const episodes = data.allAnchorEpisode.nodes
 
   return (
     <Wrapper>
-      <Heading>Odcinki</Heading>
+      <Heading>Daftar Audio</Heading>
       <ListContainer>
         {episodes
           .map((episode) => (
             <ListItem key={episode.id}>
               <ItemHeading
-                to={`/archive${episode.childMarkdownRemark.frontmatter.slug}`}
+                to={`/archive${episode.guid}`}
               >
-                {episode.childMarkdownRemark.frontmatter.title}
+                {episode.title}
               </ItemHeading>
               <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
                 {" "}
-                {episode.childMarkdownRemark.frontmatter.publicationDate}
+                {episode.pubDate}
               </p>
-              <p>{episode.childMarkdownRemark.frontmatter.shortDescription}</p>
+              <p>{episode.contentSnippet}</p>
             </ListItem>
           ))
           .reverse()}

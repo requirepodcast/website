@@ -1,7 +1,5 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
-
-import background from "../../images/background.png"
 import { useStaticQuery, graphql } from "gatsby"
 
 const bounce = keyframes`
@@ -35,7 +33,6 @@ const Container = styled.header`
   justify-content: center;
   position: relative;
   text-align: center;
-  background-image: url(${background});
   background-position: center;
   background-size: contain;
   flex-direction: column;
@@ -81,6 +78,7 @@ const Landing = () => {
       site {
         siteMetadata {
           description
+          title
         }
       }
     }
@@ -88,7 +86,7 @@ const Landing = () => {
 
   return (
     <Container>
-      <Title>Require Podcast</Title>
+      <Title>{siteMetadata.title}</Title>
       <Subtitle>{siteMetadata.description}</Subtitle>
     </Container>
   )

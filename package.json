@@ -1,9 +1,9 @@
 {
-  "name": "require-podcast",
+  "name": "Ponpes Ibnul Qoyyim",
   "private": true,
-  "description": "Przemyślenia dwójki programistów - Adama i Artura - na temat nowości i wydarzeń w świecie frontendu, backendu i nie tylko.",
+  "description": "Ma'had Ahlussunnah wal Jama'ah di Balikpapan Utara.",
   "version": "1.0.0",
-  "author": "Adam Siekierski & Artur Dudek",
+  "author": "أبو عبدالمجيد الأمريكي",
   "dependencies": {
     "@mdi/js": "^5.1.45",
     "@mdi/react": "^1.4.0",
@@ -21,8 +21,8 @@
     "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-styled-components": "^3.1.20",
     "gatsby-remark-images-contentful": "^2.2.2",
+    "gatsby-source-anchor": "^0.5.1",
     "gatsby-source-filesystem": "^2.1.46",
-    "gatsby-source-git": "^1.1.0",
     "gatsby-transformer-remark": "^2.7.1",
     "gatsby-transformer-sharp": "^2.3.13",
     "gsap": "^3.2.4",
@@ -44,8 +44,8 @@
     "prettier": "^2.0.2"
   },
   "keywords": [
-    "require",
-    "podcast"
+    "ibnulqoyyim",
+    "radio"
   ],
   "scripts": {
     "build": "gatsby build",

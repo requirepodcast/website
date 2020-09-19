@@ -38,33 +38,22 @@ const IndexPagePlayer = forwardRef((props, ref) => {
   const [mouseOver, setMouseOver] = useState(false)
 
   const data = useStaticQuery(graphql`
-    query IndexPageQuery {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: {
-          order: DESC
-          fields: childMarkdownRemark___frontmatter___publicationDate
-        }
-        limit: 1
-      ) {
-        nodes {
-          childMarkdownRemark {
-            frontmatter {
-              title
-              audioUrl
-              shortDescription
-            }
-          }
-        }
+    query {
+      allAnchorEpisode {
+      nodes {
+        contentSnippet
+        title
+        link
       }
     }
+  }
   `)
 
   const {
     title,
-    shortDescription,
-    audioUrl,
-  } = data.allFile.nodes[0].childMarkdownRemark.frontmatter
+    contentSnippet,
+    link,
+  } = data.allAnchorEpisode.nodes[0]
 
   return (
     <Wrapper {...props} ref={ref}>
@@ -74,11 +63,11 @@ const IndexPagePlayer = forwardRef((props, ref) => {
       >
         <H4>{title}</H4>
         <Ticker speed={10} mode="await" move={playing || mouseOver}>
-          {() => <MarqueeContent>{shortDescription}</MarqueeContent>}
+          {() => <MarqueeContent>{contentSnippet}</MarqueeContent>}
         </Ticker>
       </EpisodeInfo>
       <Player
-        url={audioUrl}
+        url={link}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
