@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import HomeButton from './home-button'
+import HomeButton from './homeButton'
 
 const Wrapper = styled.aside`
   height: 100%;
