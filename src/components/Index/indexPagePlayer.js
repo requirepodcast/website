@@ -70,7 +70,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
         </Ticker>
       </EpisodeInfo>
       <Player
-        url={enclosure.link}
+        url={enclosure.url}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />

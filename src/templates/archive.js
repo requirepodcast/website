@@ -49,6 +49,9 @@ query MyQuery($my_guid: String) {
       pubDate
       link
       guid
+      enclosure {
+        url
+      }
     }
   }
 }
