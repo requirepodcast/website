@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import HomeButton from './home-button'
 
 const Wrapper = styled.aside`
   height: 100%;
@@ -87,6 +88,7 @@ const List = () => {
   return (
     <Wrapper>
       <Heading>Daftar Audio</Heading>
+      <HomeButton />
       <ListContainer>
         {episodes
           .map((episode) => (

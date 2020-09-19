@@ -47,10 +47,6 @@ const H3 = styled.h3`
 const H4 = styled.h4`
   color: #ff5370;
   padding: 0 30px;
-
-  a {
-    color: purple;
-  }
 `
 
 const Podcast = () => {
@@ -66,7 +62,7 @@ const Podcast = () => {
     <Container ref={wrapperRef}>
       <Heading>Radio</Heading>
       <H4>
-        SIARAN LANGSUNG:
+        SIARAN LANGSUNG
       </H4>
       <IndexPagePlayer ref={playerRef} />
       <H3>
