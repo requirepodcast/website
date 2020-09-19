@@ -22,7 +22,7 @@ const Wrapper = styled.aside`
 
 const Heading = styled.h1`
   margin: 0.5em 0;
-  color: #ff5370;
+  color: #00BFFF;
   font-size: 2.5em;
   font-weight: 800;
   display: inline-block;
@@ -39,7 +39,7 @@ const Heading = styled.h1`
 
 const ListItem = styled.div`
   padding: 10px;
-  border-bottom: 2px solid #ff5370;
+  border-bottom: 2px solid #00BFFF;
 
   &:last-of-type {
     border-bottom: none;
@@ -55,13 +55,13 @@ const ListContainer = styled.div`
 const ItemHeading = styled(Link)`
   display: block;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.75em;
   text-decoration: none;
   color: white;
-  margin: 0;
+  margin: 1;
 
   :hover {
-    text-decoration: underline;
+    color: #00BFFF;
   }
 `
 
@@ -74,6 +74,7 @@ const List = () => {
           id
           link
           pubDate
+          isoDate(formatString: "DD MMM YYYY")
           contentSnippet
           enclosure {
             url
@@ -81,7 +82,6 @@ const List = () => {
         }
       }
     }
-    
   `)
   const episodes = data.allAnchorEpisode.nodes
 
@@ -100,7 +100,7 @@ const List = () => {
               </ItemHeading>
               <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
                 {" "}
-                {episode.pubDate}
+                {episode.isoDate}
               </p>
               <p>{episode.contentSnippet}</p>
             </ListItem>

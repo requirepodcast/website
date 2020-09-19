@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Heading = styled.h1`
   margin: 0 0 0.25em 0;
-  color: #ff5370;
+  color: #00BFFF;
   font-size: 4em;
   font-weight: 800;
   @media (max-width: 750px) {
@@ -36,7 +36,7 @@ const Heading = styled.h1`
 `
 
 const H3 = styled.h3`
-  color: #ff5370;
+  color: #00BFFF;
   padding: 0 30px;
 
   a {
@@ -45,7 +45,7 @@ const H3 = styled.h3`
 `
 
 const H4 = styled.h4`
-  color: #ff5370;
+  color: #00BFFF;
   padding: 0 30px;
 `
 

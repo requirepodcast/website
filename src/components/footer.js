@@ -38,7 +38,7 @@ const Text = styled.p`
   }
 
   &:before {
-    border-top: 2px solid #ff5370;
+    border-top: 2px solid #00BFFF;
     display: block;
     width: 100%;
     content: "";
@@ -55,7 +55,7 @@ const Links = styled.div`
   }
 
   &:before {
-    border-top: 2px solid #ff5370;
+    border-top: 2px solid #00BFFF;
     display: block;
     width: 100%;
     content: "";

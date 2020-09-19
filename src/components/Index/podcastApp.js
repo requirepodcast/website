@@ -4,7 +4,7 @@ import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
 
 const Heading = styled.h1`
   margin: 0 0 0.25em 0;
-  color: #ff5370;
+  color: #00BFFF;
   font-size: 4em;
   font-weight: 800;
   text-align: center;
@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 
 const DownloadButton = styled.a`
   display: inline-block;
-  background-color: #ff5370;
+  background-color: #00BFFF;
   padding: 10px 20px;
   margin: 1em auto;
   transition: opacity 0.3s ease;

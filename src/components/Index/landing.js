@@ -13,7 +13,7 @@ const bounce = keyframes`
 
 const Title = styled.h1`
   margin: 0 0 0.25em 0;
-  color: #ff5370;
+  color: #00BFFF;
   font-size: 5em;
   font-weight: 800;
 

@@ -19,7 +19,7 @@ const Bar = styled.button`
   height: calc(20% - 4px);
   margin: 2px 0;
   background-color: ${({ isActive, bar }) =>
-    isActive ? lighten(bar / 6, "#ff5370") : `#141621`};
+    isActive ? lighten(bar / 6, "#00BFFF") : `#141621`};
   cursor: pointer;
 `
 

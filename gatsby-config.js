@@ -50,7 +50,7 @@ module.exports = {
         short_name: `t`,
         start_url: `/`,
         background_color: `#0f111a`,
-        theme_color: `#FF5370`,
+        theme_color: `#00BFFF`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`,
       },

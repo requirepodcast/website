@@ -1,8 +1,6 @@
 {
   "build": {
-    "env": {
-      "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
-    }
+    "env": {    }
   },
   "routes": [
     { "handle": "filesystem" },

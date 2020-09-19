@@ -9,7 +9,6 @@ exports.createPages = async function ({ actions, graphql }) {
         contentSnippet
         title
         pubDate
-        link
         id
         enclosure {
           url
