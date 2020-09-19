@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
-import gsap from "gsap"
-import { ScrollScene } from "scrollscene"
 import IndexPagePlayer from "./indexPagePlayer"
 
 const Container = styled.div`
@@ -46,6 +44,15 @@ const H3 = styled.h3`
   }
 `
 
+const H4 = styled.h4`
+  color: #ff5370;
+  padding: 0 30px;
+
+  a {
+    color: purple;
+  }
+`
+
 const Podcast = () => {
   const wrapperRef = useRef()
   const playerRef = useRef()
@@ -53,35 +60,18 @@ const Podcast = () => {
 
   useEffect(() => {
     const wrapper = wrapperRef.current
-    const caption = wrapper.querySelector("h3")
-    const player = playerRef.current
-
-    gsap.set([player, caption], { autoAlpha: 0, scale: 0.95 })
-
-    const tl = gsap.timeline({
-      paused: true,
-      defaults: { ease: "power3.inOut" },
-    })
-    tl.to([player, caption], { autoAlpha: 1, scale: 1 })
-
-    new ScrollScene({
-      triggerElement: wrapper,
-      gsap: { timeline: tl },
-      offset: wrapper.querySelector("h1").clientHeight,
-      triggerHook: 0.5,
-      controller: {
-        addIndicators: true,
-      },
-    })
   }, [])
 
   return (
     <Container ref={wrapperRef}>
       <Heading>Radio</Heading>
+      <H4>
+        SIARAN LANGSUNG:
+      </H4>
       <IndexPagePlayer ref={playerRef} />
       <H3>
-        Untuk audio kajian sebelumnya, bisa klik disini {" "}
-        <a href="/archive">arsip</a>
+        Untuk audio kajian sebelumnya, bisa klik {" "}
+        <a href="/archive">disini</a>
       </H3>
     </Container>
   )
