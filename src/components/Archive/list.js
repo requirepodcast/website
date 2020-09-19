@@ -70,7 +70,7 @@ const List = () => {
       allAnchorEpisode {
         nodes {
           title
-          guid
+          id
           link
           pubDate
           contentSnippet
@@ -90,9 +90,9 @@ const List = () => {
       <ListContainer>
         {episodes
           .map((episode) => (
-            <ListItem key={episode.guid}>
+            <ListItem key={episode.id}>
               <ItemHeading
-                to={`/archive${episode.guid}`}
+                to={`/archive/${episode.id}`}
               >
                 {episode.title}
               </ItemHeading>

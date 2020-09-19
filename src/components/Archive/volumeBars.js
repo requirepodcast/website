@@ -35,7 +35,7 @@ const VolumeBars = ({ setVolume, volume }) => (
         fontSize: 10,
       }}
     >
-      Głośność
+      Volume
     </div>
     {bars
       .map((bar) => (

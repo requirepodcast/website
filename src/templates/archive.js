@@ -26,8 +26,23 @@ const Wrapper = styled.div`
   }
 `
 
+export const query = graphql`
+query MyQuery($id: String) {
+  anchorEpisode(id: {eq: $id}) {
+      contentSnippet
+      title
+      pubDate
+      link
+      id
+      enclosure {
+        url
+      }
+    }
+  }
+`
+
 const Archive = ({ data }) => {
-  const episode = data.allAnchorEpisode.nodes[0]
+  const episode = data.anchorEpisode
 
   return (
     <Layout>
@@ -39,22 +54,5 @@ const Archive = ({ data }) => {
     </Layout>
   )
 }
-
-export const query = graphql`
-query MyQuery($my_guid: String) {
-  allAnchorEpisode(filter: {guid: {eq: $my_guid}}) {
-    nodes {
-      contentSnippet
-      title
-      pubDate
-      link
-      guid
-      enclosure {
-        url
-      }
-    }
-  }
-}
-`
 
 export default Archive
