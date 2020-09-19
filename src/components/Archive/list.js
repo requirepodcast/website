@@ -65,36 +65,11 @@ const ItemHeading = styled(Link)`
 `
 
 const List = () => {
-  // const data = useStaticQuery(graphql`
-  //   query EpisodeList {
-  //     allFile(
-  //       filter: { sourceInstanceName: { eq: "episodes" } }
-  //       sort: {
-  //         order: ASC
-  //         fields: childMarkdownRemark___frontmatter___publicationDate
-  //       }
-  //     ) {
-  //       nodes {
-  //         id
-  //         childMarkdownRemark {
-  //           frontmatter {
-  //             title
-  //             slug
-  //             shortDescription
-  //             publicationDate
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-
   const data = useStaticQuery(graphql`
     query {
       allAnchorEpisode {
         nodes {
           title
-          id
           guid
           link
           pubDate
@@ -112,7 +87,7 @@ const List = () => {
       <ListContainer>
         {episodes
           .map((episode) => (
-            <ListItem key={episode.id}>
+            <ListItem key={episode.guid}>
               <ItemHeading
                 to={`/archive${episode.guid}`}
               >

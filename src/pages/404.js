@@ -35,10 +35,10 @@ const NotFoundPage = () => {
 
   return (
     <Layout>
-      <SEO title="404 - Not Found" />
+      <SEO title="404 - Tidak ada" />
       <Wrapper ref={wrapperRef}>
-        <h1>NOT FOUND</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <h1>TIDAK ADA</h1>
+        <p>Halaman ini tidak ada ... kasihan dia...</p>
       </Wrapper>
     </Layout>
   )

@@ -10,7 +10,6 @@ exports.createPages = async function ({ actions, graphql }) {
         title
         pubDate
         link
-        id
         guid
       }
     }
@@ -21,19 +20,19 @@ exports.createPages = async function ({ actions, graphql }) {
 
   for (let episode of allEpisodes) {
     const path = `/archive${episode.guid}`
-    const id = episode.id
+    const guid = episode.guid
 
     actions.createPage({
       path,
       component: require.resolve("./src/templates/archive.js"),
-      context: { id },
+      context: { guid },
     })
   }
 
   actions.createPage({
     path: "/archive",
     component: require.resolve("./src/templates/archive.js"),
-    context: { id: allEpisodes[allEpisodes.length - 1].id },
+    context: { guid: allEpisodes[allEpisodes.length - 1].guid },
   })
 
   fs.writeFileSync(
@@ -41,7 +40,7 @@ exports.createPages = async function ({ actions, graphql }) {
     JSON.stringify(
       {
         episodes: allEpisodes.map((episode) => ({
-          id: episode.id,
+          guid: episode.guid,
           description: {
             html: episode.content,
             markdown: episode.contentSnippet,

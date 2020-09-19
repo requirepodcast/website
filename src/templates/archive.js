@@ -48,7 +48,6 @@ query MyQuery($my_guid: String) {
       title
       pubDate
       link
-      id
       guid
     }
   }
