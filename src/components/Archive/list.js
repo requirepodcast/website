@@ -74,6 +74,9 @@ const List = () => {
           link
           pubDate
           contentSnippet
+          enclosure {
+            url
+          }
         }
       }
     }

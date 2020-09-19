@@ -65,14 +65,14 @@ function getDownloadLink(link) {
 
 const Episode = ({ episode }) => (
   <Wrapper>
-    <Player url={episode.link} />
+    <Player url={episode.enclosure.url} />
     <ContentContainer>
       <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
         {episode.pubDate}
       </span>
       <h1>{episode.title}</h1>
       <EpisodeActionButton
-        href={getDownloadLink(episode.link)}
+        href={getDownloadLink(episode.enclosure.url)}
         download="download"
       >
         Unduh audio{" "}

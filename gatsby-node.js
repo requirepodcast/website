@@ -11,6 +11,9 @@ exports.createPages = async function ({ actions, graphql }) {
         pubDate
         link
         guid
+        enclosure {
+          url
+        }
       }
     }
   }

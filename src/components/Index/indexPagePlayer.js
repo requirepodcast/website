@@ -44,6 +44,9 @@ const IndexPagePlayer = forwardRef((props, ref) => {
         contentSnippet
         title
         link
+        enclosure {
+          url
+        }
       }
     }
   }
@@ -52,7 +55,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
   const {
     title,
     contentSnippet,
-    link,
+    enclosure,
   } = data.allAnchorEpisode.nodes[0]
 
   return (
@@ -67,7 +70,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
         </Ticker>
       </EpisodeInfo>
       <Player
-        url={link}
+        url={enclosure.link}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
