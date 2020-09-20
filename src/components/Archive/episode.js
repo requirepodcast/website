@@ -65,7 +65,10 @@ function getDownloadLink(link) {
 
 const Episode = ({ episode }) => (
   <Wrapper>
-    <Player url={episode.frontmatter.audioUrl} />
+    <Player
+      url={episode.frontmatter.audioUrl}
+      slug={episode.frontmatter.slug}
+    />
     <ContentConatiner>
       <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
         {episode.frontmatter.publicationDate}

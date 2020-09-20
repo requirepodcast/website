@@ -64,6 +64,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
     title,
     shortDescription,
     audioUrl,
+    slug,
   } = data.allFile.nodes[0].childMarkdownRemark.frontmatter
 
   return (
@@ -79,6 +80,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
       </EpisodeInfo>
       <Player
         url={audioUrl}
+        slug={slug}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />

@@ -57,6 +57,7 @@ class Player extends React.Component {
 
   triggerPlayer() {
     this.state.isPlaying ? this.audioRef.pause() : this.audioRef.play()
+
     this.setState((prevState) => {
       return {
         isPlaying: !prevState.isPlaying,
@@ -68,6 +69,15 @@ class Player extends React.Component {
     this.props.onPlay && this.props.onPlay()
     this.setState({ isPlaying: true })
 
+    const savedTime = window.localStorage.getItem(`${this.props.slug}_time`)
+    if (this.audioRef.duration && savedTime) {
+      this.audioRef.currentTime = savedTime
+      this.setState({
+        currentTime: savedTime,
+        currentTimePercent: (savedTime / this.audioRef.duration) * 100,
+      })
+    }
+
     this.playingInterval = setInterval(() => {
       this.setState(({ currentTime: prevTime }) => ({
         currentTime: this.audioRef.currentTime,
@@ -76,8 +86,16 @@ class Player extends React.Component {
         isLoading: this.audioRef.currentTime === prevTime,
       }))
 
+      window.localStorage.setItem(
+        `${this.props.slug}_time`,
+        this.audioRef.currentTime
+      )
+
       if (this.audioRef.currentTime >= this.audioRef.duration) {
         this.setState({ isPlaying: false, isLoading: false })
+
+        window.localStorage.removeItem(`${this.props.slug}_time`)
+
         clearInterval(this.playingInterval)
       }
     }, 100)
