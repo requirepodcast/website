@@ -69,15 +69,6 @@ class Player extends React.Component {
     this.props.onPlay && this.props.onPlay()
     this.setState({ isPlaying: true })
 
-    const savedTime = window.localStorage.getItem(`${this.props.slug}_time`)
-    if (this.audioRef.duration && savedTime) {
-      this.audioRef.currentTime = savedTime
-      this.setState({
-        currentTime: savedTime,
-        currentTimePercent: (savedTime / this.audioRef.duration) * 100,
-      })
-    }
-
     this.playingInterval = setInterval(() => {
       this.setState(({ currentTime: prevTime }) => ({
         currentTime: this.audioRef.currentTime,
@@ -166,7 +157,10 @@ class Player extends React.Component {
         </PlayerSectionLeft>
         <PlayerSectionCenter>
           <Slider ref={(x) => (this.sliderRef = x)} onClick={this.onSliderJump}>
-            <SliderTime style={{ width: `${currentTimePercent}%` }} />
+            <SliderTime
+              style={{ width: `${currentTimePercent}%` }}
+              playing={this.state.isPlaying}
+            />
           </Slider>
           <TimeButtons>
             <TimeButton onClick={() => this.onButtonJump(-30)}>
@@ -189,7 +183,15 @@ class Player extends React.Component {
             onPlay={this.onPlay}
             onPause={this.onPause}
             onLoadedMetadata={(e) => {
+              const savedTime = window.localStorage.getItem(
+                `${this.props.slug}_time`
+              )
+
+              e.target.currentTime = savedTime
+
               this.setState({
+                currentTime: savedTime,
+                currentTimePercent: (savedTime / e.target.duration) * 100,
                 episodeDuration: e.target.duration,
                 isLoading: false,
               })

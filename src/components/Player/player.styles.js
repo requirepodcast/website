@@ -1,6 +1,15 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { Icon } from "@mdi/react"
-import { lighten } from "polished"
+
+const animatedGradient = keyframes`
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 0%;
+  }
+`
 
 export const PlayerWrapper = styled.div`
   width: 100%;
@@ -104,12 +113,19 @@ export const Slider = styled.div`
 
 export const SliderTime = styled.div`
   height: 100%;
-  background: linear-gradient(
-    30deg,
-    #ff5370 0%,
-    ${lighten(0.15, "#ff5370")} 100%
-  );
   transition: width 0.1s ease-in-out;
   min-width: 10px;
   width: 0%;
+
+  background-image: linear-gradient(
+    90deg,
+    #ff5370 0%,
+    #ffa0b0 50%,
+    #ff5370 100%
+  );
+  background-size: 200%;
+  animation: ${animatedGradient} 2s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  animation-play-state: ${({ playing }) => !playing && "paused"};
 `
