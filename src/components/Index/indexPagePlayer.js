@@ -53,6 +53,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
               title
               audioUrl
               shortDescription
+              slug
             }
           }
         }
