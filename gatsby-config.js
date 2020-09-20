@@ -8,6 +8,18 @@ module.exports = {
     siteUrl: `https://require.podcast.gq`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `require('podcast');`,
+        short_name: `The Require Podcast`,
+        start_url: `/`,
+        background_color: `#0f111a`,
+        theme_color: `#FF5370`,
+        display: `minimal-ui`,
+        icon: `src/images/logo.png`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -38,18 +50,6 @@ module.exports = {
         name: `episodes`,
         remote: `https://github.com/requirepodcast/episodes.git`,
         patterns: `episodes/*.md`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `require('podcast');`,
-        short_name: `The Require Podcast`,
-        start_url: `/`,
-        background_color: `#0f111a`,
-        theme_color: `#FF5370`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
       },
     },
     `gatsby-plugin-styled-components`,
