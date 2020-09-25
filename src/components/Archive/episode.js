@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Player from "../Player/player"
+import { FaDownload } from "react-icons/fa"
 
 const Wrapper = styled.article`
   background-color: #181a25;
@@ -48,7 +49,6 @@ const EpisodeActionButton = styled.a`
   padding: 5px 15px;
   cursor: pointer;
   display: inline-block;
-  height: 31px;
   vertical-align: top;
   display: inline-block;
   text-decoration: none;
@@ -75,10 +75,7 @@ const Episode = ({ episode }) => (
         href={getDownloadLink(episode.enclosure.url)}
         download="download"
       >
-        Unduh audio{" "}
-        <span role="img" aria-label="download icon">
-          💾
-        </span>
+        <FaDownload />
       </EpisodeActionButton>
     </ContentContainer>
   </Wrapper>

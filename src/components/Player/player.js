@@ -27,7 +27,7 @@ import VolumeBars from "../Archive/volumeBars"
 
 const formatSeconds = (sec) => format(addSeconds(new Date(0), sec), "mm:ss")
 
-class Player extends React.Component {
+export default class Player extends React.Component {
   constructor(props) {
     super(props)
 
@@ -129,9 +129,9 @@ class Player extends React.Component {
         <PlayerSectionLeft>
           <PlayButton onClick={this.triggerPlayer}>
             {isLoading ? (
-              <Spinner color="white" radius={30} />
+              <Spinner color="#00BFFF" radius={30} />
             ) : (
-              <Icon path={isPlaying ? mdiPause : mdiPlay} />
+              <Icon color="#00BFFF" path={isPlaying ? mdiPause : mdiPlay} />
             )}
           </PlayButton>
           <DurationInfo>
@@ -189,5 +189,3 @@ class Player extends React.Component {
     )
   }
 }
-
-export default Player

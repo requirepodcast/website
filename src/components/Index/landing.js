@@ -1,9 +1,43 @@
 import React, { useRef } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { FaMicrophoneAlt } from "react-icons/fa"
 
 import IndexPagePlayer from "./indexPagePlayer"
+
+const Mic = styled(FaMicrophoneAlt)`
+  margin: 1em 0 0.25em 0;
+  color: #00bfff;
+  font-size: 8em;
+  font-weight: 800;
+  @media (max-width: 750px) {
+    font-size: 6em;
+  }
+  @media (max-width: 400px) {
+    font-size: 5em;
+  }
+`
+
+const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  flex-direction: column;
+  }
+`
+
+const Body = styled.div`
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  position: relative;
+  text-align: center;
+  flex-direction: column;
+  }
+`
 
 const Title = styled.h1`
   margin: 0 0 0.25em 0;
@@ -17,24 +51,6 @@ const Title = styled.h1`
   }
   @media (max-width: 400px) {
     font-size: 3em;
-  }
-`
-
-const Container = styled.header`
-  background-color: #0f111a;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-  background-position: center;
-  background-size: contain;
-  flex-direction: column;
-
-    @media (max-height: 550px) {
-      display: none;
-    }
   }
 `
 
@@ -57,6 +73,7 @@ const H3 = styled.h3`
 
   a {
     color: white;
+    text-decoration: none;
   }
 `
 
@@ -65,9 +82,12 @@ const H4 = styled.h4`
   padding: 0 30px;
 `
 
-const Landing = () => {
+export default function Landing() {
   const playerRef = useRef()
-  const data = useStaticQuery(graphql`
+  const {
+    site: { siteMetadata },
+    file: { childImageSharp },
+  } = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -77,7 +97,7 @@ const Landing = () => {
       }
       file(relativePath: { eq: "logo.png" }) {
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 400, maxHeight: 250) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -86,20 +106,17 @@ const Landing = () => {
   `)
 
   return (
-    <Container>
-      <Img
-        fluid={data.file.childImageSharp.fluid}
-        alt="A logo shaped like a microphone"
-      />
-      <Title>{data.site.siteMetadata.title}</Title>
-      <Subtitle>{data.site.siteMetadata.description}</Subtitle>
+    <Body>
+      <Header>
+        <Mic />
+        <Title>{siteMetadata.title}</Title>
+        <Subtitle>{siteMetadata.description}</Subtitle>
+      </Header>
       <H4>SIARAN LANGSUNG</H4>
       <IndexPagePlayer ref={playerRef} />
       <H3>
         Untuk audio kajian sebelumnya, bisa klik <a href="/archive">disini</a>
       </H3>
-    </Container>
+    </Body>
   )
 }
-
-export default Landing

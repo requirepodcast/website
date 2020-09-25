@@ -81,7 +81,7 @@ export const TimeButtonIcon = styled(Icon)`
   color: white;
 
   &:hover {
-    color: #dddddd;
+    color: #00bfff;
   }
 `
 
@@ -106,7 +106,7 @@ export const SliderTime = styled.div`
   height: 100%;
   background: linear-gradient(
     30deg,
-    #00BFFF 0%,
+    #00bfff 0%,
     ${lighten(0.15, "#00BFFF")} 100%
   );
   transition: width 0.1s ease-in-out;

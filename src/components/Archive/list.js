@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import HomeButton from './homeButton'
 
 const Wrapper = styled.aside`
   height: 100%;
@@ -22,8 +21,8 @@ const Wrapper = styled.aside`
 
 const Heading = styled.h1`
   margin: 0.5em 0;
-  color: #00BFFF;
-  font-size: 2.5em;
+  color: #00bfff;
+  font-size: 1em;
   font-weight: 800;
   display: inline-block;
   width: 100%;
@@ -39,11 +38,7 @@ const Heading = styled.h1`
 
 const ListItem = styled.div`
   padding: 10px;
-  border-bottom: 2px solid #00BFFF;
-
-  &:last-of-type {
-    border-bottom: none;
-  }
+  border-bottom: 1px solid #00bfff;
 `
 
 const ListContainer = styled.div`
@@ -55,17 +50,18 @@ const ListContainer = styled.div`
 const ItemHeading = styled(Link)`
   display: block;
   cursor: pointer;
-  font-size: 1.75em;
+  font-size: 1.3em;
+  font-weight: 1000;
   text-decoration: none;
   color: white;
   margin: 1;
 
   :hover {
-    color: #00BFFF;
+    color: #00bfff;
   }
 `
 
-const List = () => {
+export default function List() {
   const data = useStaticQuery(graphql`
     query {
       allAnchorEpisode {
@@ -87,22 +83,25 @@ const List = () => {
 
   return (
     <Wrapper>
-      <Heading>Daftar Audio</Heading>
-      <HomeButton />
       <ListContainer>
         {episodes
           .map((episode) => (
             <ListItem key={episode.id}>
-              <ItemHeading
-                to={`/archive/${episode.id}`}
-              >
+              <ItemHeading to={`/archive/${episode.id}`}>
                 {episode.title}
               </ItemHeading>
-              <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
-                {" "}
+              <p style={{ fontSize: "1em", color: "#919191", margin: 0 }}>
                 {episode.isoDate}
               </p>
-              <p>{episode.contentSnippet}</p>
+              <p
+                style={{
+                  fontSize: "0.9em",
+                  color: "#Fafafa",
+                  marginVertical: 1,
+                }}
+              >
+                {episode.contentSnippet}
+              </p>
             </ListItem>
           ))
           .reverse()}
@@ -110,5 +109,3 @@ const List = () => {
     </Wrapper>
   )
 }
-
-export default List

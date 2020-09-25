@@ -6,6 +6,14 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import List from "../components/Archive/list"
 import Episode from "../components/Archive/episode"
+import HomeButton from "../components/Archive/homeButton"
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -27,8 +35,8 @@ const Wrapper = styled.div`
 `
 
 export const query = graphql`
-query MyQuery($id: String) {
-  anchorEpisode(id: {eq: $id}) {
+  query MyQuery($id: String) {
+    anchorEpisode(id: { eq: $id }) {
       contentSnippet
       title
       pubDate
@@ -47,9 +55,12 @@ const Archive = ({ data }) => {
   return (
     <Layout>
       <SEO title={episode.title} />
+      <Header>
+        <HomeButton />
+      </Header>
       <Wrapper>
-        <List />
         <Episode episode={episode} />
+        <List />
       </Wrapper>
     </Layout>
   )

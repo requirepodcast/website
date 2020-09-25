@@ -39,6 +39,7 @@ module.exports = {
         theme_color: `#00BFFF`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`,
+        icon_options: { purpose: `any maskable` },
       },
     },
     {

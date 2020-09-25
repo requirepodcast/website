@@ -4,7 +4,7 @@ import "./layout.css"
 
 import Footer from "./footer"
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   return (
     <>
       {children}
@@ -12,5 +12,3 @@ const Layout = ({ children }) => {
     </>
   )
 }
-
-export default Layout

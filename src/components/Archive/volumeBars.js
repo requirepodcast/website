@@ -21,33 +21,37 @@ const Bar = styled.button`
   background-color: ${({ isActive, bar }) =>
     isActive ? lighten(bar / 6, "#00BFFF") : `#141621`};
   cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+  }
 `
 
 const bars = [0.2, 0.4, 0.6, 0.8, 1]
 
-const VolumeBars = ({ setVolume, volume }) => (
-  <BarsWrapper>
-    <div
-      style={{
-        height: 20,
-        verticalAlign: "middle",
-        textAlign: "center",
-        fontSize: 10,
-      }}
-    >
-      Volume
-    </div>
-    {bars
-      .map((bar) => (
-        <Bar
-          onClick={() => setVolume(bar)}
-          isActive={bar <= volume}
-          bar={bar}
-          key={bar}
-        />
-      ))
-      .reverse()}
-  </BarsWrapper>
-)
-
-export default VolumeBars
+export default function VolumeBars({ setVolume, volume }) {
+  return (
+    <BarsWrapper>
+      <div
+        style={{
+          height: 20,
+          verticalAlign: "middle",
+          textAlign: "center",
+          fontSize: 10,
+        }}
+      >
+        Volume
+      </div>
+      {bars
+        .map((bar) => (
+          <Bar
+            onClick={() => setVolume(bar)}
+            isActive={bar <= volume}
+            bar={bar}
+            key={bar}
+          />
+        ))
+        .reverse()}
+    </BarsWrapper>
+  )
+}
