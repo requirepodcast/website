@@ -1,31 +1,9 @@
-import React from "react"
-import styled, { keyframes } from "styled-components"
+import React, { useRef } from "react"
+import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMicrophoneAlt } from "@fortawesome/free-solid-svg-icons"
+import Img from "gatsby-image"
 
-const bounce = keyframes`
-	50% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-`
-
-const Mic = styled(FontAwesomeIcon)`
-  margin: 0 0 0.25em 0;
-  color: #00bfff;
-  font-size: 8em;
-  font-weight: 800;
-
-  @media (max-width: 750px) {
-    font-size: 6em;
-  }
-  @media (max-width: 400px) {
-    font-size: 5em;
-  }
-`
+import IndexPagePlayer from "./indexPagePlayer"
 
 const Title = styled.h1`
   margin: 0 0 0.25em 0;
@@ -54,20 +32,6 @@ const Container = styled.header`
   background-size: contain;
   flex-direction: column;
 
-  &::after {
-    content: "⌄";
-    font-weight: 100;
-    color: #fff;
-    position: absolute;
-    opacity: 0.8;
-    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-    font-size: 5rem;
-    height: 4rem;
-    text-align: center;
-    bottom: 2rem;
-    margin: 0 auto;
-    animation: ${bounce} 1s ease infinite;
-
     @media (max-height: 550px) {
       display: none;
     }
@@ -87,10 +51,23 @@ const Subtitle = styled.h2`
   }
 `
 
+const H3 = styled.h3`
+  color: #00bfff;
+  padding: 0 30px;
+
+  a {
+    color: white;
+  }
+`
+
+const H4 = styled.h4`
+  color: #00bfff;
+  padding: 0 30px;
+`
+
 const Landing = () => {
-  const {
-    site: { siteMetadata },
-  } = useStaticQuery(graphql`
+  const playerRef = useRef()
+  const data = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -98,14 +75,29 @@ const Landing = () => {
           title
         }
       }
+      file(relativePath: { eq: "logo.png" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
 
   return (
     <Container>
-      <Mic icon={faMicrophoneAlt} />
-      <Title>{siteMetadata.title}</Title>
-      <Subtitle>{siteMetadata.description}</Subtitle>
+      <Img
+        fluid={data.file.childImageSharp.fluid}
+        alt="A logo shaped like a microphone"
+      />
+      <Title>{data.site.siteMetadata.title}</Title>
+      <Subtitle>{data.site.siteMetadata.description}</Subtitle>
+      <H4>SIARAN LANGSUNG</H4>
+      <IndexPagePlayer ref={playerRef} />
+      <H3>
+        Untuk audio kajian sebelumnya, bisa klik <a href="/archive">disini</a>
+      </H3>
     </Container>
   )
 }

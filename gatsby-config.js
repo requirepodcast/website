@@ -30,24 +30,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
-      plugins: [
-        {
-          resolve: `gatsby-remark-images-contentful`,
-          options: {
-            maxWidth: 900,
-            linkImagesToOriginal: false,
-            backgroundColor: "transparent",
-            withWebp: true,
-          },
-        },
-      ],
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Ponpes Ibnul Qoyyim`,
-        short_name: `t`,
+        name: `Radio IQ`,
+        short_name: `Radio IQ`,
         start_url: `/`,
         background_color: `#0f111a`,
         theme_color: `#00BFFF`,
@@ -63,7 +49,6 @@ module.exports = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-offline`,
   ],
 }
