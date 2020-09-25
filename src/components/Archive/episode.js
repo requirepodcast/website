@@ -7,29 +7,22 @@ const Wrapper = styled.article`
   background-color: #181a25;
   height: 100%;
   overflow: hidden;
-  max-width: 1200px;
   width: 100%;
   display: flex;
   flex-direction: column;
 
   h1 {
     margin: 0;
+    text-align: center;
   }
 
   a {
     color: white;
   }
 
-  ul,
   ol {
     p {
       margin: 0;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    h1 {
-      font-size: 1.4em;
     }
   }
 `
@@ -37,24 +30,17 @@ const Wrapper = styled.article`
 const ContentContainer = styled.div`
   padding: 25px;
   flex: 1;
+  flex-direction: row;
   overflow-y: auto;
 `
 
 const EpisodeActionButton = styled.a`
-  background-color: #2e2f3e;
   color: white;
   font-size: 1em;
-  font-family: inherit;
-  margin: 16px 10px 0 0;
-  padding: 5px 15px;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
-  display: inline-block;
   text-decoration: none;
 
   &:hover {
-    background-color: #3f3f4f;
+    color: #00bfff;
   }
 `
 
@@ -63,22 +49,21 @@ function getDownloadLink(link) {
   return decodeURIComponent(uri)
 }
 
-const Episode = ({ episode }) => (
-  <Wrapper>
-    <Player url={episode.enclosure.url} />
-    <ContentContainer>
-      <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
-        {episode.pubDate}
-      </span>
-      <h1>{episode.title}</h1>
-      <EpisodeActionButton
-        href={getDownloadLink(episode.enclosure.url)}
-        download="download"
-      >
-        <FaDownload />
-      </EpisodeActionButton>
-    </ContentContainer>
-  </Wrapper>
-)
-
-export default Episode
+export default function Episode({ episode }) {
+  return (
+    <Wrapper>
+      <ContentContainer>
+        <h1>
+          {episode.title}{" "}
+          <EpisodeActionButton
+            href={getDownloadLink(episode.enclosure.url)}
+            download="download"
+          >
+            <FaDownload />
+          </EpisodeActionButton>
+        </h1>
+      </ContentContainer>
+      <Player url={episode.enclosure.url} />
+    </Wrapper>
+  )
+}

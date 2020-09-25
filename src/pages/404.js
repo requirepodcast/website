@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   visibility: hidden;
 `
 
-const NotFoundPage = () => {
+export default function NotFoundPage() {
   const wrapperRef = useRef()
 
   useEffect(() => {
@@ -37,11 +37,9 @@ const NotFoundPage = () => {
     <Layout>
       <SEO title="404 - Tidak ada" />
       <Wrapper ref={wrapperRef}>
-        <h1>TIDAK ADA</h1>
-        <p>Halaman ini tidak ada ... kasihan dia...</p>
+        <h1>HALAMAN TIDAK ADA</h1>
+        <p>Halaman ini tidak ada... Qodarullah...</p>
       </Wrapper>
     </Layout>
   )
 }
-
-export default NotFoundPage

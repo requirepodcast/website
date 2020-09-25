@@ -38,7 +38,7 @@ const Text = styled.p`
   }
 
   &:before {
-    border-top: 2px solid #00BFFF;
+    border-top: 2px solid #00bfff;
     display: block;
     width: 100%;
     content: "";
@@ -55,7 +55,7 @@ const Links = styled.div`
   }
 
   &:before {
-    border-top: 2px solid #00BFFF;
+    border-top: 2px solid #00bfff;
     display: block;
     width: 100%;
     content: "";
@@ -64,23 +64,22 @@ const Links = styled.div`
   }
 `
 
-const Footer = () => (
-  <Container>
-    <Links>
-      <Link href="http://salafybpp.com">Info Ma'had</Link>
-      <Link href="https://www.youtube.com/channel/UCb2N_NeM9B8DqiePrsYAmWg">
-        YouTube
-      </Link>
-      <Link href="https://anchor.fm/nasir-bilal">Podcast</Link>
-      <Link href="https://t.me/AudioThalabIlmuSyar_i">Telegram</Link>
-      
-    </Links>
-    <Text>
-      Copyright © {new Date().getFullYear()} Ma'had Ibnul Qoyyim
-      <br />
-      Kontak: salafybpp@gmail.com
-    </Text>
-  </Container>
-)
-
-export default Footer
+export default function Footer() {
+  return (
+    <Container>
+      <Links>
+        <Link href="http://salafybpp.com">Info Ma'had</Link>
+        <Link href="https://www.youtube.com/channel/UCb2N_NeM9B8DqiePrsYAmWg">
+          YouTube
+        </Link>
+        <Link href="https://anchor.fm/radioiq">Podcast</Link>
+        <Link href="https://t.me/AudioThalabIlmuSyar_i">Telegram</Link>
+      </Links>
+      <Text>
+        Copyright © {new Date().getFullYear()} Ma'had Ibnul Qoyyim
+        <br />
+        Kontak: salafybpp@gmail.com
+      </Text>
+    </Container>
+  )
+}

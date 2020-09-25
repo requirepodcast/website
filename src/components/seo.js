@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import logo from "../images/logo.png"
 
-function SEO({ description, lang, meta, title }) {
+export default function SEO({ description, lang, meta, title }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -82,5 +82,3 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 }
-
-export default SEO

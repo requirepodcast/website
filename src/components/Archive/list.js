@@ -3,36 +3,8 @@ import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 const Wrapper = styled.aside`
-  height: 100%;
-  width: 500px;
-  flex-shrink: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background-color: #141621;
-  padding: 10px;
-  text-align: center;
-
-  @media screen and (max-width: 1200px) {
     width: 100%;
     height: 400px;
-  }
-`
-
-const Heading = styled.h1`
-  margin: 0.5em 0;
-  color: #00bfff;
-  font-size: 1em;
-  font-weight: 800;
-  display: inline-block;
-  width: 100%;
-
-  &::after {
-    border-top: 2px solid #fff;
-    display: block;
-    width: 33.3%;
-    content: "";
-    margin: 4px auto 0;
   }
 `
 
@@ -44,7 +16,7 @@ const ListItem = styled.div`
 const ListContainer = styled.div`
   overflow: auto;
   flex: 1;
-  text-align: left;
+  text-align: center;
 `
 
 const ItemHeading = styled(Link)`

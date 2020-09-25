@@ -6,7 +6,6 @@ export const PlayerWrapper = styled.div`
   width: 100%;
   display: flex;
   background-color: #1d1f2d;
-  flex-shrink: 0;
 `
 
 export const PlayerSectionLeft = styled.div`

@@ -10,28 +10,14 @@ import HomeButton from "../components/Archive/homeButton"
 
 const Header = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   padding: 10px;
 `
 
 const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
+  min-height: 100vh;
+  flex-direction: column;
   justify-content: center;
-  padding: 25px;
-
-  @media screen and (max-width: 1200px) {
-    height: unset;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  @media screen and (max-width: 800px) {
-    padding: 0;
-  }
 `
 
 export const query = graphql`
@@ -40,6 +26,7 @@ export const query = graphql`
       contentSnippet
       title
       pubDate
+      isoDate(formatString: "DD MMM YYYY")
       link
       id
       enclosure {
@@ -49,7 +36,7 @@ export const query = graphql`
   }
 `
 
-const Archive = ({ data }) => {
+export default function Archive({ data }) {
   const episode = data.anchorEpisode
 
   return (
@@ -65,5 +52,3 @@ const Archive = ({ data }) => {
     </Layout>
   )
 }
-
-export default Archive

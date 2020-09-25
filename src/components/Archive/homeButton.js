@@ -12,7 +12,7 @@ const Anchor = styled.a`
     color: #ffffff;
   }
 `
-class homeButton extends React.Component {
+export default class homeButton extends React.Component {
   render() {
     return (
       <Anchor href="/">
@@ -21,5 +21,3 @@ class homeButton extends React.Component {
     )
   }
 }
-
-export default homeButton

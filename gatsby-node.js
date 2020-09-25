@@ -2,20 +2,21 @@ const fs = require("fs")
 
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
-  query IndexPageQuery {
-    allAnchorEpisode {
-      nodes {
-        content
-        contentSnippet
-        title
-        pubDate
-        id
-        enclosure {
-          url
+    query {
+      allAnchorEpisode {
+        nodes {
+          title
+          id
+          link
+          pubDate
+          isoDate(formatString: "DD MMM YYYY")
+          contentSnippet
+          enclosure {
+            url
+          }
         }
       }
     }
-  }
   `)
 
   const allEpisodes = data.allAnchorEpisode.nodes

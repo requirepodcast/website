@@ -1,13 +1,13 @@
 import React from "react"
 
-class IndexPagePlayer extends React.Component {
+import cfg from "../../config"
+
+export default class streamingPlayer extends React.Component {
   render() {
     return (
       <div>
-        <audio ref="audio_tag" src="https://ssg.streamingmurah.com:8286/stream" controls/>
+        <audio ref="audio_tag" src={cfg.urls.radio} controls />
       </div>
-    );
+    )
   }
 }
-
-export default IndexPagePlayer
