@@ -1,6 +1,8 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMicrophoneAlt } from "@fortawesome/free-solid-svg-icons"
 
 const bounce = keyframes`
 	50% {
@@ -11,9 +13,23 @@ const bounce = keyframes`
   }
 `
 
+const Mic = styled(FontAwesomeIcon)`
+  margin: 0 0 0.25em 0;
+  color: #00bfff;
+  font-size: 8em;
+  font-weight: 800;
+
+  @media (max-width: 750px) {
+    font-size: 6em;
+  }
+  @media (max-width: 400px) {
+    font-size: 5em;
+  }
+`
+
 const Title = styled.h1`
   margin: 0 0 0.25em 0;
-  color: #00BFFF;
+  color: #00bfff;
   font-family: Sofia;
   font-size: 5em;
   font-weight: 800;
@@ -87,6 +103,7 @@ const Landing = () => {
 
   return (
     <Container>
+      <Mic icon={faMicrophoneAlt} />
       <Title>{siteMetadata.title}</Title>
       <Subtitle>{siteMetadata.description}</Subtitle>
     </Container>

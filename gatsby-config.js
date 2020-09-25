@@ -2,10 +2,10 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `Ponpes Ibnul Qoyyim`,
+    title: `Radio IQ`,
     description: `Ma'had Ahlussunnah wal Jama'ah di Balikpapan Utara.`,
     author: `أبو عبدالمجيد الأمريكي`,
-    siteUrl: `https://ppiq.info`,
+    siteUrl: `https://radio.iqbpn.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,13 +20,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        icon: `${__dirname}/src/images/logo.png`
-      }
+        icon: `${__dirname}/src/images/logo.png`,
+      },
     },
     {
-      resolve: 'gatsby-source-anchor',
+      resolve: "gatsby-source-anchor",
       options: {
-        rss: 'https://anchor.fm/s/3770c8bc/podcast/rss',
+        rss: "https://anchor.fm/s/3770c8bc/podcast/rss",
       },
     },
     {
@@ -58,14 +58,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [
-          { family: `Sofia` },
-          { family: `Quicksand` },
-        ],
+        fonts: [{ family: `Sofia` }, { family: `Quicksand` }],
       },
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-offline`,
   ],
 }
