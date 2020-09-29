@@ -2,10 +2,10 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: `require('podcast');`,
-    description: `Przemyślenia dwójki programistów - Adama i Artura - na temat JavaScriptu i nie tylko. Od technologii frontendowych, przez nowości w świecie IT po frameworki na backendzie.`,
-    author: `Adam Siekierski & Artur Dudek`,
-    siteUrl: `https://require.podcast.gq`,
+    title: `The Last Train Podcast`,
+    description: `A conversational podcast through the perspective of the young adult hosts. The theme behind the podcast is the type of conversation you would have at the end of the day, on the last train home – sincere, honest, candid.`,
+    author: `DT & Tolu Akindele`,
+    siteUrl: `https://thelasttrain.fm`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -44,7 +44,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `require('podcast');`,
-        short_name: `The Require Podcast`,
+        short_name: `The Last Train Podcast`,
         start_url: `/`,
         background_color: `#0f111a`,
         theme_color: `#FF5370`,

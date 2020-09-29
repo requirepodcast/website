@@ -88,7 +88,7 @@ const Landing = () => {
 
   return (
     <Container>
-      <Title>Require Podcast</Title>
+      <Title>The Last Train Podcast</Title>
       <Subtitle>{siteMetadata.description}</Subtitle>
     </Container>
   )

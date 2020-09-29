@@ -67,9 +67,9 @@ const PodcastApp = () => {
       <Heading>Pobierz apkę</Heading>
       <Wrapper>
         <p>
-          Oficjalna aplikacja Require Podcast jest już dostępna w wersji beta!
-          By wygodniej słuchać naszego podcastu, móc sprawdzać archiwum podczas
-          słuchania i wiele więcej, pobierz Require Podcast App!
+          Oficjalna aplikacja The Last Train Podcast jest już dostępna w wersji
+          beta! By wygodniej słuchać naszego podcastu, móc sprawdzać archiwum
+          podczas słuchania i wiele więcej, pobierz The Last Train Podcast App!
         </p>
         <DownloadButton href="https://app.podcast.gq">Pobierz</DownloadButton>
       </Wrapper>

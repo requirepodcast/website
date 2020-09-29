@@ -31,7 +31,7 @@ const RedText = styled.span`
 const Newsletter = () => (
   <Wrapper href="https://letter.podcast.gq">
     Zapisz się do <RedText>require('letter')</RedText> - newslettera prosto od
-    Require Podcast ✉️
+    The Last Train Podcast ✉️
   </Wrapper>
 )
 

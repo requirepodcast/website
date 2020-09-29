@@ -89,7 +89,7 @@ const Footer = () => (
       <Link href="https://www.reddit.com/r/requirepodcast">Reddit</Link>
     </Links>
     <Text>
-      Copyright © {new Date().getFullYear()} The Require Podcast
+      Copyright © {new Date().getFullYear()} The Last Train Podcast
       <br />
       Kontakt: require@podcast.gq
     </Text>
