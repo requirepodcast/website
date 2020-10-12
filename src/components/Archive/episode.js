@@ -89,6 +89,12 @@ const Episode = ({ episode }) => (
           📺
         </span>
       </EpisodeActionButton>
+      <EpisodeActionButton href={episode.frontmatter.spotifyUrl}>
+        Przesłuchaj na Spotify{" "}
+        <span role="img" aria-label="download icon">
+          🎧
+        </span>
+      </EpisodeActionButton>
       <div
         dangerouslySetInnerHTML={{
           __html: episode.html,
