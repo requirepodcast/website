@@ -47,8 +47,7 @@ const EpisodeActionButton = styled.a`
   margin: 16px 10px 0 0;
   padding: 5px 15px;
   cursor: pointer;
-  display: inline-block;
-  height: 31px;
+  display: inline-flex;
   vertical-align: center;
   display: inline-block;
   text-decoration: none;
