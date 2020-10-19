@@ -49,7 +49,7 @@ const EpisodeActionButton = styled.a`
   cursor: pointer;
   display: inline-block;
   height: 31px;
-  vertical-align: top;
+  vertical-align: center;
   display: inline-block;
   text-decoration: none;
 

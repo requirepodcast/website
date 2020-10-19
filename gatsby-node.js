@@ -10,19 +10,21 @@ exports.createPages = async function ({ actions, graphql }) {
           fields: childMarkdownRemark___frontmatter___publicationDate
         }
       ) {
-        nodes {
-          id
-          childMarkdownRemark {
-            rawMarkdownBody
-            html
-            frontmatter {
-              audioUrl
-              publicationDate
-              shortDescription
-              title
-              youtubeUrl
-              spotifyUrl
-              slug
+        edges {
+          node {
+            id
+            childMarkdownRemark {
+              rawMarkdownBody
+              html
+              frontmatter {
+                audioUrl
+                publicationDate
+                shortDescription
+                title
+                youtubeUrl
+                spotifyUrl
+                slug
+              }
             }
           }
         }
@@ -30,9 +32,11 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `)
 
-  const allEpisodes = data.allFile.nodes
+  const allEpisodes = data.allFile.edges
 
-  for (let episode of allEpisodes) {
+  for (let edge of allEpisodes) {
+    const episode = edge.node;
+
     const path = `/archive${episode.childMarkdownRemark.frontmatter.slug}`
     const id = episode.id
 
@@ -46,14 +50,14 @@ exports.createPages = async function ({ actions, graphql }) {
   actions.createPage({
     path: "/archive",
     component: require.resolve("./src/templates/archive.js"),
-    context: { id: allEpisodes[allEpisodes.length - 1].id },
+    context: { id: allEpisodes[allEpisodes.length - 1].node.id },
   })
 
   fs.writeFileSync(
     "./public/episodes.json",
     JSON.stringify(
       {
-        episodes: allEpisodes.map((episode) => ({
+        episodes: allEpisodes.map(({ node: episode }) => ({
           id: episode.id,
           description: {
             html: episode.childMarkdownRemark.html,
