@@ -4,9 +4,6 @@
       "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
     }
   },
-  "routes": [
-    { "src": "/(.*)", "status": 404, "dest": "/404" }
-  ],
   "redirects": [
     {
       "source": "/discord",
