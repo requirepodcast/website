@@ -5,8 +5,16 @@
     }
   },
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/archive/.*", "dest": "/archive/index.html" },
     { "src": "/(.*)", "status": 404, "dest": "/404" }
+  ],
+  "redirects": [
+    {
+      "source": "/discord",
+      "destination": "https://discord.gg/kk5gh6T"
+    },
+    {
+      "source": "/youtube",
+      "destination": "https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ?sub_confirmation=1"
+    }
   ]
 }
