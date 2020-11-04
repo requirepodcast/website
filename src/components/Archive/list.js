@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 
 const Wrapper = styled.aside`
   height: 100%;
-  width: 500px;
+  width: 400px;
   flex-shrink: 0;
   overflow: hidden;
   display: flex;
@@ -37,8 +37,8 @@ const Heading = styled.h1`
 `
 
 const ListItem = styled.div`
-  padding: 10px;
-  border-bottom: 2px solid #ff5370;
+  padding: 12px 10px;
+  border-bottom: 1px solid #ff5370;
 
   &:last-of-type {
     border-bottom: none;
@@ -47,14 +47,14 @@ const ListItem = styled.div`
 
 const ListContainer = styled.div`
   overflow: auto;
-  flex: 1;
   text-align: left;
+  flex: 1;
 `
 
 const ItemHeading = styled(Link)`
   display: block;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-decoration: none;
   color: white;
   margin: 0;
@@ -96,18 +96,16 @@ const List = () => {
       <Heading>Odcinki</Heading>
       <ListContainer>
         {episodes
-          .map((episode) => (
+          .map((episode, i) => (
             <ListItem key={episode.id}>
+              <p style={{ color: "#ffffff88", margin: 0, fontSize: "0.9em" }}>
+                {episode.childMarkdownRemark.frontmatter.publicationDate}
+              </p>
               <ItemHeading
                 to={`/archive${episode.childMarkdownRemark.frontmatter.slug}`}
               >
                 {episode.childMarkdownRemark.frontmatter.title}
               </ItemHeading>
-              <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
-                {" "}
-                {episode.childMarkdownRemark.frontmatter.publicationDate}
-              </p>
-              <p>{episode.childMarkdownRemark.frontmatter.shortDescription}</p>
             </ListItem>
           ))
           .reverse()}
