@@ -5,7 +5,8 @@ import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import List from "../components/Archive/list"
-import Episode from "../components/Archive/episode"
+import EpisodeNotes from "../components/Archive/episodeNotes"
+import Player from "../components/Player/player"
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -26,6 +27,36 @@ const Wrapper = styled.div`
   }
 `
 
+const Episode = styled.article`
+  height: 100%;
+  overflow: hidden;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    margin: 0;
+  }
+
+  a {
+    color: white;
+  }
+
+  ul,
+  ol {
+    p {
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    h1 {
+      font-size: 1.4em;
+    }
+  }
+`
+
 const Archive = ({ data }) => {
   const episode = data.file.childMarkdownRemark
 
@@ -33,8 +64,14 @@ const Archive = ({ data }) => {
     <Layout>
       <SEO title={episode.frontmatter.title} />
       <Wrapper>
-        <List />
-        <Episode episode={episode} />
+        <List episode={episode} />
+        <Episode>
+          <Player
+            url={episode.frontmatter.audioUrl}
+            slug={episode.frontmatter.slug}
+          />
+          <EpisodeNotes episode={episode} />
+        </Episode>
       </Wrapper>
     </Layout>
   )

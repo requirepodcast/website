@@ -22,7 +22,7 @@ import {
   SliderTime,
   PlayerSectionRight,
 } from "./player.styles"
-import VolumeBars from "../Archive/volumeBars"
+import VolumeBars from "./volumeBars"
 
 const pad = (num) =>
   num.toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false })

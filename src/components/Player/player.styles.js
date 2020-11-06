@@ -3,11 +3,11 @@ import { Icon } from "@mdi/react"
 
 const animatedGradient = keyframes`
   0% {
-    background-position: 0% 0%;
+    background-position: 0 0;
   }
 
   100% {
-    background-position: 200% 0%;
+    background-position: 200% 0;
   }
 `
 
@@ -80,7 +80,8 @@ export const TimeButtons = styled.div`
   align-items: center;
   justify-content: center;
 
-  > * {
+  > button {
+    display: block;
     margin: 0 5px;
   }
 `
@@ -98,7 +99,7 @@ export const TimeButton = styled.button`
   color: inherit;
   background-color: transparent;
   border: none;
-  padding: none;
+  padding: 0;
   margin: 0;
   cursor: pointer;
 `

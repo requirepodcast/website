@@ -1,17 +1,18 @@
 import React from "react"
 import styled from "styled-components"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import ListItem from "./listItem"
 
 const Wrapper = styled.aside`
   height: 100%;
-  width: 500px;
+  width: 400px;
   flex-shrink: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   background-color: #141621;
-  padding: 10px;
   text-align: center;
+  padding-bottom: 12px;
 
   @media screen and (max-width: 1200px) {
     width: 100%;
@@ -20,51 +21,30 @@ const Wrapper = styled.aside`
 `
 
 const Heading = styled.h1`
-  margin: 0.5em 0;
+  height: 100px;
+  line-height: 100px;
   color: #ff5370;
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 800;
-  display: inline-block;
   width: 100%;
+  margin: 0;
 
   &::after {
     border-top: 2px solid #fff;
     display: block;
-    width: 33.3%;
+    width: 20%;
     content: "";
-    margin: 4px auto 0;
-  }
-`
-
-const ListItem = styled.div`
-  padding: 10px;
-  border-bottom: 2px solid #ff5370;
-
-  &:last-of-type {
-    border-bottom: none;
+    margin: -26px auto 0;
   }
 `
 
 const ListContainer = styled.div`
   overflow: auto;
-  flex: 1;
   text-align: left;
+  flex: 1;
 `
 
-const ItemHeading = styled(Link)`
-  display: block;
-  cursor: pointer;
-  font-size: 1.2em;
-  text-decoration: none;
-  color: white;
-  margin: 0;
-
-  :hover {
-    text-decoration: underline;
-  }
-`
-
-const List = () => {
+const List = ({ episode: currentEpisode }) => {
   const data = useStaticQuery(graphql`
     query EpisodeList {
       allFile(
@@ -96,19 +76,15 @@ const List = () => {
       <Heading>Odcinki</Heading>
       <ListContainer>
         {episodes
-          .map((episode) => (
-            <ListItem key={episode.id}>
-              <ItemHeading
-                to={`/archive${episode.childMarkdownRemark.frontmatter.slug}`}
-              >
-                {episode.childMarkdownRemark.frontmatter.title}
-              </ItemHeading>
-              <p style={{ fontSize: "1.2em", color: "#ffffff88", margin: 0 }}>
-                {" "}
-                {episode.childMarkdownRemark.frontmatter.publicationDate}
-              </p>
-              <p>{episode.childMarkdownRemark.frontmatter.shortDescription}</p>
-            </ListItem>
+          .map((episode, i) => (
+            <ListItem
+              key={i}
+              episode={episode}
+              current={
+                episode.childMarkdownRemark.frontmatter.slug ===
+                currentEpisode.frontmatter.slug
+              }
+            />
           ))
           .reverse()}
       </ListContainer>
