@@ -3,8 +3,21 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const Wrapper = styled.div`
-  padding: 12px;
+  padding: 12px 12px 12px 22px;
   background-color: ${({ current }) => current && "#181a25"};
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background: ${({ current }) =>
+      current && "linear-gradient(#ffa0b0, #ff5370)"};
+  }
 
   &:not(:first-of-type) {
     border-top: 2px solid #0f111a;

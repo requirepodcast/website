@@ -50,7 +50,7 @@ exports.createPages = async function ({ actions, graphql }) {
   actions.createPage({
     path: "/archive",
     component: require.resolve("./src/templates/archive.js"),
-    context: { id: allEpisodes.slice(-1)[0].id },
+    context: { id: allEpisodes.slice(-1)[0].node.id },
   })
 
   fs.writeFileSync(
