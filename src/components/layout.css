@@ -14,3 +14,7 @@ body {
 * {
   box-sizing: border-box;
 }
+
+*:focus {
+  outline: 1px dotted #ff5370;
+}
