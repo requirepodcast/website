@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
-import { useHeadingAnimation } from "../../utils/useHeadingAnimation"
+import { useHeadingAnimation } from "../../hooks/useHeadingAnimation"
 import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
 import IndexPagePlayer from "./indexPagePlayer"
