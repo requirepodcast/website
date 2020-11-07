@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Icon } from "@mdi/react"
 import {
   mdiPause,
@@ -23,6 +23,7 @@ import {
   PlayerSectionRight,
 } from "./player.styles"
 import VolumeBars from "./volumeBars"
+import { usePlayerState } from "../../hooks/usePlayerState"
 
 const pad = (num) =>
   num.toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false })
@@ -35,187 +36,77 @@ const formatSeconds = (sec) => {
   return `${hours ? `${hours}:` : ""}${pad(minutes)}:${pad(seconds)}`
 }
 
-class Player extends React.Component {
-  constructor(props) {
-    super(props)
+const Player = ({ url, onPlay, onPause, slug }) => {
+  const {
+    loading,
+    playing,
+    time,
+    progress,
+    duration,
+    volume,
+    triggerPlayer,
+    audioRef,
 
-    this.state = {
-      isLoading: true,
-      isPlaying: false,
-      currentTime: 0,
-      currentTimePercent: 0,
-      episodeDuration: 0,
-      currentVolume: 1,
-    }
+    playHandler,
+    pauseHandler,
+    metadataHandler,
+    timeUpdateHandler,
+    sliderSeekHandler,
+    buttonSeekHandler,
+    volumeHandler,
+    sliderRef,
+  } = usePlayerState({ onPlay, onPause, slug })
 
-    this.triggerPlayer = this.triggerPlayer.bind(this)
-    this.onButtonJump = this.onButtonJump.bind(this)
-    this.onPlay = this.onPlay.bind(this)
-    this.onPause = this.onPause.bind(this)
-    this.onSliderJump = this.onSliderJump.bind(this)
-  }
-
-  triggerPlayer() {
-    this.state.isPlaying ? this.audioRef.pause() : this.audioRef.play()
-
-    this.setState((prevState) => {
-      return {
-        isPlaying: !prevState.isPlaying,
-      }
-    })
-  }
-
-  onPlay(e) {
-    this.props.onPlay && this.props.onPlay()
-    this.setState({ isPlaying: true })
-
-    this.playingInterval = setInterval(() => {
-      this.setState(({ currentTime: prevTime }) => ({
-        currentTime: this.audioRef.currentTime,
-        currentTimePercent:
-          (this.audioRef.currentTime / this.audioRef.duration) * 100,
-        isLoading: this.audioRef.currentTime === prevTime,
-      }))
-
-      window.localStorage.setItem(
-        `${this.props.slug}_time`,
-        this.audioRef.currentTime
-      )
-
-      if (this.audioRef.currentTime >= this.audioRef.duration) {
-        this.setState({ isPlaying: false, isLoading: false })
-
-        window.localStorage.removeItem(`${this.props.slug}_time`)
-
-        clearInterval(this.playingInterval)
-      }
-    }, 100)
-  }
-
-  onPause() {
-    this.props.onPause && this.props.onPause()
-    this.setState({ isPlaying: false })
-    clearInterval(this.playingInterval)
-  }
-
-  onButtonJump(t) {
-    if (this.audioRef.duration) {
-      this.audioRef.currentTime = this.state.currentTime + t
-      this.setState({
-        currentTime: this.audioRef.currentTime,
-        currentTimePercent:
-          (this.audioRef.currentTime / this.audioRef.duration) * 100,
-      })
-    }
-  }
-
-  onSliderJump(e) {
-    if (this.audioRef.duration) {
-      this.audioRef.currentTime =
-        (e.nativeEvent.offsetX / this.sliderRef.clientWidth) *
-        this.audioRef.duration
-      this.setState({
-        currentTime: this.audioRef.currentTime,
-        currentTimePercent:
-          (this.audioRef.currentTime / this.audioRef.duration) * 100,
-      })
-    }
-  }
-
-  componentDidMount() {
-    if (this.audioRef.readyState > 0) {
-      this.setState({
-        episodeDuration: this.audioRef.duration,
-        isLoading: false,
-      })
-    }
-  }
-
-  render() {
-    const {
-      isLoading,
-      isPlaying,
-      currentTime,
-      episodeDuration,
-      currentTimePercent,
-      currentVolume,
-    } = this.state
-
-    return (
-      <PlayerWrapper>
-        <PlayerSectionLeft>
-          <PlayButton onClick={this.triggerPlayer}>
-            {isLoading ? (
-              <Spinner color="white" radius={30} />
-            ) : (
-              <Icon path={isPlaying ? mdiPause : mdiPlay} />
-            )}
-          </PlayButton>
-          <DurationInfo>
-            {formatSeconds(currentTime)}/{formatSeconds(episodeDuration)}
-          </DurationInfo>
-        </PlayerSectionLeft>
-        <PlayerSectionCenter>
-          <Slider ref={(x) => (this.sliderRef = x)} onClick={this.onSliderJump}>
-            <SliderTime
-              style={{ width: `${currentTimePercent}%` }}
-              playing={this.state.isPlaying}
-            />
-          </Slider>
-          <TimeButtons>
-            <TimeButton onClick={() => this.onButtonJump(-30)}>
-              <TimeButtonIcon path={mdiRewind30} size={1} />
-            </TimeButton>
-            <TimeButton onClick={() => this.onButtonJump(-10)}>
-              <TimeButtonIcon path={mdiRewind10} size={1} />
-            </TimeButton>
-            <TimeButton onClick={() => this.onButtonJump(10)}>
-              <TimeButtonIcon path={mdiFastForward10} size={1} />
-            </TimeButton>
-            <TimeButton onClick={() => this.onButtonJump(30)}>
-              <TimeButtonIcon path={mdiFastForward30} size={1} />
-            </TimeButton>
-          </TimeButtons>
-          <audio
-            ref={(x) => (this.audioRef = x)}
-            src={this.props.url}
-            preload="metadata"
-            onPlay={this.onPlay}
-            onPause={this.onPause}
-            onLoadedMetadata={(e) => {
-              const savedTime = window.localStorage.getItem(
-                `${this.props.slug}_time`
-              )
-
-              e.target.currentTime = savedTime
-
-              this.setState({
-                currentTime: savedTime,
-                currentTimePercent: (savedTime / e.target.duration) * 100,
-                episodeDuration: e.target.duration,
-                isLoading: false,
-              })
-            }}
-            onTimeUpdate={(e) => {
-              this.setState({
-                episodeDuration: e.target.duration,
-                isLoading: false,
-              })
-            }}
+  return (
+    <PlayerWrapper>
+      <PlayerSectionLeft>
+        <PlayButton onClick={triggerPlayer}>
+          {loading ? (
+            <Spinner color="white" radius={30} />
+          ) : (
+            <Icon path={playing ? mdiPause : mdiPlay} />
+          )}
+        </PlayButton>
+        <DurationInfo>
+          {formatSeconds(time)}/{formatSeconds(duration)}
+        </DurationInfo>
+      </PlayerSectionLeft>
+      <PlayerSectionCenter>
+        <Slider ref={sliderRef} onClick={sliderSeekHandler}>
+          <SliderTime
+            style={{ width: `${progress * 100}%` }}
+            playing={playing}
           />
-        </PlayerSectionCenter>
-        <PlayerSectionRight>
-          <VolumeBars
-            volume={currentVolume}
-            setVolume={(vol) => {
-              this.audioRef.volume = vol
-              this.setState({ currentVolume: vol })
-            }}
-          />
-        </PlayerSectionRight>
-      </PlayerWrapper>
-    )
-  }
+        </Slider>
+        <TimeButtons>
+          <TimeButton onClick={() => buttonSeekHandler(-30)}>
+            <TimeButtonIcon path={mdiRewind30} size={1} />
+          </TimeButton>
+          <TimeButton onClick={() => buttonSeekHandler(-10)}>
+            <TimeButtonIcon path={mdiRewind10} size={1} />
+          </TimeButton>
+          <TimeButton onClick={() => buttonSeekHandler(10)}>
+            <TimeButtonIcon path={mdiFastForward10} size={1} />
+          </TimeButton>
+          <TimeButton onClick={() => buttonSeekHandler(30)}>
+            <TimeButtonIcon path={mdiFastForward30} size={1} />
+          </TimeButton>
+        </TimeButtons>
+        <audio
+          ref={audioRef}
+          src={url}
+          preload="metadata"
+          onPlay={playHandler}
+          onPause={pauseHandler}
+          onLoadedMetadata={metadataHandler}
+          onTimeUpdate={timeUpdateHandler}
+        />
+      </PlayerSectionCenter>
+      <PlayerSectionRight>
+        <VolumeBars volume={volume} setVolume={volumeHandler} />
+      </PlayerSectionRight>
+    </PlayerWrapper>
+  )
 }
 
 export default Player
