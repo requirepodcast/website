@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Icon } from "@mdi/react"
 import {
   mdiPause,
@@ -24,17 +24,7 @@ import {
 } from "./player.styles"
 import VolumeBars from "./volumeBars"
 import { usePlayerState } from "../../hooks/usePlayerState"
-
-const pad = (num) =>
-  num.toLocaleString("en-US", { minimumIntegerDigits: 2, useGrouping: false })
-
-const formatSeconds = (sec) => {
-  const hours = Math.floor(sec / 3600)
-  const minutes = Math.floor((sec - hours * 3600) / 60)
-  const seconds = Math.floor(sec - hours * 3600 - minutes * 60)
-
-  return `${hours ? `${hours}:` : ""}${pad(minutes)}:${pad(seconds)}`
-}
+import { formatSeconds } from "../../utils/formatSeconds"
 
 const Player = ({ url, onPlay, onPause, slug }) => {
   const {
