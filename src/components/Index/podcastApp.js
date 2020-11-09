@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useHeadingAnimation } from "../../hooks/useHeadingAnimation"
 
 const Heading = styled.h1`
-  margin: 0 1em 0.25em 0;
+  margin: 0 0 0.25em 0;
   color: #ff5370;
   font-size: 4em;
   font-weight: 800;
