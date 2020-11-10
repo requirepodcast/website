@@ -16,11 +16,12 @@ export const PlayerWrapper = styled.div`
   display: flex;
   background-color: #1d1f2d;
   flex-shrink: 0;
+  height: 100px;
 `
 
 export const PlayerSectionLeft = styled.div`
   width: 100px;
-  height: 100px;
+  height: 100%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -31,14 +32,14 @@ export const PlayerSectionLeft = styled.div`
 
 export const PlayerSectionCenter = styled.div`
   flex: 1;
-  height: 100px;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `
 
 export const PlayerSectionRight = styled.div`
   width: 75px;
-  height: 100px;
+  height: 100%;
   border-left: solid 1px #141621;
 `
 

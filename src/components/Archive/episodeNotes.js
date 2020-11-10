@@ -5,7 +5,12 @@ const ContentConatiner = styled.div`
   padding: 25px;
   flex: 1;
   overflow-y: auto;
+  overflow-wrap: break-word;
   background-color: #181a25;
+
+  @media screen and (max-width: 800px) {
+    border-top: 2px solid #ff5370;
+  }
 `
 
 const EpisodeActionButton = styled.a`
@@ -32,9 +37,9 @@ function getDownloadLink(link) {
 
 const EpisodeNotes = ({ episode }) => (
   <ContentConatiner>
-      <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
-        {episode.frontmatter.publicationDate}
-      </span>
+    <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
+      {episode.frontmatter.publicationDate}
+    </span>
     <h1>{episode.frontmatter.title}</h1>
     <EpisodeActionButton
       href={getDownloadLink(episode.frontmatter.audioUrl)}
@@ -42,20 +47,20 @@ const EpisodeNotes = ({ episode }) => (
     >
       Pobierz odcinek{" "}
       <span role="img" aria-label="download icon">
-          💾
-        </span>
+        💾
+      </span>
     </EpisodeActionButton>
     <EpisodeActionButton href={episode.frontmatter.youtubeUrl}>
       Odcinek na YouTube{" "}
       <span role="img" aria-label="download icon">
-          📺
-        </span>
+        📺
+      </span>
     </EpisodeActionButton>
     <EpisodeActionButton href={episode.frontmatter.spotifyUrl}>
       Przesłuchaj na Spotify{" "}
       <span role="img" aria-label="download icon">
-          🎧
-        </span>
+        🎧
+      </span>
     </EpisodeActionButton>
     <div
       dangerouslySetInnerHTML={{

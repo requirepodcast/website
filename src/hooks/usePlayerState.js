@@ -14,7 +14,7 @@ export const usePlayerState = ({ onPlay, onPause, slug }) => {
   const sliderRef = useRef()
 
   useMount(() => {
-    if (audioRef.current.readyState > 0) {
+    if (audioRef.current?.readyState > 0) {
       setDuration(audioRef.current.duration)
       setLoading(false)
     }

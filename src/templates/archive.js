@@ -7,6 +7,7 @@ import Layout from "../components/layout"
 import List from "../components/Archive/list"
 import EpisodeNotes from "../components/Archive/episodeNotes"
 import Player from "../components/Player/player"
+import { PlayerWrapper } from "../components/Player/player.styles"
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -53,6 +54,14 @@ const Episode = styled.article`
   @media screen and (max-width: 800px) {
     h1 {
       font-size: 1.4em;
+    }
+  }
+
+  ${PlayerWrapper} {
+    @media screen and (max-width: 800px) {
+      position: fixed;
+      bottom: 0;
+      z-index: 1;
     }
   }
 `

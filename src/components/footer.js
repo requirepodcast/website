@@ -8,9 +8,10 @@ const Container = styled.footer`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  @media (max-width: 700px) {
+
+  @media (max-width: 800px) {
     flex-direction: column;
-    padding: 1em 2em;
+    padding: 25px 25px 125px 25px;
   }
 `
 
