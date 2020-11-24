@@ -6233,13 +6233,18 @@ gatsby-plugin-create-client-paths@^2.2.1:
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-gatsby-plugin-google-analytics@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.6.0.tgz#6fd6a8bdb4eb2adc2cc88687f9fb3b334787cbe9"
-  integrity sha512-2pxd2iaJUWVIIGkP4T2PTDlmMEjnRLrP+ZXV65SpOy2Q2Od2tpiStol6B5T6iGjtKGs6ZOdk3D1gyTCvH+gpsg==
+gatsby-plugin-google-gtag@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-gtag/-/gatsby-plugin-google-gtag-2.3.0.tgz#88d600cba77fc38aa4284a3dbd555073d658ddf1"
+  integrity sha512-zlV1u6V7QI3VWBDe/zQrVVZVdDCrCTc/6c5kYEuOZjF5SjE5HqBsYhveLza1ddtZl/GJGv6o800rwUIgYeo+HA==
   dependencies:
     "@babel/runtime" "^7.12.5"
-    minimatch "3.0.4"
+    minimatch "^3.0.4"
+
+gatsby-plugin-gtag@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-gtag/-/gatsby-plugin-gtag-1.0.13.tgz#ffa08a728ba1cfe33090e52764d014a025a5d35a"
+  integrity sha512-Oul6O67klajrEjkkF1diD228SmyUWsAwTq/1tYq41vBwmyNiPk4dhk8K93rrNQ5d5zesSv+awBeGBa503tQqGw==
 
 gatsby-plugin-manifest@^2.2.39:
   version "2.7.0"
