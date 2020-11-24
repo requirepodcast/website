@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 const Container = styled.div`
   background-color: #0f111a;
@@ -51,7 +52,7 @@ const Name = styled.h2`
   text-align: center;
 `
 
-const Link = styled.a`
+const Link = styled(OutboundLink)`
   color: #ff5370;
   font-size: 0.75em;
   font-weight: 400;

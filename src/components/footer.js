@@ -1,3 +1,4 @@
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 import React from "react"
 import styled from "styled-components"
 
@@ -15,7 +16,7 @@ const Container = styled.footer`
   }
 `
 
-const Link = styled.a`
+const Link = styled(OutboundLink)`
   color: #ffffff88;
   font-size: 1em;
   text-decoration: none;
