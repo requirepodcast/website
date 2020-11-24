@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { OutboundLink } from "gatsby-plugin-google-analytics"
 
 const ContentConatiner = styled.div`
   padding: 25px;
@@ -13,7 +14,7 @@ const ContentConatiner = styled.div`
   }
 `
 
-const EpisodeActionButton = styled.a`
+const EpisodeActionButton = styled(OutboundLink)`
   background-color: #2e2f3e;
   color: white;
   font-size: 1em;
