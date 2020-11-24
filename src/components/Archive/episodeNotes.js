@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const ContentConatiner = styled.div`
   padding: 25px;

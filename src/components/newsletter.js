@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
-const Wrapper = styled.a`
+const Wrapper = styled(OutboundLink)`
   display: block;
   text-decoration: none;
   position: fixed;

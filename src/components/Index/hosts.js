@@ -5,7 +5,7 @@ import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 
 const Container = styled.div`
   background-color: #0f111a;

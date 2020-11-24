@@ -1,6 +1,5 @@
 import { useRef, useState } from "react"
 import { useMount } from "./useMount"
-import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 export const usePlayerState = ({ onPlay, onPause, slug }) => {
   const [loading, setLoading] = useState(true)
@@ -14,9 +13,6 @@ export const usePlayerState = ({ onPlay, onPause, slug }) => {
   const intervalRef = useRef()
   const sliderRef = useRef()
 
-  // Used for analytics
-  const [wasPlaying, setWasPlaying] = useState(false)
-
   useMount(() => {
     if (audioRef.current?.readyState > 0) {
       setDuration(audioRef.current.duration)
@@ -25,14 +21,6 @@ export const usePlayerState = ({ onPlay, onPause, slug }) => {
   })
 
   function triggerPlayer() {
-    if (!wasPlaying) {
-      trackCustomEvent({
-        category: "play_episode",
-        action: "play",
-        label: `Play podcast episode`,
-      })
-      setWasPlaying(true)
-    }
     setPlaying((prev) => {
       prev ? audioRef.current.pause() : audioRef.current.play()
 

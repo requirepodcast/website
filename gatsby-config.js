@@ -53,11 +53,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        defer: true,
-        head: true,
-        trackingId: "G-S2T3LR4KQN",
+        trackingIds: ["G-S2T3LR4KQN"],
       },
     },
     `gatsby-plugin-styled-components`,

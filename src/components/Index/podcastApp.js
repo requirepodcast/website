@@ -1,5 +1,6 @@
 import React, { useRef } from "react"
 import styled from "styled-components"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 import { useHeadingAnimation } from "../../hooks/useHeadingAnimation"
 
 const Heading = styled.h1`
@@ -42,7 +43,7 @@ const Wrapper = styled.div`
   text-align: center;
 `
 
-const DownloadButton = styled.a`
+const DownloadButton = styled(OutboundLink)`
   display: inline-block;
   background-color: #ff5370;
   padding: 10px 20px;
