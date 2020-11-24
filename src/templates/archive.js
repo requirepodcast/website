@@ -78,6 +78,7 @@ const Archive = ({ data }) => {
           <Player
             url={episode.frontmatter.audioUrl}
             slug={episode.frontmatter.slug}
+            title={episode.frontmatter.title}
           />
           <EpisodeNotes episode={episode} />
         </Episode>

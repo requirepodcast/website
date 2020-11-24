@@ -81,6 +81,7 @@ const IndexPagePlayer = forwardRef((props, ref) => {
       </EpisodeInfo>
       <Player
         url={audioUrl}
+        title={title}
         slug={slug}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}

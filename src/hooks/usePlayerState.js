@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import { useMount } from "./useMount"
 
-export const usePlayerState = ({ onPlay, onPause, slug }) => {
+export const usePlayerState = ({ onPlay, onPause, slug, title }) => {
   const [loading, setLoading] = useState(true)
   const [playing, setPlaying] = useState(false)
   const [time, setTime] = useState(0)
@@ -23,6 +23,13 @@ export const usePlayerState = ({ onPlay, onPause, slug }) => {
   function triggerPlayer() {
     setPlaying((prev) => {
       prev ? audioRef.current.pause() : audioRef.current.play()
+
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", prev ? "pause" : "play", {
+          event_category: "player",
+          event_label: title,
+        })
+      }
 
       return !prev
     })

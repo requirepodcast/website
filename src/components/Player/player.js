@@ -26,7 +26,7 @@ import VolumeBars from "./volumeBars"
 import { usePlayerState } from "../../hooks/usePlayerState"
 import { formatSeconds } from "../../utils/formatSeconds"
 
-const Player = ({ url, onPlay, onPause, slug }) => {
+const Player = ({ url, onPlay, onPause, slug, title }) => {
   const {
     loading,
     playing,
@@ -45,7 +45,7 @@ const Player = ({ url, onPlay, onPause, slug }) => {
     buttonSeekHandler,
     volumeHandler,
     sliderRef,
-  } = usePlayerState({ onPlay, onPause, slug })
+  } = usePlayerState({ onPlay, onPause, slug, title })
 
   return (
     <PlayerWrapper>
