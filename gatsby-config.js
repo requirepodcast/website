@@ -52,6 +52,14 @@ module.exports = {
         patterns: `episodes/*.md`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        defer: true,
+        head: true,
+        trackingId: "G-S2T3LR4KQN",
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
