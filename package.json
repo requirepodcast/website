@@ -28,7 +28,6 @@
     "gatsby-transformer-sharp": "^2.3.13",
     "gsap": "^3.2.4",
     "lodash": "^4.17.15",
-    "mdast-util-to-string": "^2.0.0",
     "polished": "^3.5.2",
     "prop-types": "^15.7.2",
     "query-string": "^6.11.1",
