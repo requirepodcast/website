@@ -10,8 +10,6 @@ module.exports = ({ markdownAST }) => {
     delete node.children
     delete node.url
     node.value = html
-
-    console.log(node)
   })
 
   return markdownAST
