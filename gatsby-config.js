@@ -32,20 +32,20 @@ module.exports = {
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
-      plugins: [
-        {
-          resolve: `gatsby-remark-images-contentful`,
-          options: {
-            maxWidth: 900,
-            linkImagesToOriginal: false,
-            backgroundColor: "transparent",
-            withWebp: true,
+      options: {
+        plugins: [
+          `gatsby-remark-target-blank`,
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 900,
+              linkImagesToOriginal: false,
+              backgroundColor: "transparent",
+              withWebp: true,
+            },
           },
-        },
-        {
-          resolve: "gatsby-remark-external-links",
-        },
-      ],
+        ],
+      },
     },
     {
       resolve: `gatsby-source-git`,
