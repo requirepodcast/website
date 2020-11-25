@@ -21,7 +21,6 @@
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-plugin-sitemap": "^2.4.11",
     "gatsby-plugin-styled-components": "^3.1.20",
-    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-remark-images-contentful": "^2.2.2",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-git": "^1.1.0",
@@ -29,6 +28,7 @@
     "gatsby-transformer-sharp": "^2.3.13",
     "gsap": "^3.2.4",
     "lodash": "^4.17.15",
+    "mdast-util-to-string": "^2.0.0",
     "polished": "^3.5.2",
     "prop-types": "^15.7.2",
     "query-string": "^6.11.1",
@@ -39,7 +39,8 @@
     "react-ticker": "^1.2.2",
     "scrollmagic": "^2.0.7",
     "scrollscene": "^0.0.15",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "eslint-config-react-app": "^5.2.1",
