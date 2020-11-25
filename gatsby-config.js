@@ -42,6 +42,9 @@ module.exports = {
             withWebp: true,
           },
         },
+        {
+          resolve: "gatsby-remark-external-links",
+        },
       ],
     },
     {

@@ -45,19 +45,20 @@ const EpisodeNotes = ({ episode }) => (
     <EpisodeActionButton
       href={getDownloadLink(episode.frontmatter.audioUrl)}
       download="download"
+      target="_blank"
     >
       Pobierz odcinek{" "}
       <span role="img" aria-label="download icon">
         💾
       </span>
     </EpisodeActionButton>
-    <EpisodeActionButton href={episode.frontmatter.youtubeUrl}>
+    <EpisodeActionButton href={episode.frontmatter.youtubeUrl} target="_blank">
       Odcinek na YouTube{" "}
       <span role="img" aria-label="download icon">
         📺
       </span>
     </EpisodeActionButton>
-    <EpisodeActionButton href={episode.frontmatter.spotifyUrl}>
+    <EpisodeActionButton href={episode.frontmatter.spotifyUrl} target="_blank">
       Przesłuchaj na Spotify{" "}
       <span role="img" aria-label="download icon">
         🎧
