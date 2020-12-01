@@ -1,0 +1,1 @@
+require("fontsource-fira-mono")
