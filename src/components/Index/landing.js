@@ -1,8 +1,9 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
+import { useStaticQuery, graphql } from "gatsby"
 
 import background from "../../images/background.png"
-import { useStaticQuery, graphql } from "gatsby"
+import chevronDown from "../../images/chevron_down.svg"
 
 const bounce = keyframes`
 	50% {
@@ -41,16 +42,13 @@ const Container = styled.header`
   flex-direction: column;
 
   &::after {
-    content: "⌄";
-    font-weight: 100;
+    content: url("${chevronDown}");
     color: #fff;
     position: absolute;
-    opacity: 0.8;
-    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-    font-size: 5rem;
-    height: 4rem;
+    text-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+    height: 50px;
     text-align: center;
-    bottom: 2rem;
+    bottom: 20px;
     margin: 0 auto;
     animation: ${bounce} 1s ease infinite;
 
