@@ -5978,6 +5978,11 @@ follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
 
+fontsource-fira-mono@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/fontsource-fira-mono/-/fontsource-fira-mono-3.0.9.tgz#e4fafcefaea772be6e5b76fc1d59b388b0b59d3e"
+  integrity sha512-g1hJWCSR0OgrAh/GAKlSbzAhHf9J9gpXKB1qkAqX2AUEGMq7QCo2+M0A7ugg9o86WrBkeAwhgKIcVRD+iG6j+A==
+
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
