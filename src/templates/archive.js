@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 const Episode = styled.article`
   height: 100%;
   overflow: hidden;
-  max-width: 1200px;
+  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
