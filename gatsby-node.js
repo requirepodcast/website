@@ -34,6 +34,14 @@ exports.createPages = async function ({ actions, graphql }) {
 
   const allEpisodes = data.allFile.edges
 
+  const lastEpisode = allEpisodes.slice(-1)[0]
+
+  actions.createPage({
+    path: "/archive",
+    component: require.resolve("./src/templates/archive.js"),
+    context: { id: lastEpisode.node.id },
+  })
+
   for (let edge of allEpisodes) {
     const episode = edge.node
 
@@ -46,14 +54,6 @@ exports.createPages = async function ({ actions, graphql }) {
       context: { id },
     })
   }
-
-  const lastEpisode = allEpisodes.slice(-1)[0]
-
-  actions.createPage({
-    path: "/archive",
-    component: require.resolve("./src/templates/archive.js"),
-    context: { id: lastEpisode.node.id },
-  })
 
   fs.writeFileSync(
     "./public/episodes.json",
