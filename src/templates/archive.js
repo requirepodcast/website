@@ -70,8 +70,7 @@ const Archive = ({ data }) => {
   const episode = data.file.childMarkdownRemark
 
   return (
-    <Layout>
-      <SEO title={episode.frontmatter.title} />
+    <Layout title={episode.frontmatter.title}>
       <Wrapper>
         <List episode={episode} />
         <Episode>

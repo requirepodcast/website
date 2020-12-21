@@ -28,7 +28,15 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      link={[{ rel: "icon", href: icon }]}
+      link={[
+        { rel: "icon", href: icon },
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: "RSS",
+          href: "https://anchor.fm/s/139df89c/podcast/rss",
+        },
+      ]}
       title={title}
       meta={[
         {
@@ -44,7 +52,7 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
-          property: `og:type`,
+          name: `og:type`,
           content: `website`,
         },
         {
@@ -67,7 +75,8 @@ function SEO({ description, lang, meta, title }) {
           property: `og:image`,
           content: logo,
         },
-      ].concat(meta)}
+        ...meta,
+      ]}
     />
   )
 }
