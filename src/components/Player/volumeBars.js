@@ -44,6 +44,7 @@ const VolumeBars = ({ setVolume, volume }) => (
           isActive={bar <= volume}
           bar={bar}
           key={bar}
+          aria-label={`Głośność ${bar * 100}%`}
         />
       ))
       .reverse()}

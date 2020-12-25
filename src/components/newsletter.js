@@ -21,7 +21,7 @@ const Wrapper = styled(OutboundLink)`
   }
 
   @media (max-width: 700px) {
-    visibility: hidden;
+    display: none;
   }
 `
 
@@ -30,7 +30,12 @@ const RedText = styled.span`
 `
 
 const Newsletter = () => (
-  <Wrapper href="https://letter.podcast.gq">
+  <Wrapper
+    href="https://letter.podcast.gq"
+    role="dialog"
+    aria-label="Link do newsletter'a"
+    aria-modal="false"
+  >
     Zapisz się do <RedText>require('letter')</RedText> - newslettera prosto od
     Require Podcast ✉️
   </Wrapper>

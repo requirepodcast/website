@@ -50,7 +50,10 @@ const Player = ({ url, onPlay, onPause, slug, title }) => {
   return (
     <PlayerWrapper>
       <PlayerSectionLeft>
-        <PlayButton onClick={triggerPlayer}>
+        <PlayButton
+          onClick={triggerPlayer}
+          aria-label="Przycisk odtwórz/zatrzymaj"
+        >
           {loading ? (
             <Spinner color="white" radius={30} />
           ) : (
@@ -69,16 +72,28 @@ const Player = ({ url, onPlay, onPause, slug, title }) => {
           />
         </Slider>
         <TimeButtons>
-          <TimeButton onClick={() => buttonSeekHandler(-30)}>
+          <TimeButton
+            onClick={() => buttonSeekHandler(-30)}
+            aria-label="Cofnij o 30 sekund"
+          >
             <TimeButtonIcon path={mdiRewind30} size={1} />
           </TimeButton>
-          <TimeButton onClick={() => buttonSeekHandler(-10)}>
+          <TimeButton
+            onClick={() => buttonSeekHandler(-10)}
+            aria-label="Cofnij o 10 sekund"
+          >
             <TimeButtonIcon path={mdiRewind10} size={1} />
           </TimeButton>
-          <TimeButton onClick={() => buttonSeekHandler(10)}>
+          <TimeButton
+            onClick={() => buttonSeekHandler(10)}
+            aria-label="Do przodu o 10 sekund"
+          >
             <TimeButtonIcon path={mdiFastForward10} size={1} />
           </TimeButton>
-          <TimeButton onClick={() => buttonSeekHandler(30)}>
+          <TimeButton
+            onClick={() => buttonSeekHandler(30)}
+            aria-label="Do przodu o 30 sekund"
+          >
             <TimeButtonIcon path={mdiFastForward30} size={1} />
           </TimeButton>
         </TimeButtons>

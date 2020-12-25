@@ -15,3 +15,11 @@ body {
 *:focus {
   outline: 1px dotted #ff5370;
 }
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: #ff5370;
+}

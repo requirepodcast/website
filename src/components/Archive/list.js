@@ -38,10 +38,13 @@ const Heading = styled.h1`
   }
 `
 
-const ListContainer = styled.div`
+const ListContainer = styled.ul`
   overflow: auto;
   text-align: left;
   flex: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 `
 
 const List = ({ episode: currentEpisode }) => {

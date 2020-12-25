@@ -2,7 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-const Wrapper = styled.div`
+const Wrapper = styled.li`
+  margin: 0;
   padding: 12px 12px 12px 22px;
   background-color: ${({ current }) => current && "#181a25"};
   position: relative;
@@ -28,12 +29,12 @@ const ItemHeading = styled(Link)`
   cursor: pointer;
   font-size: 1.1em;
   text-decoration: none;
-  color: white;
   margin: 0;
   box-sizing: content-box;
 
   :hover {
     text-decoration: underline;
+    color: white;
   }
 `
 

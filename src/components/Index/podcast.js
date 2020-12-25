@@ -43,6 +43,10 @@ const H3 = styled.h3`
 
   a {
     color: white;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 `
 
@@ -56,13 +60,13 @@ const Podcast = () => {
     const caption = wrapper.querySelector("h3")
     const player = playerRef.current
 
-    gsap.set([player, caption], { autoAlpha: 0, scale: 0.95 })
+    gsap.set([player, caption], { opacity: 0, scale: 0.95 })
 
     const tl = gsap.timeline({
       paused: true,
       defaults: { ease: "power3.inOut" },
     })
-    tl.to([player, caption], { autoAlpha: 1, scale: 1 })
+    tl.to([player, caption], { opacity: 1, scale: 1 })
 
     new ScrollScene({
       triggerElement: wrapper,

@@ -60,7 +60,9 @@ const Footer = () => (
     </Links>
     <Text>
       <p>Copyright © {new Date().getFullYear()} Require Podcast</p>
-      <p>Kontakt: require@podcast.gq</p>
+      <p>
+        Kontakt: <a href="mailto:require@podcast.gq">require@podcast.gq</a>
+      </p>
     </Text>
   </Container>
 )

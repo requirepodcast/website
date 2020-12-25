@@ -2,14 +2,13 @@ import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 
-import SEO from "../components/seo"
 import Layout from "../components/layout"
 import List from "../components/Archive/list"
 import EpisodeNotes from "../components/Archive/episodeNotes"
 import Player from "../components/Player/player"
 import { PlayerWrapper } from "../components/Player/player.styles"
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   height: 100vh;
   display: flex;
   flex-direction: row;
@@ -38,10 +37,6 @@ const Episode = styled.article`
 
   h1 {
     margin: 0;
-  }
-
-  a {
-    color: white;
   }
 
   ul,

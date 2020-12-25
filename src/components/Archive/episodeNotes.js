@@ -16,7 +16,6 @@ const ContentConatiner = styled.div`
 
 const EpisodeActionButton = styled(OutboundLink)`
   background-color: #2e2f3e;
-  color: white;
   font-size: 1em;
   font-family: inherit;
   margin: 16px 10px 0 0;
@@ -28,6 +27,7 @@ const EpisodeActionButton = styled(OutboundLink)`
 
   &:hover {
     background-color: #3f3f4f;
+    color: white;
   }
 `
 
@@ -38,9 +38,9 @@ function getDownloadLink(link) {
 
 const EpisodeNotes = ({ episode }) => (
   <ContentConatiner>
-    <span style={{ fontSize: "1.2em", color: "#ffffff88" }}>
+    <time style={{ fontSize: "1.2em", color: "#ffffff88" }}>
       {episode.frontmatter.publicationDate}
-    </span>
+    </time>
     <h1>{episode.frontmatter.title}</h1>
     <EpisodeActionButton
       href={getDownloadLink(episode.frontmatter.audioUrl)}

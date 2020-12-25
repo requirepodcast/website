@@ -60,6 +60,10 @@ const Link = styled(OutboundLink)`
   text-decoration: none;
   display: block;
   margin-bottom: 0.5em;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 const Heading = styled.h1`
@@ -91,13 +95,13 @@ const Hosts = () => {
     const wrapper = wrapperRef.current
     const hosts = hostsRef.current
 
-    gsap.set(hosts, { autoAlpha: 0, scale: 0.95 })
+    gsap.set(hosts, { opacity: 0, scale: 0.95 })
 
     const tl = gsap.timeline({
       paused: true,
       defaults: { ease: "power3.inOut" },
     })
-    tl.to(hosts, { autoAlpha: 1, scale: 1 })
+    tl.to(hosts, { opacity: 1, scale: 1 })
 
     new ScrollScene({
       triggerElement: wrapper,
@@ -140,7 +144,7 @@ const Hosts = () => {
           <Avatar fixed={data.adam.childImageSharp.fixed} />
           <Name>Adam Siekierski</Name>
           <Link href="mailto:a@siekierski.ml">a@siekierski.ml</Link>
-          <Link href="https://twitter.com/a_siekierski">@a_siekierski</Link>
+          <Link href="https://siekierski.ml">siekierski.ml</Link>
         </Person>
       </Wrapper>
     </Container>
