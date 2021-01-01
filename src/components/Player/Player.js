@@ -9,22 +9,11 @@ import {
   mdiFastForward30,
 } from "@mdi/js"
 import Spinner from "react-spinner-material"
-import {
-  PlayerWrapper,
-  DurationInfo,
-  TimeButtonIcon,
-  TimeButtons,
-  TimeButton,
-  PlayerSectionCenter,
-  PlayerSectionLeft,
-  PlayButton,
-  Slider,
-  SliderTime,
-  PlayerSectionRight,
-} from "./player.styles"
 import VolumeBars from "./VolumeBars"
 import { usePlayerState } from "../../hooks/usePlayerState"
 import { formatSeconds } from "../../utils/formatSeconds"
+import styles from "./player.module.scss"
+import clsx from "clsx"
 
 const Player = ({ url, onPlay, onPause, slug, title }) => {
   const {
@@ -48,55 +37,83 @@ const Player = ({ url, onPlay, onPause, slug, title }) => {
   } = usePlayerState({ onPlay, onPause, slug, title })
 
   return (
-    <PlayerWrapper>
-      <PlayerSectionLeft>
-        <PlayButton
+    <div className={styles.wrapper}>
+      <section className={styles.sectionLeft}>
+        <button
+          className={styles.playButton}
           onClick={triggerPlayer}
           aria-label="Przycisk odtwórz/zatrzymaj"
         >
           {loading ? (
-            <Spinner color="white" radius={30} />
+            <Spinner color="white" radius={30} visible={true} stroke={5} />
           ) : (
             <Icon path={playing ? mdiPause : mdiPlay} />
           )}
-        </PlayButton>
-        <DurationInfo>
+        </button>
+        <time className={styles.duration}>
           {formatSeconds(time)}/{formatSeconds(duration)}
-        </DurationInfo>
-      </PlayerSectionLeft>
-      <PlayerSectionCenter>
-        <Slider ref={sliderRef} onClick={sliderSeekHandler}>
-          <SliderTime
+        </time>
+      </section>
+      <section className={styles.sectionCenter}>
+        <div
+          className={styles.slider}
+          ref={sliderRef}
+          onClick={sliderSeekHandler}
+        >
+          <div
+            className={clsx(
+              styles.sliderTime,
+              playing && styles.sliderTimePlaying
+            )}
             style={{ width: `${progress * 100}%` }}
-            playing={playing}
           />
-        </Slider>
-        <TimeButtons>
-          <TimeButton
+        </div>
+        <div className={styles.timeButtons}>
+          <button
+            className={styles.timeButton}
             onClick={() => buttonSeekHandler(-30)}
             aria-label="Cofnij o 30 sekund"
           >
-            <TimeButtonIcon path={mdiRewind30} size={1} />
-          </TimeButton>
-          <TimeButton
+            <Icon
+              className={styles.timeButtonIcon}
+              path={mdiRewind30}
+              size={1}
+            />
+          </button>
+          <button
+            className={styles.timeButton}
             onClick={() => buttonSeekHandler(-10)}
             aria-label="Cofnij o 10 sekund"
           >
-            <TimeButtonIcon path={mdiRewind10} size={1} />
-          </TimeButton>
-          <TimeButton
+            <Icon
+              className={styles.timeButtonIcon}
+              path={mdiRewind10}
+              size={1}
+            />
+          </button>
+          <button
+            className={styles.timeButton}
             onClick={() => buttonSeekHandler(10)}
             aria-label="Do przodu o 10 sekund"
           >
-            <TimeButtonIcon path={mdiFastForward10} size={1} />
-          </TimeButton>
-          <TimeButton
+            <Icon
+              className={styles.timeButtonIcon}
+              path={mdiFastForward10}
+              size={1}
+            />
+          </button>
+          <button
+            className={styles.timeButton}
             onClick={() => buttonSeekHandler(30)}
             aria-label="Do przodu o 30 sekund"
           >
-            <TimeButtonIcon path={mdiFastForward30} size={1} />
-          </TimeButton>
-        </TimeButtons>
+            <Icon
+              className={styles.timeButtonIcon}
+              path={mdiFastForward30}
+              size={1}
+            />
+          </button>
+        </div>
         <audio
           ref={audioRef}
           src={url}
@@ -106,11 +123,11 @@ const Player = ({ url, onPlay, onPause, slug, title }) => {
           onLoadedMetadata={metadataHandler}
           onTimeUpdate={timeUpdateHandler}
         />
-      </PlayerSectionCenter>
-      <PlayerSectionRight>
+      </section>
+      <section className={styles.sectionRight}>
         <VolumeBars volume={volume} setVolume={volumeHandler} />
-      </PlayerSectionRight>
-    </PlayerWrapper>
+      </section>
+    </div>
   )
 }
 

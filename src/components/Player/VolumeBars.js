@@ -1,54 +1,27 @@
 import React from "react"
-import styled from "styled-components"
 import { lighten } from "polished"
-
-const BarsWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-`
-
-const Bar = styled.button`
-  display: block;
-  border: none;
-  width: 100%;
-  height: calc(20% - 4px);
-  margin: 2px 0;
-  background-color: ${({ isActive, bar }) =>
-    isActive ? lighten(bar / 6, "#ff5370") : `#141621`};
-  cursor: pointer;
-`
+import styles from "./volumeBars.module.scss"
 
 const bars = [0.2, 0.4, 0.6, 0.8, 1]
 
 const VolumeBars = ({ setVolume, volume }) => (
-  <BarsWrapper>
-    <div
-      style={{
-        height: 20,
-        verticalAlign: "middle",
-        textAlign: "center",
-        fontSize: 10,
-      }}
-    >
-      Głośność
-    </div>
+  <div className={styles.wrapper}>
+    <div className={styles.label}>Głośność</div>
     {bars
       .map((bar) => (
-        <Bar
+        <button
+          className={styles.bar}
           onClick={() => setVolume(bar)}
-          isActive={bar <= volume}
-          bar={bar}
+          style={{
+            backgroundColor:
+              bar <= volume ? lighten(bar / 6, "#ff5370") : `#141621`,
+          }}
           key={bar}
           aria-label={`Głośność ${bar * 100}%`}
         />
       ))
       .reverse()}
-  </BarsWrapper>
+  </div>
 )
 
 export default VolumeBars
