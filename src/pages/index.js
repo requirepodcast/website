@@ -1,18 +1,18 @@
 import React from "react"
 
-import Layout from "../components/layout"
+import Layout from "../components/Layout/Layout"
 
-import Landing from "../components/Index/landing"
-import Podcast from "../components/Index/podcast"
-import Hosts from "../components/Index/hosts"
-import Newsletter from "../components/newsletter"
+import TitleSection from "../components/TitleSection/TitleSection"
+import PodcastSection from "../components/PodcastSection/PodcastSection"
+import HostsSection from "../components/HostsSection/HostsSection"
+import NewsletterDialog from "../components/NewsletterDialog/NewsletterDialog"
 
 const IndexPage = () => (
   <Layout title="require('podcast')">
-    <Newsletter />
-    <Landing />
-    <Podcast />
-    <Hosts />
+    <NewsletterDialog />
+    <TitleSection />
+    <PodcastSection />
+    <HostsSection />
   </Layout>
 )
 

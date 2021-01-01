@@ -1,0 +1,23 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  flex-direction: column;
+  padding: 3em 0;
+}
+
+.archiveRedirect {
+  color: var(--require-red);
+  padding: 0 30px;
+
+  a {
+    color: var(--white);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

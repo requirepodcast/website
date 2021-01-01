@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 25px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  background-color: var(--bg-30);
+
+  @media screen and (max-width: 800px) {
+    border-top: 2px solid var(--require-red);
+  }
+}
+
+.button {
+  background-color: var(--bg-50);
+  font-size: 1em;
+  font-family: inherit;
+  margin: 16px 10px 0 0;
+  padding: 5px 15px;
+  cursor: pointer;
+  vertical-align: center;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--bg-60);
+    color: var(--white);
+  }
+}

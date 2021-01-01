@@ -1,1 +1,1 @@
-require("fontsource-fira-code")
+require("@fontsource/fira-code")

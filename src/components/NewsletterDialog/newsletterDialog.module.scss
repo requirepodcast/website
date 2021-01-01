@@ -1,0 +1,27 @@
+.wrapper {
+  display: block;
+  text-decoration: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  background-color: var(--bg-30);
+  color: var(--white);
+  z-index: 10;
+  transition: 0.3s ease;
+  max-width: 400px;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 3px var(--require-red);
+    color: var(--white);
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}
+
+.redText {
+  color: var(--require-red)
+}
