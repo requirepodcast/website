@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { useHeadingAnimation } from "../../hooks/useHeadingAnimation"
 import gsap from "gsap"
 import { ScrollScene } from "scrollscene"
-import IndexPagePlayer from "./indexPagePlayer"
+import IndexPagePlayer from "./IndexPagePlayer"
 
 const Container = styled.div`
   background-color: #0f111a;

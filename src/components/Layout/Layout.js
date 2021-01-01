@@ -1,7 +1,7 @@
 import React from "react"
 
-import Footer from "./Footer/footer"
-import SEO from "./seo"
+import Footer from "../Footer/Footer"
+import SEO from "../SEO/SEO"
 import "./layout.css"
 
 const Layout = ({ children, title }) => {

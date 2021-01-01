@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
-import ListItem from "./listItem"
+import ListItem from "./ListItem"
 
 const Wrapper = styled.aside`
   height: 100%;

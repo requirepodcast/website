@@ -22,7 +22,7 @@ import {
   SliderTime,
   PlayerSectionRight,
 } from "./player.styles"
-import VolumeBars from "./volumeBars"
+import VolumeBars from "./VolumeBars"
 import { usePlayerState } from "../../hooks/usePlayerState"
 import { formatSeconds } from "../../utils/formatSeconds"
 

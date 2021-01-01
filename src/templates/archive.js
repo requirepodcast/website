@@ -2,10 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import List from "../components/Archive/list"
-import EpisodeNotes from "../components/Archive/episodeNotes"
-import Player from "../components/Player/player"
+import Layout from "../components/Layout/Layout"
+import List from "../components/Archive/List"
+import EpisodeNotes from "../components/Archive/EpisodeNotes"
+import Player from "../components/Player/Player"
 import { PlayerWrapper } from "../components/Player/player.styles"
 
 const Wrapper = styled.main`

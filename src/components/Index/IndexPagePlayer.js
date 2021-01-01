@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from "react"
 import styled from "styled-components"
-import Player from "../Player/player"
+import Player from "../Player/Player"
 import { useStaticQuery, graphql } from "gatsby"
 import Ticker from "react-ticker"
 
