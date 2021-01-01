@@ -1,0 +1,63 @@
+:root {
+  --require-red: #ff5370;
+  --require-red-lighter: #ffa0b0;
+  --white: #ffffff;
+  --bg-10: #0f111a;
+  --bg-20: #141621;
+  --bg-30: #181a25;
+  --bg-40: #1d1f2d;
+  --bg-50: #2e2f3e;
+  --bg-60: #3f3f4f;
+  --gray: #ffffff88;
+}
+
+html {
+  font-family: "Fira Code", monospace;
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--bg-10);
+
+  * {
+    box-sizing: inherit;
+  }
+}
+
+*:focus {
+  outline: 1px dotted var(--require-red);
+}
+
+a[href],
+area[href],
+input:not([disabled]),
+select:not([disabled]),
+textarea:not([disabled]),
+button:not([disabled]),
+iframe,
+[tabindex],
+[contentEditable="true"] {
+  &:not([tabindex="-1"]) {
+    &:focus {
+      outline: 1px dashed var(--require-red);
+    }
+    @supports (a: focus-visible) {
+      &:focus {
+        outline: none;
+      }
+      &:focus-visible {
+        outline: 1px dashed var(--require-red);
+      }
+    }
+  }
+}
+
+a {
+  color: inherit;
+
+  &:hover {
+    color: var(--require-red);
+  }
+}

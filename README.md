@@ -1,4 +1,4 @@
-# [Require Podcast 🎙](https://require.podcast.gq)
+# [Require PodcastSection 🎙](https://require.podcast.gq)
 
 > Przemyślenia dwójki programistów - Adama i Artura - na temat nowości i wydarzeń w świecie frontendu, backendu i nie tylko.
 

@@ -1,0 +1,19 @@
+.heading {
+  margin: 0 0 0.25em 0;
+  color: var(--require-red);
+  font-size: 4em;
+  font-weight: 800;
+  @media (max-width: 750px) {
+    font-size: 3em;
+  }
+  @media (max-width: 400px) {
+    font-size: 2em;
+  }
+  &::after {
+    border-top: 2px solid var(--white);
+    display: block;
+    width: 33.3%;
+    content: "";
+    margin: 8px auto 0;
+  }
+}

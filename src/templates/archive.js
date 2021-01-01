@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout/Layout"
-import List from "../components/Archive/List"
-import EpisodeNotes from "../components/Archive/EpisodeNotes"
+import EpisodesList from "../components/EpisodeList/EpisodesList"
+import EpisodeNotes from "../components/EpisodeNotes/EpisodeNotes"
 import Player from "../components/Player/Player"
 import { PlayerWrapper } from "../components/Player/player.styles"
 
@@ -67,7 +67,7 @@ const Archive = ({ data }) => {
   return (
     <Layout title={episode.frontmatter.title}>
       <Wrapper>
-        <List episode={episode} />
+        <EpisodesList episode={episode} />
         <Episode>
           <Player
             url={episode.frontmatter.audioUrl}

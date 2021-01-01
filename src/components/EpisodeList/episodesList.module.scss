@@ -1,0 +1,85 @@
+.wrapper {
+  height: 100%;
+  width: 400px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-20);
+  text-align: center;
+  padding-bottom: 12px;
+
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.heading {
+  height: 100px;
+  line-height: 100px;
+  color: var(--require-red);
+  font-size: 2em;
+  font-weight: 800;
+  width: 100%;
+  margin: 0;
+
+  &::after {
+    border-top: 2px solid var(--white);
+    display: block;
+    width: 20%;
+    content: "";
+    margin: -26px auto 0;
+  }
+}
+
+.list {
+  overflow: auto;
+  text-align: left;
+  flex: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  margin: 0;
+  padding: 12px 12px 12px 22px;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 100%;
+  }
+
+  &:not(:first-of-type) {
+    border-top: 2px solid var(--bg-10);
+  }
+}
+
+.listItemCurrent {
+  background-color: var(--bg-30);
+
+  &:before {
+    background: linear-gradient(0deg, var(--require-red-lighter), var(--require-red));
+  }
+}
+
+.listItemHeading {
+  display: block;
+  cursor: pointer;
+  font-size: 1.1em;
+  text-decoration: none;
+  margin: 0;
+  box-sizing: content-box;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--white);
+  }
+}

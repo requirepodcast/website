@@ -2,7 +2,7 @@ import React from "react"
 
 import Footer from "../Footer/Footer"
 import SEO from "../SEO/SEO"
-import "./layout.css"
+import "../../styles/global.scss"
 
 const Layout = ({ children, title }) => {
   return (

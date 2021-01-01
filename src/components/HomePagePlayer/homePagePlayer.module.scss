@@ -1,0 +1,27 @@
+.wrapper {
+  max-width: 800px;
+  width: 100%;
+  background-color: var(--bg-40);
+  margin: 1em auto;
+}
+
+.info {
+  padding: 20px;
+  border-bottom: 1px solid var(--bg-20);
+  text-align: left;
+
+  &.ticker {
+    margin: 5px 0;
+    height: 10px;
+  }
+}
+
+.title {
+  margin: 0 0 5px 0;
+}
+
+.marqueeContent {
+  white-space: nowrap;
+  margin: 0;
+  color: #bbbbbb;
+}

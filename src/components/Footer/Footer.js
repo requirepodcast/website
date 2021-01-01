@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Link, Links, Text } from "./footer.styles"
+import styles from "./footer.module.scss"
 
 const links = [
   {
@@ -50,21 +50,27 @@ const links = [
 ]
 
 const Footer = () => (
-  <Container>
-    <Links>
+  <footer className={styles.wrapper}>
+    <section className={styles.linksWrapper}>
       {links.map(({ href, name }) => (
-        <Link href={href} key={href} target="_blank">
+        <a
+          href={href}
+          key={href}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.link}
+        >
           {name}
-        </Link>
+        </a>
       ))}
-    </Links>
-    <Text>
+    </section>
+    <section className={styles.text}>
       <p>Copyright © {new Date().getFullYear()} Require Podcast</p>
       <p>
         Kontakt: <a href="mailto:require@podcast.gq">require@podcast.gq</a>
       </p>
-    </Text>
-  </Container>
+    </section>
+  </footer>
 )
 
 export default Footer
