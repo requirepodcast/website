@@ -75,6 +75,11 @@ function SEO({ description, lang, meta, title }) {
           property: `og:image`,
           content: logo,
         },
+        {
+          name: "viewport",
+          content:
+            "width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover",
+        },
         ...meta,
       ]}
     />

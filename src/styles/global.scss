@@ -14,12 +14,16 @@
 html {
   font-family: "Fira Code", monospace;
   color: #fff;
+  height: -webkit-fill-available;
 }
 
 body {
   margin: 0;
   box-sizing: border-box;
   background-color: var(--bg-10);
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
 
   * {
     box-sizing: inherit;

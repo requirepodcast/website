@@ -35,8 +35,9 @@ const EpisodesList = ({ episode: currentEpisode }) => {
       <h1 className={styles.heading}>Odcinki</h1>
       <ul className={styles.list}>
         {episodes
-          .map((episode, i) => (
+          .map((episode) => (
             <li
+              key={episode.id}
               className={clsx(
                 styles.listItem,
                 episode.childMarkdownRemark.frontmatter.slug ===

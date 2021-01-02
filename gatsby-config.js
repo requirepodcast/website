@@ -16,7 +16,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#0f111a`,
         theme_color: `#FF5370`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/require_mark_transparent.svg`,
       },
     },
