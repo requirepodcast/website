@@ -4,9 +4,10 @@
   font-size: 5em;
   font-weight: 800;
 
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     font-size: 4em;
   }
+
   @media (max-width: 400px) {
     font-size: 3em;
   }
@@ -27,7 +28,6 @@
 }
 
 .wrapper {
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,6 +37,11 @@
   background-size: contain;
   flex-direction: column;
   background-image: url("../../images/background.png");
+  padding: 0.5em;
+
+  @media (max-width: 800px) {
+    padding-bottom: 7em;
+  }
 
   &::after {
     content: url("../../images/chevron_down.svg");
