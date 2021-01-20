@@ -46,7 +46,7 @@ const HomePagePlayer = forwardRef((props, ref) => {
         onMouseEnter={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
       >
-        <h4 className={styles.title}>{title}</h4>
+        <h3 className={styles.title}>{title}</h3>
         <Ticker speed={10} mode="await" move={playing || mouseOver}>
           {() => <p className={styles.marqueeContent}>{shortDescription}</p>}
         </Ticker>
