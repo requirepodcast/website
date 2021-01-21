@@ -9,7 +9,7 @@ html {
 body {
   margin: 0;
   box-sizing: border-box;
-  background-color: var(--bg-10);
+  background-color: colors.$bg-10;
   min-height: 100vh;
   /* mobile viewport bug fix */
   min-height: -webkit-fill-available;
