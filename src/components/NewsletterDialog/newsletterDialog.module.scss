@@ -1,3 +1,5 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
   display: block;
   text-decoration: none;
@@ -5,16 +7,16 @@
   bottom: 20px;
   right: 20px;
   padding: 20px;
-  background-color: var(--bg-30);
-  color: var(--white);
+  background-color: colors.$bg-30;
+  color: colors.$white;
   z-index: 10;
   transition: 0.3s ease;
   max-width: 400px;
 
   &:hover,
   &:focus {
-    box-shadow: 0 0 0 3px var(--require-red);
-    color: var(--white);
+    box-shadow: 0 0 0 3px colors.$require-red;
+    color: colors.$white;
   }
 
   @media (max-width: 800px) {
@@ -26,5 +28,5 @@
 }
 
 .redText {
-  color: var(--require-red)
+  color: colors.$require-red
 }

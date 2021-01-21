@@ -1,3 +1,5 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
   height: 100vh;
   display: flex;
@@ -51,7 +53,7 @@
       left: 0;
       z-index: 1;
       width: 100%;
-      border-top: 1px solid var(--bg-20);
+      border-top: 1px solid colors.$bg-20;
     }
   }
 }

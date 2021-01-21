@@ -1,6 +1,8 @@
+@use '../../styles/variables' as colors;
+
 .heading {
   margin: 0 0 0.25em 0;
-  color: var(--require-red);
+  color: colors.$require-red;
   font-size: 4em;
   font-weight: 800;
   @media (max-width: 750px) {
@@ -10,7 +12,7 @@
     font-size: 2em;
   }
   &::after {
-    border-top: 2px solid var(--white);
+    border-top: 2px solid colors.$white;
     display: block;
     width: 33.3%;
     content: "";
