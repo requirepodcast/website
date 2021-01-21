@@ -1,5 +1,7 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
-  background-color: var(--bg-20);
+  background-color: colors.$bg-20;
   padding: 2em 6em;
   display: flex;
   align-items: center;
@@ -21,7 +23,7 @@
   }
 
   &:before {
-    border-top: 2px solid var(--require-red);
+    border-top: 2px solid colors.$require-red;
     display: block;
     width: 100%;
     content: "";
@@ -31,19 +33,19 @@
 }
 
 .link {
-  color: var(--gray);
+  color: colors.$gray;
   font-size: 1em;
   text-decoration: none;
   display: block;
   font-weight: 100;
 
   &:hover {
-    color: var(--white);
+    color: colors.$white;
   }
 }
 
 .text {
-  color: var(--gray);
+  color: colors.$gray;
   font-size: 1em;
   font-weight: 100;
   text-align: right;
@@ -58,7 +60,7 @@
   }
 
   &:before {
-    border-top: 2px solid var(--require-red);
+    border-top: 2px solid colors.$require-red;
     display: block;
     width: 100%;
     content: "";

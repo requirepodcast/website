@@ -1,3 +1,5 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
   height: 100%;
   width: 400px;
@@ -5,7 +7,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-20);
+  background-color: colors.$bg-20;
   text-align: center;
   padding-bottom: 12px;
 
@@ -18,14 +20,14 @@
 .heading {
   height: 100px;
   line-height: 100px;
-  color: var(--require-red);
+  color: colors.$require-red;
   font-size: 2em;
   font-weight: 800;
   width: 100%;
   margin: 0;
 
   &::after {
-    border-top: 2px solid var(--white);
+    border-top: 2px solid colors.$white;
     display: block;
     width: 20%;
     content: "";
@@ -58,15 +60,15 @@
   }
 
   &:not(:first-of-type) {
-    border-top: 2px solid var(--bg-10);
+    border-top: 2px solid colors.$bg-10;
   }
 }
 
 .listItemCurrent {
-  background-color: var(--bg-30);
+  background-color: colors.$bg-30;
 
   &:before {
-    background: linear-gradient(0deg, var(--require-red-lighter), var(--require-red));
+    background: linear-gradient(0deg, colors.$require-red-lighter, colors.$require-red);
   }
 }
 
@@ -80,6 +82,6 @@
 
   &:hover {
     text-decoration: underline;
-    color: var(--white);
+    color: colors.$white;
   }
 }

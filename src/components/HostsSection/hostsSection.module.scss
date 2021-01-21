@@ -1,3 +1,5 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -27,11 +29,11 @@
   }
 
   &:last-child {
-    border-left: 1px solid var(--bg-60);
+    border-left: 1px solid colors.$bg-60;
 
     @media (max-width: 550px) {
       border-left: none;
-      border-top: 1px solid var(--bg-60);
+      border-top: 1px solid colors.$bg-60;
     }
   }
 }
@@ -42,7 +44,7 @@
 }
 
 .name {
-  color: var(--white);
+  color: colors.$white;
   font-size: 1em;
   font-weight: 400;
   margin: 1em 0;
@@ -50,7 +52,7 @@
 }
 
 .link {
-  color: var(--require-red);
+  color: colors.$require-red;
   font-size: 0.75em;
   font-weight: 400;
   text-align: center;

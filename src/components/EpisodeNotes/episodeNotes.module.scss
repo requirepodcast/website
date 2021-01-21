@@ -1,17 +1,19 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
   padding: 25px;
   flex: 1;
   overflow-y: auto;
   overflow-wrap: break-word;
-  background-color: var(--bg-30);
+  background-color: colors.$bg-30;
 
   @media screen and (max-width: 800px) {
-    border-top: 2px solid var(--require-red);
+    border-top: 2px solid colors.$require-red;
   }
 }
 
 .button {
-  background-color: var(--bg-50);
+  background-color: colors.$bg-50;
   font-size: 1em;
   font-family: inherit;
   margin: 16px 10px 0 0;
@@ -22,7 +24,7 @@
   text-decoration: none;
 
   &:hover {
-    background-color: var(--bg-60);
-    color: var(--white);
+    background-color: colors.$bg-60;
+    color: colors.$white;
   }
 }

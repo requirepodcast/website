@@ -1,3 +1,5 @@
+@use '../../styles/variables' as colors;
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -10,11 +12,11 @@
 }
 
 .archiveRedirect {
-  color: var(--require-red);
+  color: colors.$require-red;
   padding: 0 30px;
 
   a {
-    color: var(--white);
+    color: colors.$white;
 
     &:hover {
       text-decoration: none;
