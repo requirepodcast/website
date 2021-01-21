@@ -5,7 +5,7 @@ module.exports = ({ markdownAST }) => {
     const url = node.url
     const text = node.children[0].value
 
-    const html = `<a href="${url}" target="_blank">${text}</a>`
+    const html = `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`
     node.type = "html"
     delete node.children
     delete node.url
