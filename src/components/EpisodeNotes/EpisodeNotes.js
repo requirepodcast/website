@@ -17,6 +17,7 @@ const EpisodeNotes = ({ episode }) => (
       className={styles.button}
       href={getDownloadLink(episode.frontmatter.audioUrl)}
       target="_blank"
+      rel="noopener noreferrer"
       download
     >
       Pobierz odcinek{" "}
@@ -28,6 +29,7 @@ const EpisodeNotes = ({ episode }) => (
       className={styles.button}
       href={episode.frontmatter.youtubeUrl}
       target="_blank"
+      rel="noopener noreferrer"
     >
       Odcinek na YouTube{" "}
       <span role="img" aria-label="">
@@ -38,6 +40,7 @@ const EpisodeNotes = ({ episode }) => (
       className={styles.button}
       href={episode.frontmatter.spotifyUrl}
       target="_blank"
+      rel="noopener noreferrer"
     >
       Przesłuchaj na Spotify{" "}
       <span role="img" aria-label="">
