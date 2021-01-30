@@ -1,10 +1,10 @@
-import React, { forwardRef, useState } from "react"
+import React, { HTMLProps, useState } from "react"
 import Player from "../Player/Player"
 import { useStaticQuery, graphql } from "gatsby"
 import Ticker from "react-ticker"
 import styles from "./homePagePlayer.module.scss"
 
-const HomePagePlayer = forwardRef((props, ref) => {
+const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
   const [playing, setPlaying] = useState(false)
   const [mouseOver, setMouseOver] = useState(false)
 
@@ -12,10 +12,7 @@ const HomePagePlayer = forwardRef((props, ref) => {
     query IndexPageQuery {
       allFile(
         filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: {
-          order: DESC
-          fields: childMarkdownRemark___frontmatter___publicationDate
-        }
+        sort: { order: DESC, fields: childMarkdownRemark___frontmatter___publicationDate }
         limit: 1
       ) {
         nodes {
@@ -40,7 +37,7 @@ const HomePagePlayer = forwardRef((props, ref) => {
   } = data.allFile.nodes[0].childMarkdownRemark.frontmatter
 
   return (
-    <section className={styles.wrapper} {...props} ref={ref}>
+    <section className={styles.wrapper} {...props}>
       <div
         className={styles.info}
         onMouseEnter={() => setMouseOver(true)}
@@ -60,6 +57,6 @@ const HomePagePlayer = forwardRef((props, ref) => {
       />
     </section>
   )
-})
+}
 
 export default HomePagePlayer

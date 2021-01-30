@@ -1,13 +1,18 @@
 import React from "react"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import styles from "./episodeNotes.module.scss"
+import { Episode } from "../../types"
 
 function getDownloadLink(link) {
   const [uri] = link.split("/").slice(-1)
   return decodeURIComponent(uri)
 }
 
-const EpisodeNotes = ({ episode }) => (
+type EpisodeNotesProps = {
+  episode: Episode
+}
+
+const EpisodeNotes = ({ episode }: EpisodeNotesProps) => (
   <section className={styles.wrapper}>
     <time style={{ fontSize: "1.2em", color: "#ffffff88" }}>
       {episode.frontmatter.publicationDate}

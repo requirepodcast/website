@@ -1,10 +1,13 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 
 import Layout from "../components/Layout/Layout"
 import Archive from "../components/Archive/Archive"
+import { Episode } from "../types"
 
-const ArchivePage = ({ data }) => {
+type ArchivePageProps = PageProps<{ file: { childMarkdownRemark: Episode } }>
+
+const ArchivePage = ({ data }: ArchivePageProps) => {
   const episode = data.file.childMarkdownRemark
 
   return (

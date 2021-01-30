@@ -53,13 +53,7 @@ const Footer = () => (
   <footer className={styles.wrapper}>
     <section className={styles.linksWrapper}>
       {links.map(({ href, name }) => (
-        <a
-          href={href}
-          key={href}
-          target="_blank"
-          rel="noreferrer"
-          className={styles.link}
-        >
+        <a href={href} key={href} target="_blank" rel="noreferrer" className={styles.link}>
           {name}
         </a>
       ))}

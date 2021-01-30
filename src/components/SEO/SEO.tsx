@@ -6,7 +6,14 @@ import { useStaticQuery, graphql } from "gatsby"
 import logo from "../../images/logo.png"
 import icon from "../../images/require_mark_transparent.svg"
 
-function SEO({ description, lang, meta, title }) {
+type SEOProps = {
+  description: string
+  lang: string
+  meta: React.DetailedHTMLProps<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[]
+  title: string
+}
+
+function SEO({ description, lang, meta, title }: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -77,8 +84,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: "viewport",
-          content:
-            "width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover",
+          content: "width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover",
         },
         ...meta,
       ]}

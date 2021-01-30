@@ -5,16 +5,12 @@ exports.createPages = async function ({ actions, graphql }) {
     query EpisodesQuery {
       allFile(
         filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: {
-          order: ASC
-          fields: childMarkdownRemark___frontmatter___publicationDate
-        }
+        sort: { order: ASC, fields: childMarkdownRemark___frontmatter___publicationDate }
       ) {
         edges {
           node {
             id
             childMarkdownRemark {
-              rawMarkdownBody
               html
               frontmatter {
                 audioUrl
@@ -38,7 +34,7 @@ exports.createPages = async function ({ actions, graphql }) {
 
   actions.createPage({
     path: "/archive",
-    component: require.resolve("./src/templates/archive.js"),
+    component: require.resolve("./src/templates/archive.tsx"),
     context: { id: lastEpisode.node.id },
   })
 
@@ -50,7 +46,7 @@ exports.createPages = async function ({ actions, graphql }) {
 
     actions.createPage({
       path,
-      component: require.resolve("./src/templates/archive.js"),
+      component: require.resolve("./src/templates/archive.tsx"),
       context: { id },
     })
   }

@@ -8,7 +8,7 @@ const TitleSection = () => {
 
   const {
     site: { siteMetadata },
-  } = useStaticQuery(graphql`
+  } = useStaticQuery<{ site: { siteMetadata: { description: string } } }>(graphql`
     {
       site {
         siteMetadata {
