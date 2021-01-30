@@ -83,6 +83,14 @@ function SEO({ description, lang, meta, title }: SEOProps) {
           content: logo,
         },
         {
+          property: "og:locale",
+          content: "pl_PL",
+        },
+        {
+          name: "google-site-verification",
+          content: "I-h8BzXpQxJaJ7wuYP-Yaku4chRaDrzRSQLboutsrto",
+        },
+        {
           name: "viewport",
           content: "width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover",
         },

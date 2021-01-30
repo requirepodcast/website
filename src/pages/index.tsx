@@ -8,7 +8,13 @@ import HostsSection from "../components/HostsSection/HostsSection"
 import NewsletterDialog from "../components/NewsletterDialog/NewsletterDialog"
 
 const IndexPage = () => (
-  <Layout title="require('podcast')">
+  <Layout
+    title="require('podcast')"
+    meta={[
+      { name: "robots", content: "index, follow" },
+      { name: "googlebot", content: "index, follow" },
+    ]}
+  >
     <NewsletterDialog />
     <TitleSection />
     <PodcastSection />

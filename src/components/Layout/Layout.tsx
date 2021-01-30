@@ -8,12 +8,15 @@ import "../../styles/global.scss"
 type LayoutProps = {
   children: ReactNode
   title: string
+  description?: string
+  lang?: string
+  meta?: React.DetailedHTMLProps<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[]
 }
 
-const Layout = ({ children, title }: LayoutProps) => {
+const Layout = ({ children, ...seo }: LayoutProps) => {
   return (
     <>
-      <SEO title={title} />
+      <SEO {...seo} />
       {children}
       <Footer />
     </>

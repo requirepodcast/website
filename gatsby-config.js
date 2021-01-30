@@ -1,4 +1,19 @@
-require("dotenv").config()
+function getNodes(results) {
+  if (`nodes` in results) {
+    return { allPages: results.nodes, originalType: `nodes` }
+  }
+
+  if (`edges` in results) {
+    return {
+      allPages: results?.edges?.map((edge) => edge.node),
+      originalType: `edges`,
+    }
+  }
+}
+
+function isArchivePage(path) {
+  return /\/archive*/.test(path)
+}
 
 module.exports = {
   siteMetadata: {
@@ -53,7 +68,21 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        serialize: ({ site, allSitePage }) => {
+          const { allPages } = getNodes(allSitePage)
+          return allPages?.map((page) => {
+            return {
+              url: `${site.siteMetadata?.siteUrl ?? ``}${page.path}`,
+              changefreq: `weekly`,
+              priority: isArchivePage(page.path) ? 0.5 : 0.9,
+            }
+          })
+        },
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
   ],

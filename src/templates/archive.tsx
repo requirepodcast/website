@@ -11,7 +11,15 @@ const ArchivePage = ({ data }: ArchivePageProps) => {
   const episode = data.file.childMarkdownRemark
 
   return (
-    <Layout title={episode.frontmatter.title}>
+    <Layout
+      title={episode.frontmatter.title}
+      description={episode.frontmatter.shortDescription}
+      meta={[
+        { name: "robots", content: "index, follow" },
+        { name: "googlebot", content: "index, follow" },
+        { property: "og:site_name", content: "Require Podcast" },
+      ]}
+    >
       <Archive episode={episode} />
     </Layout>
   )
