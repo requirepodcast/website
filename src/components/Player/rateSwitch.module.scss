@@ -4,6 +4,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .label {
@@ -25,6 +26,6 @@
   align-items: center;
   text-align: center;
   font-size: 15px;
-  margin: 5px;
+  width: 5ch;
   cursor: pointer;
 }
