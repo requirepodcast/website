@@ -75,7 +75,7 @@ module.exports = {
           const { allPages } = getNodes(allSitePage)
           return allPages.map((page) => {
             return {
-              url: `${site.siteMetadata.siteUrl ?? ``}${page.path}`,
+              url: `${site.siteMetadata.siteUrl}${page.path}`,
               changefreq: `weekly`,
               priority: isArchivePage(page.path) ? 0.5 : 0.9,
             }
