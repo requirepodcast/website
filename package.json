@@ -34,6 +34,8 @@
     "unist-util-visit": "2.0.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
     "@types/jest": "26.0.20",
     "@types/react-helmet": "6.1.0",
     "@types/react-test-renderer": "17.0.0",
