@@ -14,6 +14,7 @@ import { usePlayerState } from "../../hooks/usePlayerState"
 import { formatSeconds } from "../../utils/formatSeconds"
 import styles from "./player.module.scss"
 import clsx from "clsx"
+import RateSwitch from "./RateSwitch"
 
 type PlayerProps = {
   url: string
@@ -32,16 +33,14 @@ const Player = ({ url, onPlay, onPause, slug, title }: PlayerProps) => {
     duration,
     volume,
     triggerPlayer,
+    seek,
     audioRef,
-
-    playHandler,
-    pauseHandler,
-    metadataHandler,
-    timeUpdateHandler,
-    sliderSeekHandler,
-    buttonSeekHandler,
-    volumeHandler,
+    setVolume,
     sliderRef,
+    handleSliderSeek,
+    handlers,
+    rate,
+    setRate,
   } = usePlayerState({ onPlay, onPause, slug, title })
 
   return (
@@ -63,7 +62,7 @@ const Player = ({ url, onPlay, onPause, slug, title }: PlayerProps) => {
         </time>
       </section>
       <section className={styles.sectionCenter}>
-        <div className={styles.slider} ref={sliderRef} onClick={sliderSeekHandler}>
+        <div className={styles.slider} ref={sliderRef} onClick={handleSliderSeek}>
           <div
             className={clsx(styles.sliderTime, playing && styles.sliderTimePlaying)}
             style={{ width: `${progress * 100}%` }}
@@ -72,45 +71,40 @@ const Player = ({ url, onPlay, onPause, slug, title }: PlayerProps) => {
         <div className={styles.timeButtons}>
           <button
             className={styles.timeButton}
-            onClick={() => buttonSeekHandler(-30)}
+            onClick={() => seek(-30)}
             aria-label="Cofnij o 30 sekund"
           >
-            <Icon className={styles.timeButtonIcon} path={mdiRewind30} size={1} />
+            <Icon className={styles.timeButtonIcon} path={mdiRewind30} size={0.9} />
           </button>
           <button
             className={styles.timeButton}
-            onClick={() => buttonSeekHandler(-10)}
+            onClick={() => seek(-10)}
             aria-label="Cofnij o 10 sekund"
           >
-            <Icon className={styles.timeButtonIcon} path={mdiRewind10} size={1} />
+            <Icon className={styles.timeButtonIcon} path={mdiRewind10} size={0.9} />
           </button>
           <button
             className={styles.timeButton}
-            onClick={() => buttonSeekHandler(10)}
+            onClick={() => seek(10)}
             aria-label="Do przodu o 10 sekund"
           >
-            <Icon className={styles.timeButtonIcon} path={mdiFastForward10} size={1} />
+            <Icon className={styles.timeButtonIcon} path={mdiFastForward10} size={0.9} />
           </button>
           <button
             className={styles.timeButton}
-            onClick={() => buttonSeekHandler(30)}
+            onClick={() => seek(30)}
             aria-label="Do przodu o 30 sekund"
           >
-            <Icon className={styles.timeButtonIcon} path={mdiFastForward30} size={1} />
+            <Icon className={styles.timeButtonIcon} path={mdiFastForward30} size={0.9} />
           </button>
         </div>
-        <audio
-          ref={audioRef}
-          src={url}
-          preload="metadata"
-          onPlay={playHandler}
-          onPause={pauseHandler}
-          onLoadedMetadata={metadataHandler}
-          onTimeUpdate={timeUpdateHandler}
-        />
+        <audio ref={audioRef} src={url} preload="metadata" {...handlers} />
       </section>
       <section className={styles.sectionRight}>
-        <VolumeBars volume={volume} setVolume={volumeHandler} />
+        <RateSwitch rate={rate} setRate={setRate} />
+      </section>
+      <section className={styles.sectionRight}>
+        <VolumeBars volume={volume} setVolume={setVolume} />
       </section>
     </div>
   )

@@ -2,7 +2,7 @@
   "name": "require-podcast",
   "private": true,
   "description": "Polski podcast na temat JavaScriptu i nie tylko. \"Na luzie\" o technologiach frontendowych, przez nowości ze świata IT, po frameworki na backendzie!",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "Adam Siekierski & Artur Dudek",
   "dependencies": {
     "@fontsource/fira-code": "4.1.0",
@@ -35,9 +35,11 @@
   },
   "devDependencies": {
     "@types/react-helmet": "6.1.0",
+    "@typescript-eslint/eslint-plugin": "4.14.1",
+    "@typescript-eslint/parser": "4.14.1",
     "eslint-config-react-app": "6.0.0",
     "prettier": "2.0.2",
-    "typescript": "4.1.3"
+    "typescript": "^4.1.3"
   },
   "keywords": [
     "require podcast",

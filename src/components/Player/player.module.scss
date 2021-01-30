@@ -10,14 +10,19 @@
 }
 
 .sectionLeft {
-  width: 100px;
   height: 100%;
+  width: 100px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-right: solid 1px colors.$bg-20;
+
+  @media screen and (max-width: 800px) {
+    width: auto;
+    padding: 10px;
+  }
 }
 
 .sectionCenter {
@@ -28,9 +33,9 @@
 }
 
 .sectionRight {
-  width: 75px;
   height: 100%;
   border-left: solid 1px colors.$bg-20;
+  padding: 10px;
 }
 
 .playButton {

@@ -23,7 +23,8 @@ export const usePlayerState = ({
   const [time, setTime] = useState<number>(0)
   const [progress, setProgress] = useState<number>(0)
   const [duration, setDuration] = useState<number>(0)
-  const [volume, setVolume] = useState<number>(1)
+  const [volume, setVolumeState] = useState<number>(1)
+  const [rate, setRateState] = useState<number>(1)
 
   const audioRef = useRef<HTMLAudioElement>()
   const intervalRef = useRef<ReturnType<typeof setInterval>>()
@@ -35,6 +36,8 @@ export const usePlayerState = ({
       setLoading(false)
     }
   })
+
+  /* User-trigggered actions */
 
   function triggerPlayer() {
     setPlaying((prev) => {
@@ -50,6 +53,41 @@ export const usePlayerState = ({
       return !prev
     })
   }
+
+  function seek(t: number) {
+    const duration = audioRef.current.duration
+
+    if (duration) {
+      audioRef.current.currentTime = time + t
+
+      setTime(audioRef.current.currentTime)
+      setProgress(audioRef.current.currentTime / duration)
+    }
+  }
+
+  function setVolume(vol: number) {
+    audioRef.current.volume = vol
+    setVolumeState(vol)
+  }
+
+  function setRate(s: number) {
+    audioRef.current.playbackRate = s
+    setRateState(s)
+  }
+
+  function handleSliderSeek(e: SyntheticEvent<HTMLDivElement, MouseEvent>) {
+    const duration = audioRef.current.duration
+
+    if (duration) {
+      audioRef.current.currentTime =
+        (e.nativeEvent.offsetX / sliderRef.current.clientWidth) * duration
+
+      setTime(audioRef.current.currentTime)
+      setProgress(audioRef.current.currentTime / duration)
+    }
+  }
+
+  /* Player-triggered events */
 
   function playHandler() {
     onPlay && onPlay()
@@ -98,36 +136,8 @@ export const usePlayerState = ({
   }
 
   function timeUpdateHandler(e: SyntheticEvent<HTMLAudioElement>) {
-    setDuration((<HTMLAudioElement>e.target).duration)
+    setDuration((e.target as HTMLAudioElement).duration)
     setLoading(false)
-  }
-
-  function sliderSeekHandler(e: SyntheticEvent<HTMLDivElement, MouseEvent>) {
-    const duration = audioRef.current.duration
-
-    if (duration) {
-      audioRef.current.currentTime =
-        (e.nativeEvent.offsetX / sliderRef.current.clientWidth) * duration
-
-      setTime(audioRef.current.currentTime)
-      setProgress(audioRef.current.currentTime / duration)
-    }
-  }
-
-  function buttonSeekHandler(t: number) {
-    const duration = audioRef.current.duration
-
-    if (duration) {
-      audioRef.current.currentTime = time + t
-
-      setTime(audioRef.current.currentTime)
-      setProgress(audioRef.current.currentTime / duration)
-    }
-  }
-
-  function volumeHandler(vol: number) {
-    audioRef.current.volume = vol
-    setVolume(vol)
   }
 
   return {
@@ -137,16 +147,23 @@ export const usePlayerState = ({
     progress,
     duration,
     volume,
-    triggerPlayer,
+    rate,
+
     audioRef,
     sliderRef,
 
-    playHandler,
-    pauseHandler,
-    metadataHandler,
-    timeUpdateHandler,
-    sliderSeekHandler,
-    buttonSeekHandler,
-    volumeHandler,
+    triggerPlayer,
+    setVolume,
+    seek,
+    setRate,
+
+    handleSliderSeek,
+
+    handlers: {
+      onPlay: playHandler,
+      onPause: pauseHandler,
+      onLoadedMetadata: metadataHandler,
+      onTimeUpdate: timeUpdateHandler,
+    },
   }
 }
