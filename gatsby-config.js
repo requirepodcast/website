@@ -5,7 +5,7 @@ function getNodes(results) {
 
   if (`edges` in results) {
     return {
-      allPages: results?.edges?.map((edge) => edge.node),
+      allPages: results.edges.map((edge) => edge.node),
       originalType: `edges`,
     }
   }
@@ -73,9 +73,9 @@ module.exports = {
       options: {
         serialize: ({ site, allSitePage }) => {
           const { allPages } = getNodes(allSitePage)
-          return allPages?.map((page) => {
+          return allPages.map((page) => {
             return {
-              url: `${site.siteMetadata?.siteUrl ?? ``}${page.path}`,
+              url: `${site.siteMetadata.siteUrl}${page.path}`,
               changefreq: `weekly`,
               priority: isArchivePage(page.path) ? 0.5 : 0.9,
             }
