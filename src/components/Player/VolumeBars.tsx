@@ -11,7 +11,7 @@ const bars = [0.2, 0.4, 0.6, 0.8, 1]
 
 const VolumeBars = ({ setVolume, volume }: VolumeBarsProps) => (
   <div className={styles.wrapper}>
-    <div className={styles.label}>Głośność</div>
+    <p className={styles.label}>Głośność</p>
     {bars
       .map((bar) => (
         <button
