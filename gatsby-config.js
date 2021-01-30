@@ -56,5 +56,11 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        jsxPragma: `react`,
+      },
+    },
   ],
 }

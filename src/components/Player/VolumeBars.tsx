@@ -1,3 +1,4 @@
+import React from "react"
 import { lighten } from "polished"
 import styles from "./volumeBars.module.scss"
 

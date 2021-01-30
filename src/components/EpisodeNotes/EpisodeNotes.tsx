@@ -1,3 +1,4 @@
+import React from "react"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import styles from "./episodeNotes.module.scss"
 import { Episode } from "../../types"

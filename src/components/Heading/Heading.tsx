@@ -1,3 +1,4 @@
+import React from "react"
 import styles from "./heading.module.scss"
 
 const Heading = ({ children }) => {

@@ -1,3 +1,4 @@
+import React from "react"
 import { graphql, PageProps } from "gatsby"
 
 import Layout from "../components/Layout/Layout"

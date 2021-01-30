@@ -1,3 +1,4 @@
+import React from "react"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import { OutboundLink } from "gatsby-plugin-google-gtag"

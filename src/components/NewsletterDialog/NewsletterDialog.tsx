@@ -1,3 +1,4 @@
+import React from "react"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import styles from "./newsletterDialog.module.scss"
 

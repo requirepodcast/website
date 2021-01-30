@@ -1,3 +1,4 @@
+import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import clsx from "clsx"
 import styles from "./episodesList.module.scss"

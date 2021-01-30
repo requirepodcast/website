@@ -1,3 +1,4 @@
+import React from "react"
 import styles from "./archive.module.scss"
 import EpisodesList from "../EpisodeList/EpisodesList"
 import Player from "../Player/Player"

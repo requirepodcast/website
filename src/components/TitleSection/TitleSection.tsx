@@ -1,3 +1,4 @@
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styles from "./titleSection.module.scss"
 import { use100vh } from "../../hooks/use100vh"

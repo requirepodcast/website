@@ -1,4 +1,4 @@
-import { HTMLProps, useState } from "react"
+import React, { HTMLProps, useState } from "react"
 import Player from "../Player/Player"
 import { useStaticQuery, graphql } from "gatsby"
 import Ticker from "react-ticker"
