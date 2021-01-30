@@ -1,4 +1,3 @@
-import React from "react"
 import HomePagePlayer from "../HomePagePlayer/HomePagePlayer"
 import { Link } from "gatsby"
 import Heading from "../Heading/Heading"

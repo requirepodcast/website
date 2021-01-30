@@ -24,16 +24,14 @@ function measureHeight() {
 }
 
 function useWasRenderedOnClientAtLeastOnce() {
-  const [
-    wasRenderedOnClientAtLeastOnce,
-    setWasRenderedOnClientAtLeastOnce,
-  ] = useState(false)
+  const [wasRenderedOnClientAtLeastOnce, setWasRenderedOnClientAtLeastOnce] = useState(false)
 
   useEffect(() => {
     if (isClient()) {
       setWasRenderedOnClientAtLeastOnce(true)
     }
   }, [])
+
   return wasRenderedOnClientAtLeastOnce
 }
 

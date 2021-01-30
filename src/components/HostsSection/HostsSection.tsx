@@ -1,4 +1,3 @@
-import React from "react"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
@@ -30,26 +29,17 @@ const HostsSection = () => {
       <Heading>Prowadzący</Heading>
       <div className={styles.hosts}>
         <section className={styles.host}>
-          <Img
-            className={styles.avatar}
-            fixed={data.artur.childImageSharp.fixed}
-          />
+          <Img className={styles.avatar} fixed={data.artur.childImageSharp.fixed} />
           <h3 className={styles.name}>Artur Dudek</h3>
           <OutboundLink className={styles.link} href="mailto:artur@dudek.ga">
             artur@dudek.ga
           </OutboundLink>
-          <OutboundLink
-            className={styles.link}
-            href="https://twitter.com/arturdudek_"
-          >
+          <OutboundLink className={styles.link} href="https://twitter.com/arturdudek_">
             @arturdudek_
           </OutboundLink>
         </section>
         <section className={styles.host}>
-          <Img
-            className={styles.avatar}
-            fixed={data.adam.childImageSharp.fixed}
-          />
+          <Img className={styles.avatar} fixed={data.adam.childImageSharp.fixed} />
           <h3 className={styles.name}>Adam Siekierski</h3>
           <OutboundLink className={styles.link} href="mailto:a@siekierski.ml">
             a@siekierski.ml

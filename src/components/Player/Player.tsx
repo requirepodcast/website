@@ -1,4 +1,3 @@
-import React from "react"
 import { Icon } from "@mdi/react"
 import {
   mdiPause,
@@ -15,7 +14,15 @@ import { formatSeconds } from "../../utils/formatSeconds"
 import styles from "./player.module.scss"
 import clsx from "clsx"
 
-const Player = ({ url, onPlay, onPause, slug, title }) => {
+type PlayerProps = {
+  url: string
+  onPlay?: () => void
+  onPause?: () => void
+  slug: string
+  title: string
+}
+
+const Player = ({ url, onPlay, onPause, slug, title }: PlayerProps) => {
   const {
     loading,
     playing,
@@ -55,16 +62,9 @@ const Player = ({ url, onPlay, onPause, slug, title }) => {
         </time>
       </section>
       <section className={styles.sectionCenter}>
-        <div
-          className={styles.slider}
-          ref={sliderRef}
-          onClick={sliderSeekHandler}
-        >
+        <div className={styles.slider} ref={sliderRef} onClick={sliderSeekHandler}>
           <div
-            className={clsx(
-              styles.sliderTime,
-              playing && styles.sliderTimePlaying
-            )}
+            className={clsx(styles.sliderTime, playing && styles.sliderTimePlaying)}
             style={{ width: `${progress * 100}%` }}
           />
         </div>
@@ -74,44 +74,28 @@ const Player = ({ url, onPlay, onPause, slug, title }) => {
             onClick={() => buttonSeekHandler(-30)}
             aria-label="Cofnij o 30 sekund"
           >
-            <Icon
-              className={styles.timeButtonIcon}
-              path={mdiRewind30}
-              size={1}
-            />
+            <Icon className={styles.timeButtonIcon} path={mdiRewind30} size={1} />
           </button>
           <button
             className={styles.timeButton}
             onClick={() => buttonSeekHandler(-10)}
             aria-label="Cofnij o 10 sekund"
           >
-            <Icon
-              className={styles.timeButtonIcon}
-              path={mdiRewind10}
-              size={1}
-            />
+            <Icon className={styles.timeButtonIcon} path={mdiRewind10} size={1} />
           </button>
           <button
             className={styles.timeButton}
             onClick={() => buttonSeekHandler(10)}
             aria-label="Do przodu o 10 sekund"
           >
-            <Icon
-              className={styles.timeButtonIcon}
-              path={mdiFastForward10}
-              size={1}
-            />
+            <Icon className={styles.timeButtonIcon} path={mdiFastForward10} size={1} />
           </button>
           <button
             className={styles.timeButton}
             onClick={() => buttonSeekHandler(30)}
             aria-label="Do przodu o 30 sekund"
           >
-            <Icon
-              className={styles.timeButtonIcon}
-              path={mdiFastForward30}
-              size={1}
-            />
+            <Icon className={styles.timeButtonIcon} path={mdiFastForward30} size={1} />
           </button>
         </div>
         <audio

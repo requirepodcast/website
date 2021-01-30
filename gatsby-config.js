@@ -33,18 +33,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          `gatsby-remark-target-blank`,
-          {
-            resolve: `gatsby-remark-images-contentful`,
-            options: {
-              maxWidth: 900,
-              linkImagesToOriginal: false,
-              backgroundColor: "transparent",
-              withWebp: true,
-            },
-          },
-        ],
+        plugins: [`gatsby-remark-target-blank`],
       },
     },
     {

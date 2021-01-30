@@ -1,17 +1,33 @@
-import { useRef, useState } from "react"
+import { SyntheticEvent, useRef, useState } from "react"
 import { useMount } from "./useMount"
 
-export const usePlayerState = ({ onPlay, onPause, slug, title }) => {
-  const [loading, setLoading] = useState(true)
-  const [playing, setPlaying] = useState(false)
-  const [time, setTime] = useState(0)
-  const [progress, setProgress] = useState(0)
-  const [duration, setDuration] = useState(0)
-  const [volume, setVolume] = useState(1)
+declare global {
+  interface Window {
+    gtag: any
+  }
+}
 
-  const audioRef = useRef()
-  const intervalRef = useRef()
-  const sliderRef = useRef()
+export const usePlayerState = ({
+  onPlay,
+  onPause,
+  slug,
+  title,
+}: {
+  onPlay: () => void
+  onPause: () => void
+  slug: string
+  title: string
+}) => {
+  const [loading, setLoading] = useState<boolean>(true)
+  const [playing, setPlaying] = useState<boolean>(false)
+  const [time, setTime] = useState<number>(0)
+  const [progress, setProgress] = useState<number>(0)
+  const [duration, setDuration] = useState<number>(0)
+  const [volume, setVolume] = useState<number>(1)
+
+  const audioRef = useRef<HTMLAudioElement>()
+  const intervalRef = useRef<ReturnType<typeof setInterval>>()
+  const sliderRef = useRef<HTMLDivElement>()
 
   useMount(() => {
     if (audioRef.current?.readyState > 0) {
@@ -47,7 +63,7 @@ export const usePlayerState = ({ onPlay, onPause, slug, title }) => {
       setTime(currentTime)
       setProgress(currentTime / duration)
 
-      window.localStorage.setItem(`${slug}_time`, currentTime)
+      window.localStorage.setItem(`${slug}_time`, currentTime.toString())
 
       if (currentTime >= duration) {
         setPlaying(false)
@@ -68,23 +84,25 @@ export const usePlayerState = ({ onPlay, onPause, slug, title }) => {
     clearInterval(intervalRef.current)
   }
 
-  function metadataHandler(e) {
+  function metadataHandler(e: SyntheticEvent<HTMLAudioElement>) {
+    const target = e.target as HTMLAudioElement
+
     const savedTime = Number(window.localStorage.getItem(`${slug}_time`))
 
-    e.target.currentTime = savedTime
+    target.currentTime = savedTime
 
     setTime(savedTime)
-    setProgress(savedTime / e.target.duration)
-    setDuration(e.target.duration)
+    setProgress(savedTime / target.duration)
+    setDuration(target.duration)
     setLoading(false)
   }
 
-  function timeUpdateHandler(e) {
-    setDuration(e.target.duration)
+  function timeUpdateHandler(e: SyntheticEvent<HTMLAudioElement>) {
+    setDuration((<HTMLAudioElement>e.target).duration)
     setLoading(false)
   }
 
-  function sliderSeekHandler(e) {
+  function sliderSeekHandler(e: SyntheticEvent<HTMLDivElement, MouseEvent>) {
     const duration = audioRef.current.duration
 
     if (duration) {
@@ -96,7 +114,7 @@ export const usePlayerState = ({ onPlay, onPause, slug, title }) => {
     }
   }
 
-  function buttonSeekHandler(t) {
+  function buttonSeekHandler(t: number) {
     const duration = audioRef.current.duration
 
     if (duration) {
@@ -107,7 +125,7 @@ export const usePlayerState = ({ onPlay, onPause, slug, title }) => {
     }
   }
 
-  function volumeHandler(vol) {
+  function volumeHandler(vol: number) {
     audioRef.current.volume = vol
     setVolume(vol)
   }

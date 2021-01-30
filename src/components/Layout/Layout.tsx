@@ -1,10 +1,15 @@
-import React from "react"
+import { ReactNode } from "react"
 
 import Footer from "../Footer/Footer"
 import SEO from "../SEO/SEO"
 import "../../styles/global.scss"
 
-const Layout = ({ children, title }) => {
+type LayoutProps = {
+  children: ReactNode
+  title: string
+}
+
+const Layout = ({ children, title }: LayoutProps) => {
   return (
     <>
       <SEO title={title} />
