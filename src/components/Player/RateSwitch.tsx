@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import styles from "./rateSwitch.module.scss"
 
 const rates = {
@@ -15,13 +15,13 @@ type RateSwitchProps = {
   setRate: (rate: number) => void
 }
 
-const RateSwitch = ({ rate, setRate }: RateSwitchProps) => (
+const RateSwitch = memo(({ rate, setRate }: RateSwitchProps) => (
   <div className={styles.wrapper}>
     <p className={styles.label}>Szybkość</p>
     <button className={styles.button} onClick={() => setRate(rates[rate])}>
       {rate}x
     </button>
   </div>
-)
+))
 
 export default RateSwitch

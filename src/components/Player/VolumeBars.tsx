@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import { lighten } from "polished"
 import styles from "./volumeBars.module.scss"
 
@@ -9,7 +9,7 @@ type VolumeBarsProps = {
 
 const bars = [0.2, 0.4, 0.6, 0.8, 1]
 
-const VolumeBars = ({ setVolume, volume }: VolumeBarsProps) => (
+const VolumeBars = memo(({ setVolume, volume }: VolumeBarsProps) => (
   <div className={styles.wrapper}>
     <p className={styles.label}>Głośność</p>
     {bars
@@ -26,6 +26,6 @@ const VolumeBars = ({ setVolume, volume }: VolumeBarsProps) => (
       ))
       .reverse()}
   </div>
-)
+))
 
 export default VolumeBars

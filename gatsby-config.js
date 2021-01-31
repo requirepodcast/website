@@ -1,13 +1,7 @@
 function getNodes(results) {
-  if (`nodes` in results) {
-    return { allPages: results.nodes, originalType: `nodes` }
-  }
-
-  if (`edges` in results) {
-    return {
-      allPages: results.edges.map((edge) => edge.node),
-      originalType: `edges`,
-    }
+  return {
+    allPages: results.edges.map((edge) => edge.node),
+    originalType: `edges`,
   }
 }
 

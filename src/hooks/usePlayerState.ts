@@ -13,8 +13,8 @@ export const usePlayerState = ({
   slug,
   title,
 }: {
-  onPlay: () => void
-  onPause: () => void
+  onPlay?: () => void
+  onPause?: () => void
   slug: string
   title: string
 }) => {
@@ -44,6 +44,7 @@ export const usePlayerState = ({
       prev ? audioRef.current.pause() : audioRef.current.play()
 
       if (typeof window !== "undefined" && window.gtag) {
+        /* istanbul ignore next  */
         window.gtag("event", prev ? "pause" : "play", {
           event_category: "player",
           event_label: title,
