@@ -43,8 +43,8 @@ export const usePlayerState = ({
     setPlaying((prev) => {
       prev ? audioRef.current.pause() : audioRef.current.play()
 
+      /* istanbul ignore next */
       if (typeof window !== "undefined" && window.gtag) {
-        /* istanbul ignore next  */
         window.gtag("event", prev ? "pause" : "play", {
           event_category: "player",
           event_label: title,
@@ -58,6 +58,7 @@ export const usePlayerState = ({
   function seek(t: number) {
     const duration = audioRef.current.duration
 
+    /* istanbul ignore else */
     if (duration) {
       audioRef.current.currentTime = time + t
 
@@ -79,6 +80,7 @@ export const usePlayerState = ({
   function handleSliderSeek(e: SyntheticEvent<HTMLDivElement, MouseEvent>) {
     const duration = audioRef.current.duration
 
+    /* istanbul ignore else */
     if (duration) {
       audioRef.current.currentTime =
         (e.nativeEvent.offsetX / sliderRef.current.clientWidth) * duration
