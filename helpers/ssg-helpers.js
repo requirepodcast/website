@@ -72,7 +72,7 @@ function generateRss(episodes) {
     generator: "require podcast",
   })
 
-  for (let episode of episodes) {
+  for (let episode of episodes.reverse()) {
     const { frontmatter } = episode.childMarkdownRemark
 
     feed.addItem({
