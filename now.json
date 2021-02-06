@@ -13,5 +13,11 @@
       "source": "/youtube",
       "destination": "https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ?sub_confirmation=1"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/feed",
+      "destination": "/feed.xml"
+    }
   ]
 }
