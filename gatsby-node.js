@@ -1,4 +1,20 @@
-const fs = require("fs")
+const { createPages, generateEpisodesJson, generateRss } = require("./helpers/ssg-helpers")
+
+/**
+ * @typedef {object} Episode
+ * @property {string} Episode.id
+ * @property {object} Episode.childMarkdownRemark
+ * @property {string} Episode.childMarkdownRemark.html
+ * @property {string} Episode.childMarkdownRemark.rawMarkdownBody
+ * @property {object} Episode.childMarkdownRemark.frontmatter
+ * @property {string} Episode.childMarkdownRemark.frontmatter.audioUrl
+ * @property {string} Episode.childMarkdownRemark.frontmatter.publicationDate
+ * @property {string} Episode.childMarkdownRemark.frontmatter.shortDescription
+ * @property {string} Episode.childMarkdownRemark.frontmatter.title
+ * @property {string} Episode.childMarkdownRemark.frontmatter.youtubeUrl
+ * @property {string} Episode.childMarkdownRemark.frontmatter.spotifyUrl
+ * @property {string} Episode.childMarkdownRemark.frontmatter.slug
+ */
 
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
@@ -12,6 +28,7 @@ exports.createPages = async function ({ actions, graphql }) {
             id
             childMarkdownRemark {
               html
+              rawMarkdownBody
               frontmatter {
                 audioUrl
                 publicationDate
@@ -28,44 +45,12 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `)
 
-  const allEpisodes = data.allFile.edges
+  /**
+   * @type {Episode[]}
+   */
+  const allEpisodes = data.allFile.edges.map((edge) => edge.node)
 
-  const lastEpisode = allEpisodes.slice(-1)[0]
-
-  actions.createPage({
-    path: "/archive",
-    component: require.resolve("./src/templates/archive.tsx"),
-    context: { id: lastEpisode.node.id },
-  })
-
-  for (let edge of allEpisodes) {
-    const episode = edge.node
-
-    const path = `/archive${episode.childMarkdownRemark.frontmatter.slug}`
-    const id = episode.id
-
-    actions.createPage({
-      path,
-      component: require.resolve("./src/templates/archive.tsx"),
-      context: { id },
-    })
-  }
-
-  fs.writeFileSync(
-    "./public/episodes.json",
-    JSON.stringify(
-      {
-        episodes: allEpisodes.map(({ node: episode }) => ({
-          id: episode.id,
-          description: {
-            html: episode.childMarkdownRemark.html,
-            markdown: episode.childMarkdownRemark.rawMarkdownBody,
-          },
-          ...episode.childMarkdownRemark.frontmatter,
-        })),
-      },
-      null,
-      2
-    )
-  )
+  createPages(allEpisodes, actions.createPage)
+  generateEpisodesJson(allEpisodes)
+  generateRss(allEpisodes)
 }

@@ -41,7 +41,7 @@ function SEO({ description, lang, meta, title }: SEOProps) {
           rel: "alternate",
           type: "application/rss+xml",
           title: "RSS",
-          href: "https://anchor.fm/s/139df89c/podcast/rss",
+          href: "/feed.xml",
         },
       ]}
       title={title}
