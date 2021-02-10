@@ -54,3 +54,11 @@ exports.createPages = async function ({ actions, graphql }) {
   generateEpisodesJson(allEpisodes)
   generateRss(allEpisodes)
 }
+
+exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+  if (getConfig().mode === "production") {
+    actions.setWebpackConfig({
+      devtool: false,
+    })
+  }
+}
