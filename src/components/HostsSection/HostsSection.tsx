@@ -42,11 +42,11 @@ const HostsSection = () => {
         <section className={styles.host}>
           <Img className={styles.avatar} fixed={data.adam.childImageSharp.fixed} />
           <h3 className={styles.name}>Adam Siekierski</h3>
-          <OutboundLink className={styles.link} href="mailto:a@siekierski.ml">
-            a@siekierski.ml
+          <OutboundLink className={styles.link} href="mailto:a@siekierski.me">
+            a@siekierski.me
           </OutboundLink>
-          <OutboundLink className={styles.link} href="https://siekierski.ml">
-            siekierski.ml
+          <OutboundLink className={styles.link} href="https://siekierski.me">
+            siekierski.me
           </OutboundLink>
         </section>
       </div>
