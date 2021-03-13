@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import logo from "../../images/logo.png"
 import icon from "../../images/require_mark_transparent.svg"
+import twitterLogo from "../../images/logo-twitter.png"
 
 type SEOProps = {
   description: string
@@ -84,7 +85,7 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
         {
           property: `twitter:image`,
-          content: logo,
+          content: twitterLogo,
         },
         {
           property: "og:locale",
