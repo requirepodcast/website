@@ -78,11 +78,11 @@ function SEO({ description = "", lang = "pl", meta = [], title = "" }: SEOProps)
         },
         {
           name: `twitter:image`,
-          content: "/static/logo-twitter.png",
+          content: "/logo-twitter.png",
         },
         {
           property: `og:image`,
-          content: "/static/logo.png",
+          content: "/logo.png",
         },
         {
           property: "og:locale",
