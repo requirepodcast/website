@@ -83,6 +83,10 @@ function SEO({ description, lang, meta, title }: SEOProps) {
           content: logo,
         },
         {
+          property: `twitter:image`,
+          content: logo,
+        },
+        {
           property: "og:locale",
           content: "pl_PL",
         },
