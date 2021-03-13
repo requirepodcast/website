@@ -77,12 +77,12 @@ function SEO({ description = "", lang = "pl", meta = [], title = "" }: SEOProps)
           content: metaDescription,
         },
         {
-          property: `og:image`,
-          content: "/static/logo.png",
+          name: `twitter:image`,
+          content: "/static/logo-twitter.png",
         },
         {
-          property: `twitter:image`,
-          content: "/static/logo-twitter.png",
+          property: `og:image`,
+          content: "/static/logo.png",
         },
         {
           property: "og:locale",
