@@ -1,11 +1,8 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-import logo from "../../images/logo.png"
 import icon from "../../images/require_mark_transparent.svg"
-import twitterLogo from "../../images/logo-twitter.png"
 
 type SEOProps = {
   description: string
@@ -14,7 +11,7 @@ type SEOProps = {
   title: string
 }
 
-function SEO({ description, lang, meta, title }: SEOProps) {
+function SEO({ description = "", lang = "pl", meta = [], title = "" }: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -81,11 +78,11 @@ function SEO({ description, lang, meta, title }: SEOProps) {
         },
         {
           property: `og:image`,
-          content: logo,
+          content: "/static/logo.png",
         },
         {
           property: `twitter:image`,
-          content: twitterLogo,
+          content: "/static/logo-twitter.png",
         },
         {
           property: "og:locale",
@@ -103,19 +100,6 @@ function SEO({ description, lang, meta, title }: SEOProps) {
       ]}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `pl`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO
