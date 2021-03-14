@@ -51,17 +51,6 @@ module.exports = {
         patterns: `episodes/*.md`,
       },
     },
-    ...(isDevelopment()
-      ? [
-          {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-              name: `episodes`,
-              path: `${__dirname}/__mocks__/data`,
-            },
-          },
-        ]
-      : []),
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
