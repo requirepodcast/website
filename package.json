@@ -41,6 +41,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/react-hooks": "^5.0.3",
     "@types/jest": "26.0.20",
+    "@types/mdx-js__react": "^1.5.3",
     "@types/react-helmet": "6.1.0",
     "@types/react-test-renderer": "17.0.0",
     "@typescript-eslint/eslint-plugin": "4.14.1",

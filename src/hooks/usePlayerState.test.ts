@@ -113,6 +113,14 @@ describe("usePlayerState", () => {
     expect(result.current.time).toBe(5)
     expect(result.current.time).toBe(audioRef.currentTime)
     expect(result.current.progress).toBe(result.current.time / DURATION)
+
+    act(() => {
+      result.current.seekTo(50)
+    })
+
+    expect(result.current.time).toBe(50)
+    expect(result.current.time).toBe(audioRef.currentTime)
+    expect(result.current.progress).toBe(result.current.time / DURATION)
   })
 
   it("changing volume works properly", () => {

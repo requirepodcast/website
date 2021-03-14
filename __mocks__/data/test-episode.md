@@ -12,7 +12,7 @@ W urodzinowym odcinku Require Podcast, odpowiadamy na pytania zadane nam przez s
 
 ## ❓ Pytania
 
-- 1:47 - Jakich aplikacji (oprócz systemowych) używacie najczęściej?
+- <TimestampLink>1:47</TimestampLink> - Jakich aplikacji (oprócz systemowych) używacie najczęściej?
 - 5:00 - Czy jest jakiś ekosystem, który wydaje wam się równie interesujący co cały ekosystem w okół JavaScript?
 - 6:40 - Praca w programowaniu jako szesnastolatek? Czy to możliwe?
 - 7:54 - What hardware do you use for recording? What is the process of delivering a podcast (from preparing to publishing)? What software do you use?

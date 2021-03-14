@@ -10,7 +10,7 @@ import {
 } from "@mdi/js"
 import Spinner from "react-spinner-material"
 import VolumeBars from "./VolumeBars"
-import { usePlayerState } from "../../hooks/usePlayerState"
+import type { PlayerState } from "../../hooks/usePlayerState"
 import { formatSeconds } from "../../utils/formatSeconds"
 import styles from "./player.module.scss"
 import clsx from "clsx"
@@ -18,7 +18,7 @@ import RateSwitch from "./RateSwitch"
 
 type PlayerProps = {
   url: string
-  playerState: ReturnType<typeof usePlayerState>
+  playerState: PlayerState
 }
 
 const Player = ({
