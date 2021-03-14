@@ -3,6 +3,7 @@ import Player from "../Player/Player"
 import { useStaticQuery, graphql } from "gatsby"
 import Ticker from "react-ticker"
 import styles from "./homePagePlayer.module.scss"
+import { usePlayerState } from "../../hooks/usePlayerState"
 
 const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
   const [playing, setPlaying] = useState(false)
@@ -25,6 +26,13 @@ const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
 
   const { title, shortDescription, audioUrl, slug } = data.allMdx.nodes[0].frontmatter
 
+  const playerState = usePlayerState({
+    onPlay: () => setPlaying(true),
+    onPause: () => setPlaying(false),
+    title,
+    slug,
+  })
+
   return (
     <section className={styles.wrapper} {...props}>
       <div
@@ -37,13 +45,7 @@ const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
           {() => <p className={styles.marqueeContent}>{shortDescription}</p>}
         </Ticker>
       </div>
-      <Player
-        url={audioUrl}
-        title={title}
-        slug={slug}
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-      />
+      <Player url={audioUrl} playerState={playerState} />
     </section>
   )
 }

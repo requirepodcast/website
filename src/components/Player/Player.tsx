@@ -18,14 +18,12 @@ import RateSwitch from "./RateSwitch"
 
 type PlayerProps = {
   url: string
-  onPlay?: () => void
-  onPause?: () => void
-  slug: string
-  title: string
+  playerState: ReturnType<typeof usePlayerState>
 }
 
-const Player = ({ url, onPlay, onPause, slug, title }: PlayerProps) => {
-  const {
+const Player = ({
+  url,
+  playerState: {
     loading,
     playing,
     time,
@@ -41,8 +39,8 @@ const Player = ({ url, onPlay, onPause, slug, title }: PlayerProps) => {
     handlers,
     rate,
     setRate,
-  } = usePlayerState({ onPlay, onPause, slug, title })
-
+  },
+}: PlayerProps) => {
   return (
     <div className={styles.wrapper}>
       <section className={styles.sectionLeft}>

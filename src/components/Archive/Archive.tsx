@@ -3,21 +3,22 @@ import styles from "./archive.module.scss"
 import EpisodesList from "../EpisodeList/EpisodesList"
 import Player from "../Player/Player"
 import EpisodeNotes from "../EpisodeNotes/EpisodeNotes"
+import { usePlayerState } from "../../hooks/usePlayerState"
 
-const Archive = ({ episode }) => (
-  <main className={styles.wrapper}>
-    <EpisodesList episode={episode} />
-    <section className={styles.episode}>
-      <div className={styles.playerWrapper}>
-        <Player
-          url={episode.frontmatter.audioUrl}
-          slug={episode.frontmatter.slug}
-          title={episode.frontmatter.title}
-        />
-      </div>
-      <EpisodeNotes episode={episode} />
-    </section>
-  </main>
-)
+const Archive = ({ episode }) => {
+  const playerState = usePlayerState({ title: episode.title, slug: episode.slug })
+
+  return (
+    <main className={styles.wrapper}>
+      <EpisodesList episode={episode} />
+      <section className={styles.episode}>
+        <div className={styles.playerWrapper}>
+          <Player playerState={playerState} url={episode.frontmatter.audioUrl} />
+        </div>
+        <EpisodeNotes episode={episode} />
+      </section>
+    </main>
+  )
+}
 
 export default Archive
