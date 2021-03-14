@@ -13,7 +13,7 @@ type EpisodeNotesProps = {
   episode: Episode
 }
 
-const EpisodeNotes = ({ episode }: EpisodeNotesProps) => (
+const EpisodeNotes = React.memo(({ episode }: EpisodeNotesProps) => (
   <section className={styles.wrapper}>
     <time style={{ fontSize: "1.2em", color: "#ffffff88" }}>
       {episode.frontmatter.publicationDate}
@@ -55,6 +55,6 @@ const EpisodeNotes = ({ episode }: EpisodeNotesProps) => (
     </OutboundLink>
     <MDXRenderer>{episode.body}</MDXRenderer>
   </section>
-)
+))
 
 export default EpisodeNotes

@@ -9,10 +9,6 @@ function isArchivePage(path) {
   return /\/archive*/.test(path)
 }
 
-function isDevelopment() {
-  return process.env.NDOE_ENV !== "production"
-}
-
 module.exports = {
   siteMetadata: {
     title: `Require Podcast`,

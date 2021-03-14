@@ -1,4 +1,4 @@
-import { SyntheticEvent, useRef, useState } from "react"
+import { SyntheticEvent, useCallback, useRef, useState } from "react"
 import { useMount } from "./useMount"
 
 declare global {
@@ -39,7 +39,7 @@ export const usePlayerState = ({
 
   /* User-trigggered actions */
 
-  function triggerPlayer() {
+  const triggerPlayer = useCallback(() => {
     setPlaying((prev) => {
       prev ? audioRef.current.pause() : audioRef.current.play()
 
@@ -54,43 +54,45 @@ export const usePlayerState = ({
 
       return !prev
     })
-  }
+  }, [title])
 
-  function seek(t: number) {
-    const duration = audioRef.current.duration
+  const seek = useCallback(
+    (t: number) => {
+      const duration = audioRef.current.duration
 
-    /* istanbul ignore else */
-    if (duration) {
-      audioRef.current.currentTime = time + t
+      /* istanbul ignore else */
+      if (duration) {
+        audioRef.current.currentTime = time + t
 
-      setTime(audioRef.current.currentTime)
-      setProgress(audioRef.current.currentTime / duration)
-    }
-  }
+        setTime(audioRef.current.currentTime)
+        setProgress(audioRef.current.currentTime / duration)
+      }
+    },
+    [time]
+  )
 
-  function seekTo(t: number) {
+  const seekTo = useCallback((t: number) => {
     const duration = audioRef.current.duration
 
     /* istanbul ignore else */
     if (duration) {
       audioRef.current.currentTime = t
-
       setTime(audioRef.current.currentTime)
       setProgress(audioRef.current.currentTime / duration)
     }
-  }
+  }, [])
 
-  function setVolume(vol: number) {
+  const setVolume = useCallback((vol: number) => {
     audioRef.current.volume = vol
     setVolumeState(vol)
-  }
+  }, [])
 
-  function setRate(s: number) {
+  const setRate = useCallback((s: number) => {
     audioRef.current.playbackRate = s
     setRateState(s)
-  }
+  }, [])
 
-  function handleSliderSeek(e: SyntheticEvent<HTMLDivElement, MouseEvent>) {
+  const handleSliderSeek = useCallback((e: SyntheticEvent<HTMLDivElement, MouseEvent>) => {
     const duration = audioRef.current.duration
 
     /* istanbul ignore else */
@@ -101,11 +103,11 @@ export const usePlayerState = ({
       setTime(audioRef.current.currentTime)
       setProgress(audioRef.current.currentTime / duration)
     }
-  }
+  }, [])
 
   /* Player-triggered events */
 
-  function playHandler() {
+  const playHandler = useCallback(() => {
     onPlay && onPlay()
     setPlaying(true)
 
@@ -128,33 +130,36 @@ export const usePlayerState = ({
         clearInterval(intervalRef.current)
       }
     }, 100)
-  }
+  }, [onPlay, slug, time])
 
-  function pauseHandler() {
+  const pauseHandler = useCallback(() => {
     onPause && onPause()
 
     setPlaying(false)
 
     clearInterval(intervalRef.current)
-  }
+  }, [onPause])
 
-  function metadataHandler(e: SyntheticEvent<HTMLAudioElement>) {
-    const target = e.target as HTMLAudioElement
+  const metadataHandler = useCallback(
+    (e: SyntheticEvent<HTMLAudioElement>) => {
+      const target = e.target as HTMLAudioElement
 
-    const savedTime = Number(window.localStorage.getItem(`${slug}_time`))
+      const savedTime = Number(window.localStorage.getItem(`${slug}_time`))
 
-    target.currentTime = savedTime
+      target.currentTime = savedTime
 
-    setTime(savedTime)
-    setProgress(savedTime / target.duration)
-    setDuration(target.duration)
-    setLoading(false)
-  }
+      setTime(savedTime)
+      setProgress(savedTime / target.duration)
+      setDuration(target.duration)
+      setLoading(false)
+    },
+    [slug]
+  )
 
-  function timeUpdateHandler(e: SyntheticEvent<HTMLAudioElement>) {
+  const timeUpdateHandler = useCallback((e: SyntheticEvent<HTMLAudioElement>) => {
     setDuration((e.target as HTMLAudioElement).duration)
     setLoading(false)
-  }
+  }, [])
 
   return {
     loading,
