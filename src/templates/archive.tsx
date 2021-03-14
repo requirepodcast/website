@@ -5,10 +5,10 @@ import Layout from "../components/Layout/Layout"
 import Archive from "../components/Archive/Archive"
 import { Episode } from "../types"
 
-type ArchivePageProps = PageProps<{ file: { childMarkdownRemark: Episode } }>
+type ArchivePageProps = PageProps<{ mdx: Episode }>
 
 const ArchivePage = ({ data }: ArchivePageProps) => {
-  const episode = data.file.childMarkdownRemark
+  const episode = data.mdx
 
   return (
     <Layout
@@ -27,19 +27,17 @@ const ArchivePage = ({ data }: ArchivePageProps) => {
 
 export const query = graphql`
   query EpisodeQuery($id: String!) {
-    file(id: { eq: $id }) {
-      childMarkdownRemark {
-        frontmatter {
-          youtubeUrl
-          title
-          spotifyUrl
-          slug
-          shortDescription
-          publicationDate
-          audioUrl
-        }
-        html
+    mdx(id: { eq: $id }) {
+      frontmatter {
+        youtubeUrl
+        title
+        spotifyUrl
+        slug
+        shortDescription
+        publicationDate
+        audioUrl
       }
+      body
     }
   }
 `

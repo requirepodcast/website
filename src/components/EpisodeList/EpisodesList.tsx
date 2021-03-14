@@ -10,41 +10,34 @@ type EpisodesListProps = {
 
 const EpisodesList = ({ episode: currentEpisode }: EpisodesListProps) => {
   const data = useStaticQuery<{
-    allFile: {
+    allMdx: {
       nodes: {
         id: string
-        childMarkdownRemark: {
-          frontmatter: {
-            title: string
-            slug: string
-            shortDescription: string
-            publicationDate: string
-          }
+        frontmatter: {
+          title: string
+          slug: string
+          shortDescription: string
+          publicationDate: string
         }
       }[]
     }
   }>(graphql`
     query EpisodeList {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: { order: DESC, fields: childMarkdownRemark___frontmatter___publicationDate }
-      ) {
+      allMdx(sort: { order: DESC, fields: frontmatter___publicationDate }) {
         nodes {
           id
-          childMarkdownRemark {
-            frontmatter {
-              title
-              slug
-              shortDescription
-              publicationDate
-            }
+          frontmatter {
+            title
+            slug
+            shortDescription
+            publicationDate
           }
         }
       }
     }
   `)
 
-  const episodes = data.allFile.nodes
+  const episodes = data.allMdx.nodes
 
   return (
     <aside className={styles.wrapper}>
@@ -55,18 +48,14 @@ const EpisodesList = ({ episode: currentEpisode }: EpisodesListProps) => {
             key={episode.id}
             className={clsx(
               styles.listItem,
-              episode.childMarkdownRemark.frontmatter.slug === currentEpisode.frontmatter.slug &&
-                styles.listItemCurrent
+              episode.frontmatter.slug === currentEpisode.frontmatter.slug && styles.listItemCurrent
             )}
           >
             <p style={{ color: "#ffffff88", margin: 0, fontSize: "0.9em" }}>
-              {episode.childMarkdownRemark.frontmatter.publicationDate}
+              {episode.frontmatter.publicationDate}
             </p>
-            <Link
-              className={styles.listItemHeading}
-              to={`/archive${episode.childMarkdownRemark.frontmatter.slug}`}
-            >
-              {episode.childMarkdownRemark.frontmatter.title}
+            <Link className={styles.listItemHeading} to={`/archive${episode.frontmatter.slug}`}>
+              {episode.frontmatter.title}
             </Link>
           </li>
         ))}

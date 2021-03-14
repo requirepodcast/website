@@ -68,6 +68,18 @@ export const usePlayerState = ({
     }
   }
 
+  function seekTo(t: number) {
+    const duration = audioRef.current.duration
+
+    /* istanbul ignore else */
+    if (duration) {
+      audioRef.current.currentTime = t
+
+      setTime(audioRef.current.currentTime)
+      setProgress(audioRef.current.currentTime / duration)
+    }
+  }
+
   function setVolume(vol: number) {
     audioRef.current.volume = vol
     setVolumeState(vol)
@@ -159,6 +171,7 @@ export const usePlayerState = ({
     triggerPlayer,
     setVolume,
     seek,
+    seekTo,
     setRate,
 
     handleSliderSeek,
@@ -171,3 +184,5 @@ export const usePlayerState = ({
     },
   }
 }
+
+export type PlayerState = ReturnType<typeof usePlayerState>

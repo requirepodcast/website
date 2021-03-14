@@ -3,6 +3,7 @@ import Player from "../Player/Player"
 import { useStaticQuery, graphql } from "gatsby"
 import Ticker from "react-ticker"
 import styles from "./homePagePlayer.module.scss"
+import { usePlayerState } from "../../hooks/usePlayerState"
 
 const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
   const [playing, setPlaying] = useState(false)
@@ -10,31 +11,27 @@ const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
 
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: { order: DESC, fields: childMarkdownRemark___frontmatter___publicationDate }
-        limit: 1
-      ) {
+      allMdx(sort: { order: DESC, fields: frontmatter___publicationDate }, limit: 1) {
         nodes {
-          childMarkdownRemark {
-            frontmatter {
-              title
-              audioUrl
-              shortDescription
-              slug
-            }
+          frontmatter {
+            title
+            audioUrl
+            shortDescription
+            slug
           }
         }
       }
     }
   `)
 
-  const {
+  const { title, shortDescription, audioUrl, slug } = data.allMdx.nodes[0].frontmatter
+
+  const playerState = usePlayerState({
+    onPlay: () => setPlaying(true),
+    onPause: () => setPlaying(false),
     title,
-    shortDescription,
-    audioUrl,
     slug,
-  } = data.allFile.nodes[0].childMarkdownRemark.frontmatter
+  })
 
   return (
     <section className={styles.wrapper} {...props}>
@@ -48,13 +45,7 @@ const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
           {() => <p className={styles.marqueeContent}>{shortDescription}</p>}
         </Ticker>
       </div>
-      <Player
-        url={audioUrl}
-        title={title}
-        slug={slug}
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-      />
+      <Player url={audioUrl} playerState={playerState} />
     </section>
   )
 }

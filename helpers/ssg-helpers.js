@@ -20,7 +20,7 @@ function createPages(episodes, createPage) {
   })
 
   for (let episode of episodes) {
-    const path = `/archive${episode.childMarkdownRemark.frontmatter.slug}`
+    const path = `/archive${episode.frontmatter.slug}`
     const id = episode.id
 
     createPage({
@@ -42,10 +42,9 @@ function generateEpisodesJson(episodes) {
         episodes: episodes.map((episode) => ({
           id: episode.id,
           description: {
-            html: episode.childMarkdownRemark.html,
-            markdown: episode.childMarkdownRemark.rawMarkdownBody,
+            markdown: episode.rawBody,
           },
-          ...episode.childMarkdownRemark.frontmatter,
+          ...episode.frontmatter,
         })),
       },
       null,
@@ -73,7 +72,7 @@ function generateRss(episodes) {
   })
 
   for (let episode of episodes.reverse()) {
-    const { frontmatter } = episode.childMarkdownRemark
+    const { frontmatter } = episode
 
     feed.addItem({
       title: frontmatter.title,

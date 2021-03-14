@@ -3,41 +3,34 @@ const { createPages, generateEpisodesJson, generateRss } = require("./helpers/ss
 /**
  * @typedef {object} Episode
  * @property {string} Episode.id
- * @property {object} Episode.childMarkdownRemark
- * @property {string} Episode.childMarkdownRemark.html
- * @property {string} Episode.childMarkdownRemark.rawMarkdownBody
- * @property {object} Episode.childMarkdownRemark.frontmatter
- * @property {string} Episode.childMarkdownRemark.frontmatter.audioUrl
- * @property {string} Episode.childMarkdownRemark.frontmatter.publicationDate
- * @property {string} Episode.childMarkdownRemark.frontmatter.shortDescription
- * @property {string} Episode.childMarkdownRemark.frontmatter.title
- * @property {string} Episode.childMarkdownRemark.frontmatter.youtubeUrl
- * @property {string} Episode.childMarkdownRemark.frontmatter.spotifyUrl
- * @property {string} Episode.childMarkdownRemark.frontmatter.slug
+ * @property {string} Episode.rawBody
+ * @property {object} Episode.frontmatter
+ * @property {string} Episode.frontmatter.audioUrl
+ * @property {string} Episode.frontmatter.publicationDate
+ * @property {string} Episode.frontmatter.shortDescription
+ * @property {string} Episode.frontmatter.title
+ * @property {string} Episode.frontmatter.youtubeUrl
+ * @property {string} Episode.frontmatter.spotifyUrl
+ * @property {string} Episode.frontmatter.slug
  */
 
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
     query EpisodesQuery {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: { order: ASC, fields: childMarkdownRemark___frontmatter___publicationDate }
-      ) {
+      allMdx(sort: { order: ASC, fields: frontmatter___publicationDate }) {
         edges {
           node {
             id
-            childMarkdownRemark {
-              html
-              rawMarkdownBody
-              frontmatter {
-                audioUrl
-                publicationDate
-                shortDescription
-                title
-                youtubeUrl
-                spotifyUrl
-                slug
-              }
+            body
+            rawBody
+            frontmatter {
+              audioUrl
+              publicationDate
+              shortDescription
+              title
+              youtubeUrl
+              spotifyUrl
+              slug
             }
           }
         }
@@ -48,7 +41,7 @@ exports.createPages = async function ({ actions, graphql }) {
   /**
    * @type {Episode[]}
    */
-  const allEpisodes = data.allFile.edges.map((edge) => edge.node)
+  const allEpisodes = data.allMdx.edges.map((edge) => edge.node)
 
   createPages(allEpisodes, actions.createPage)
   generateEpisodesJson(allEpisodes)
