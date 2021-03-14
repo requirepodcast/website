@@ -2,6 +2,7 @@ import React from "react"
 import { OutboundLink } from "gatsby-plugin-google-gtag"
 import styles from "./episodeNotes.module.scss"
 import { Episode } from "../../types"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 function getDownloadLink(link) {
   const [uri] = link.split("/").slice(-1)
@@ -52,11 +53,7 @@ const EpisodeNotes = ({ episode }: EpisodeNotesProps) => (
         🎧
       </span>
     </OutboundLink>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: episode.html,
-      }}
-    />
+    <MDXRenderer>{episode.body}</MDXRenderer>
   </section>
 )
 

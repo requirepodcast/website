@@ -8,5 +8,5 @@ export type Episode = Readonly<{
     publicationDate: string
     audioUrl: string
   }>
-  html: string
+  body: string
 }>

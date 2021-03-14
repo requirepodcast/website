@@ -10,31 +10,20 @@ const HomePagePlayer = (props: HTMLProps<HTMLDivElement>) => {
 
   const data = useStaticQuery(graphql`
     query IndexPageQuery {
-      allFile(
-        filter: { sourceInstanceName: { eq: "episodes" } }
-        sort: { order: DESC, fields: childMarkdownRemark___frontmatter___publicationDate }
-        limit: 1
-      ) {
+      allMdx(sort: { order: DESC, fields: frontmatter___publicationDate }, limit: 1) {
         nodes {
-          childMarkdownRemark {
-            frontmatter {
-              title
-              audioUrl
-              shortDescription
-              slug
-            }
+          frontmatter {
+            title
+            audioUrl
+            shortDescription
+            slug
           }
         }
       }
     }
   `)
 
-  const {
-    title,
-    shortDescription,
-    audioUrl,
-    slug,
-  } = data.allFile.nodes[0].childMarkdownRemark.frontmatter
+  const { title, shortDescription, audioUrl, slug } = data.allMdx.nodes[0].frontmatter
 
   return (
     <section className={styles.wrapper} {...props}>

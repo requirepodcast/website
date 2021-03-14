@@ -8,6 +8,8 @@
     "@fontsource/fira-code": "4.1.0",
     "@mdi/js": "5.9.55",
     "@mdi/react": "1.4.0",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "clsx": "1.1.1",
     "date-fns": "2.12.0",
     "dotenv": "8.2.0",
@@ -16,14 +18,15 @@
     "gatsby-image": "2.10.0",
     "gatsby-plugin-google-gtag": "2.7.0",
     "gatsby-plugin-manifest": "2.11.0",
+    "gatsby-plugin-mdx": "^2.0.1",
     "gatsby-plugin-offline": "3.9.0",
     "gatsby-plugin-react-helmet": "3.9.0",
     "gatsby-plugin-sass": "3.1.0",
     "gatsby-plugin-sharp": "2.13.1",
     "gatsby-plugin-sitemap": "2.11.0",
+    "gatsby-remark-external-links": "^0.0.4",
     "gatsby-source-filesystem": "2.10.0",
     "gatsby-source-git": "1.1.0",
-    "gatsby-transformer-remark": "2.15.0",
     "gatsby-transformer-sharp": "2.11.0",
     "polished": "4.1.0",
     "react": "17.0.1",
@@ -31,8 +34,7 @@
     "react-helmet": "6.1.0",
     "react-spinner-material": "1.3.1",
     "react-ticker": "1.2.2",
-    "sass": "1.32.5",
-    "unist-util-visit": "2.0.3"
+    "sass": "1.32.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
@@ -58,7 +60,8 @@
     "javascript",
     "podkast",
     "typescript",
-    "fullstack"
+    "fullstack",
+    "website"
   ],
   "scripts": {
     "build": "gatsby clean && gatsby build",

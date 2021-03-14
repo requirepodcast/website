@@ -9,6 +9,10 @@ function isArchivePage(path) {
   return /\/archive*/.test(path)
 }
 
+function isDevelopment() {
+  return process.env.NDOE_ENV !== "production"
+}
+
 module.exports = {
   siteMetadata: {
     title: `Require Podcast`,
@@ -40,17 +44,37 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [`gatsby-remark-target-blank`],
-      },
-    },
-    {
       resolve: `gatsby-source-git`,
       options: {
         name: `episodes`,
         remote: `https://github.com/requirepodcast/episodes.git`,
         patterns: `episodes/*.md`,
+      },
+    },
+    ...(isDevelopment()
+      ? [
+          {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+              name: `episodes`,
+              path: `${__dirname}/__mocks__/data`,
+            },
+          },
+        ]
+      : []),
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow noopener noreferrer",
+            },
+          },
+        ],
       },
     },
     {
