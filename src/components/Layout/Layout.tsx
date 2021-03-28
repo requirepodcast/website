@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { ReactNode } from "react"
 
 import Footer from "../Footer/Footer"
@@ -14,6 +14,14 @@ type LayoutProps = {
 }
 
 const Layout = ({ children, ...seo }: LayoutProps) => {
+  useEffect(() => {
+    const date = new Date()
+
+    if (date.getDate() === 1 && date.getMonth() === 3) {
+      document.body.style.fontFamily = '"Comic Sans MS", "Comic Sans", cursive'
+    }
+  }, [])
+
   return (
     <>
       <SEO {...seo} />

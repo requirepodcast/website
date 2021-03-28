@@ -5,10 +5,10 @@ import { useStaticQuery, graphql } from "gatsby"
 import icon from "../../images/require_mark_transparent.svg"
 
 type SEOProps = {
-  description: string
-  lang: string
-  meta: React.DetailedHTMLProps<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[]
-  title: string
+  description?: string
+  lang?: string
+  meta?: React.DetailedHTMLProps<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[]
+  title?: string
 }
 
 function SEO({ description = "", lang = "pl", meta = [], title = "" }: SEOProps) {
