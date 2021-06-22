@@ -5,12 +5,13 @@ import EpisodesList from "../EpisodeList/EpisodesList"
 import Player from "../Player/Player"
 import EpisodeNotes from "../EpisodeNotes/EpisodeNotes"
 import { usePlayerState } from "../../hooks/usePlayerState"
-import timestampLink from "../EpisodeNotes/TimestampLink"
+import timestampLink from "../MDXComponents/TimestampLink"
+import Link from "../MDXComponents/Link"
 
 const Archive = ({ episode }) => {
   const playerState = usePlayerState({ title: episode.title, slug: episode.slug })
 
-  const components = useMemo(() => ({ TimestampLink: timestampLink(playerState.seekTo) }), [
+  const components = useMemo(() => ({ TimestampLink: timestampLink(playerState.seekTo), Link }), [
     playerState.seekTo,
   ])
 

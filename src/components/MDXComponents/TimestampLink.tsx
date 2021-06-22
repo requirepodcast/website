@@ -12,8 +12,9 @@ const timestampLink = (seekFunc: PlayerState["seekTo"]) =>
       }, 0)
 
     return (
+      /* eslint-disable */
       <a
-        href="#"
+        href="javascript: void(0)"
         onClick={(e) => {
           e.preventDefault()
           seekFunc(time)
