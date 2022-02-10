@@ -18,6 +18,7 @@ const EpisodesList = ({ episode: currentEpisode }: EpisodesListProps) => {
           slug: string
           shortDescription: string
           publicationDate: string
+          dimmed?: boolean
         }
       }[]
     }
@@ -31,6 +32,7 @@ const EpisodesList = ({ episode: currentEpisode }: EpisodesListProps) => {
             slug
             shortDescription
             publicationDate
+            dimmed
           }
         }
       }
@@ -48,7 +50,9 @@ const EpisodesList = ({ episode: currentEpisode }: EpisodesListProps) => {
             key={episode.id}
             className={clsx(
               styles.listItem,
-              episode.frontmatter.slug === currentEpisode.frontmatter.slug && styles.listItemCurrent
+              episode.frontmatter.slug === currentEpisode.frontmatter.slug &&
+                styles.listItemCurrent,
+              episode.frontmatter.dimmed && styles.listItemDimmed
             )}
           >
             <p style={{ color: "#ffffff88", margin: 0, fontSize: "0.9em" }}>

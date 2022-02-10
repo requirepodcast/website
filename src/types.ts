@@ -7,6 +7,7 @@ export type Episode = Readonly<{
     shortDescription: string
     publicationDate: string
     audioUrl: string
+    dimmed?: boolean
   }>
   body: string
 }>

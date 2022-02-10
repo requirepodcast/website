@@ -6,6 +6,7 @@ audioUrl: "https://anchor.fm/s/139df89c/podcast/play/19706432/https%3A%2F%2Fd3ct
 spotifyUrl: "https://open.spotify.com/episode/3hTTvOzfROv4Z5SkPDtsGO"
 youtubeUrl: "https://youtu.be/E_Ibo4W-gfE"
 slug: "/19/podstawy-javascript"
+dimmed: true
 ---
 
 Kolejny odcinek z serii podstaw - tym razem na temat JS'a. Rozmawiamy na temat rzeczy, których warto się nauczyć przed pójściem w swiat frameworków i Node, by dać sobie porządne podstawy z języka, z którego będziemy korzystać praktycznie cały czas. Odcinek polecany zarówno dla tych zupełnie początkujących, jak i tych którzy pewną wiedzę mają, ale chcą spowodować by fundamenty ich wiedzy były jeszcze bardziej solidne.

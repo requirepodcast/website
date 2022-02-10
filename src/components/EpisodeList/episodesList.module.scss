@@ -72,6 +72,10 @@
   }
 }
 
+.listItemDimmed {
+  color: colors.$gray-lighter;
+}
+
 .listItemHeading {
   display: block;
   cursor: pointer;
