@@ -6,6 +6,7 @@ audioUrl: "https://anchor.fm/s/139df89c/podcast/play/13229181/https%3A%2F%2Fd3ct
 spotifyUrl: "https://open.spotify.com/episode/7GwiTW74eVdFneTDvLqIwr"
 youtubeUrl: "https://youtu.be/eJe0molWSnE"
 slug: "/7/artur-tlumaczy-discord-jako-platforma-dla-devow"
+dimmed: true
 ---
 
 Discord to jeden z największych komunikatorów internetowych w ostatnich latach. Początkowo przeznaczony dla graczy, obecnie zdobywa sobie coraz większe uznanie wśród programistów dzięki jego otwartemu API, co pozwala rozszerzać go jak tylko chcemy.

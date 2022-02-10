@@ -6,6 +6,7 @@ audioUrl: "https://anchor.fm/s/139df89c/podcast/play/18515855/https%3A%2F%2Fd3ct
 spotifyUrl: "https://open.spotify.com/episode/1fH7cYHJNq0rjPB6JXGwE9?si=ltBMtP3FQbSkY7rlyR8Zag"
 youtubeUrl: "https://youtu.be/TRxYn1DuF-w"
 slug: "/18/troche-o-vue"
+dimmed: true
 ---
 
 Vue jest obecnie drugim najpopularniejszym (tuż po React) frameworkiem do tworzenia stron i aplikacji w JavaScripcie. Z pewnością jest czymś, czego warto się nauczyć - jest on wszechstronny i wydajny, a za razem bardzo prosty w nauce. W tym odcinku porozmawiamy na temat jego podstaw, oraz rzeczy za które trzeba się zabrać podczas jego nauki.

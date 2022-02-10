@@ -12,6 +12,7 @@ const { createPages, generateEpisodesJson, generateRss } = require("./helpers/ss
  * @property {string} Episode.frontmatter.youtubeUrl
  * @property {string} Episode.frontmatter.spotifyUrl
  * @property {string} Episode.frontmatter.slug
+ * @property {string} [Episode.frontmatter.dimmed]
  */
 
 exports.createPages = async function ({ actions, graphql }) {
@@ -31,6 +32,7 @@ exports.createPages = async function ({ actions, graphql }) {
               youtubeUrl
               spotifyUrl
               slug
+              dimmed
             }
           }
         }

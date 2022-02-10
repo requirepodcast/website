@@ -6,6 +6,7 @@ audioUrl: "https://anchor.fm/s/139df89c/podcast/play/16011163/https%3A%2F%2Fd3ct
 spotifyUrl: "https://open.spotify.com/episode/1ZUSlUEmk15Az8XC6qABMw?si=kANgrzbNRqamQfHywNCa7Q"
 youtubeUrl: "https://youtu.be/fFwGEkDnhSU"
 slug: "/15/tydzien-na-laptopie-z-ubuntu"
+dimmed: true
 ---
 
 Przez ostatni tydzień Adam korzystał tylko z laptopa za 1500zł, z zainstalowanym Ubuntu. W tym odcinku podsumowujemy ten eksperyment i porównujemy Linuksa do innych systemów operacyjnych, przez pryzmat webdevelopmentu.

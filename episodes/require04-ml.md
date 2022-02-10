@@ -6,6 +6,7 @@ audioUrl: "https://anchor.fm/s/139df89c/podcast/play/12200710/https%3A%2F%2Fd3ct
 spotifyUrl: "https://open.spotify.com/episode/2UMkExveIbws7u94MZ8hfM?si=IWvW1nAVQhO8yVnJNabNdg"
 youtubeUrl: "https://youtu.be/-LPQAIHZUmo"
 slug: "/4/adam-tlumaczy-machine-learning"
+dimmed: true
 ---
 
 W tym odcinku, Artur zadaje Adamowi pytania na temat Machine Learningu - na czym to polega, jak to zaimplementować i jakie są najlepsze biblioteki w JavaScripcie, do ML właśnie.

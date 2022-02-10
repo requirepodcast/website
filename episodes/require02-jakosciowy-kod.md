@@ -6,6 +6,7 @@ audioUrl: "https://anchor.fm/s/139df89c/podcast/play/11823343/https%3A%2F%2Fd3ct
 spotifyUrl: "https://open.spotify.com/episode/1fiD4405vkFtacqHodYZya?si=9ADgsx1pRY6RinqKM74WAQ"
 youtubeUrl: "https://youtu.be/2u85N_VF054"
 slug: "/2/jakosciowy-kod"
+dimmed: true
 ---
 
 W kolejnym odcinku Require Podcast, Adam i Artur przedstawią narzędzia umożliwiające pisać lepszy jakościowo kod, oraz omówią podstawy i cele tworzenia testów jednostkowych. Tradycyjnie zapraszamy również do przesłuchania segmentu szybkich nowości i zajrzenia na naszą stronę internetową (a tam - nowa sekcja).

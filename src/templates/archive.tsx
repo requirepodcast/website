@@ -36,6 +36,7 @@ export const query = graphql`
         shortDescription
         publicationDate
         audioUrl
+        dimmed
       }
       body
     }
