@@ -5,7 +5,7 @@ import styles from "./newsletterDialog.module.scss"
 const NewsletterDialog = () => (
   <OutboundLink
     className={styles.wrapper}
-    href="https://letter.podcast.gq"
+    href="https://letter.require.pl"
     role="dialog"
     aria-label="Link do newsletter'a"
     aria-modal="false"

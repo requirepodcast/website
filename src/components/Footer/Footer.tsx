@@ -3,11 +3,11 @@ import styles from "./footer.module.scss"
 
 const links = [
   {
-    href: "https://letter.podcast.gq",
+    href: "https://letter.require.pl",
     name: "Newsletter",
   },
   {
-    href: "https://require.podcast.gq/youtube",
+    href: "https://require.pl/youtube",
     name: "YouTube",
   },
   {
@@ -31,7 +31,7 @@ const links = [
     name: "Twitter",
   },
   {
-    href: "https://require.podcast.gq/discord",
+    href: "https://require.pl/discord",
     name: "Discord",
   },
   {
@@ -61,7 +61,7 @@ const Footer = () => (
     <section className={styles.text}>
       <p>Copyright © {new Date().getFullYear()} Require Podcast</p>
       <p>
-        Kontakt: <a href="mailto:require@podcast.gq">require@podcast.gq</a>
+        Kontakt: <a href="mailto:require.podcast@gmail.com">require.podcast@gmail.com</a>
       </p>
     </section>
   </footer>

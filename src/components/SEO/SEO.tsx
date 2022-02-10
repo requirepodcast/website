@@ -78,11 +78,11 @@ function SEO({ description = "", lang = "pl", meta = [], title = "" }: SEOProps)
         },
         {
           property: `og:image`,
-          content: "https://require.podcast.gq/logo.png",
+          content: "https://require.pl/logo.png",
         },
         {
           name: `twitter:image`,
-          content: "https://require.podcast.gq/logo-twitter.png",
+          content: "https://require.pl/logo-twitter.png",
         },
         {
           property: "og:locale",

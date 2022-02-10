@@ -20,7 +20,7 @@ Module bundlery to bardzo przydatne narzędzia wchodzące w skład niemalże ka�
 - Tłumaczenie kodu z template engine'u (jak np. Pug czy EJS) na HTML
 - Wsparcie dla dodadków do JS'a (np. JSX, Vue, itp.)
 - Wsparcie dla języków kompilowanych do JS'a (np. TypeScript, CoffeeScript)
-- Ładowanie i kompresja obrazków (więcej w [odcinku 20](https://require.podcast.gq/archive/20/tricki-na-optymalizacje-stron))
+- Ładowanie i kompresja obrazków (więcej w [odcinku 20](https://require.pl/archive/20/tricki-na-optymalizacje-stron))
 - Tree Shaking
 
 ### Popularne i ciekawe module bundlery
