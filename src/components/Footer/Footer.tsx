@@ -60,7 +60,7 @@ const Footer = () => (
     <section className={styles.text}>
       <p>Copyright © {new Date().getFullYear()} Require Podcast</p>
       <p>
-        Kontakt: <a href="mailto:require@podcast.gq">require@podcast.gq</a>
+        Kontakt: <a href="mailto:require.podcast@gmail.com">require.podcast@gmail.com</a>
       </p>
     </section>
   </footer>

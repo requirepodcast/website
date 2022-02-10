@@ -4,7 +4,7 @@ shortDescription: "W urodzinowym odcinku Require Podcast, odpowiadamy na pytania
 publicationDate: "2022-03-13"
 audioUrl: "https://anchor.fm/s/139df89c/podcast/play/28867871/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-2-13%2F3da6af52-a3bb-cca1-cc8f-1d3cfd8bcbad.mp3"
 spotifyUrl: "https://open.spotify.com/show/55IXMbPmncm67FA5ZAydtL?si=E4VMK4kCRtWPVDF8mqPygA"
-youtubeUrl: "https://require.podcast.gq/youtube"
+youtubeUrl: "https://require.pl/youtube"
 slug: "/2137/test-episode"
 ---
 

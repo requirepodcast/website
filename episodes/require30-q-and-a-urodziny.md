@@ -44,7 +44,7 @@ W urodzinowym odcinku Require Podcast, odpowiadamy na pytania zadane nam przez s
   <li><TimestampLink>29:39</TimestampLink> - Kiedy Require Podcast and friends?</li>
   <li><TimestampLink>30:57</TimestampLink> - Flutter czy React Native?
     <ul>
-      <li>https://require.podcast.gq/archive/28/react-native-i-nie-tylko</li>
+      <li>https://require.pl/archive/28/react-native-i-nie-tylko</li>
     </ul>
   </li>
   <li><TimestampLink>32:51</TimestampLink> - Po jednej wadzie i zalecie Windowsa, MacOS i Linuxa (ulubione distro) i dlaczego Linux jest najlepszy?</li>
