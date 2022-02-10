@@ -1,0 +1,95 @@
+{
+  "build": {
+    "env": {
+      "CONTENTFUL_ACCESS_TOKEN": "@contentful_access_token"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/newsletter",
+      "destination": "https://letter.require.pl"
+    },
+    {
+      "source": "/letter",
+      "destination": "https://letter.require.pl"
+    },
+    {
+      "source": "/youtube",
+      "destination": "https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ?sub_confirmation=1"
+    },
+    {
+      "source": "/yt",
+      "destination": "https://www.youtube.com/channel/UCec_mTVjUKQAsSilMJ3J1TQ?sub_confirmation=1"
+    },
+    {
+      "source": "/spotify",
+      "destination": "https://open.spotify.com/show/55IXMbPmncm67FA5ZAydtL"
+    },
+    {
+      "source": "/instagram",
+      "destination": "https://www.instagram.com/requirepodcast"
+    },
+    {
+      "source": "/ig",
+      "destination": "https://www.instagram.com/requirepodcast"
+    },
+    {
+      "source": "/facebook",
+      "destination": "https://facebook.com/requirepodcast"
+    },
+    {
+      "source": "/fb",
+      "destination": "https://facebook.com/requirepodcast"
+    },
+    {
+      "source": "/twitter",
+      "destination": "https://twitter.com/requirepodcast"
+    },
+    {
+      "source": "/tw",
+      "destination": "https://twitter.com/requirepodcast"
+    },
+    {
+      "source": "/discord",
+      "destination": "https://discord.gg/kk5gh6T"
+    },
+    {
+      "source": "/dc",
+      "destination": "https://discord.gg/kk5gh6T"
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/requirepodcast"
+    },
+    {
+      "source": "/gh",
+      "destination": "https://github.com/requirepodcast"
+    },
+    {
+      "source": "/applepodcasts",
+      "destination": "https://podcasts.apple.com/podcast/id1502694357"
+    },
+    {
+      "source": "/apple",
+      "destination": "https://podcasts.apple.com/podcast/id1502694357"
+    },
+    {
+      "source": "/googlepodcasts",
+      "destination": "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8xMzlkZjg5Yy9wb2RjYXN0L3Jzcw=="
+    },
+    {
+      "source": "/google",
+      "destination": "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8xMzlkZjg5Yy9wb2RjYXN0L3Jzcw=="
+    },
+    {
+      "source": "/rss",
+      "destination": "https://anchor.fm/s/139df89c/podcast/rss"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/feed",
+      "destination": "/feed.xml"
+    }
+  ]
+}
