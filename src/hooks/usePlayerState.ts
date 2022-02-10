@@ -26,13 +26,13 @@ export const usePlayerState = ({
   const [volume, setVolumeState] = useState<number>(1)
   const [rate, setRateState] = useState<number>(1)
 
-  const audioRef = useRef<HTMLAudioElement>()
-  const intervalRef = useRef<ReturnType<typeof setInterval>>()
-  const sliderRef = useRef<HTMLDivElement>()
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const intervalRef = useRef<number | null>(null)
+  const sliderRef = useRef<HTMLDivElement>(null)
 
   useMount(() => {
-    if (audioRef.current?.readyState > 0) {
-      setDuration(audioRef.current.duration)
+    if (audioRef?.current?.readyState) {
+      setDuration(audioRef?.current?.duration || 0)
       setLoading(false)
     }
   })
@@ -41,7 +41,7 @@ export const usePlayerState = ({
 
   const triggerPlayer = useCallback(() => {
     setPlaying((prev) => {
-      prev ? audioRef.current.pause() : audioRef.current.play()
+      prev ? audioRef?.current?.pause() : audioRef?.current?.play()
 
       /* istanbul ignore next */
       if (typeof window !== "undefined" && window.gtag) {
@@ -58,50 +58,51 @@ export const usePlayerState = ({
 
   const seek = useCallback(
     (t: number) => {
-      const duration = audioRef.current.duration
+      const duration = audioRef?.current?.duration
 
       /* istanbul ignore else */
       if (duration) {
         audioRef.current.currentTime = time + t
 
-        setTime(audioRef.current.currentTime)
-        setProgress(audioRef.current.currentTime / duration)
+        setTime(audioRef?.current?.currentTime)
+        setProgress(audioRef?.current?.currentTime / duration)
       }
     },
     [time]
   )
 
   const seekTo = useCallback((t: number) => {
-    const duration = audioRef.current.duration
+    const duration = audioRef?.current?.duration
 
     /* istanbul ignore else */
     if (duration) {
       audioRef.current.currentTime = t
-      setTime(audioRef.current.currentTime)
-      setProgress(audioRef.current.currentTime / duration)
+      setTime(audioRef?.current?.currentTime)
+      setProgress(audioRef?.current?.currentTime / duration)
     }
   }, [])
 
   const setVolume = useCallback((vol: number) => {
-    audioRef.current.volume = vol
+    audioRef?.current && (audioRef.current.volume = vol)
     setVolumeState(vol)
   }, [])
 
   const setRate = useCallback((s: number) => {
-    audioRef.current.playbackRate = s
+    audioRef?.current && (audioRef.current.playbackRate = s)
     setRateState(s)
   }, [])
 
   const handleSliderSeek = useCallback((e: SyntheticEvent<HTMLDivElement, MouseEvent>) => {
-    const duration = audioRef.current.duration
+    const duration = audioRef?.current?.duration
 
     /* istanbul ignore else */
     if (duration) {
-      audioRef.current.currentTime =
-        (e.nativeEvent.offsetX / sliderRef.current.clientWidth) * duration
+      audioRef?.current &&
+        (audioRef.current.currentTime =
+          (e.nativeEvent.offsetX / (sliderRef?.current?.clientWidth || 1)) * duration)
 
-      setTime(audioRef.current.currentTime)
-      setProgress(audioRef.current.currentTime / duration)
+      setTime(audioRef?.current?.currentTime)
+      setProgress(audioRef?.current?.currentTime / duration)
     }
   }, [])
 
@@ -111,23 +112,23 @@ export const usePlayerState = ({
     onPlay && onPlay()
     setPlaying(true)
 
-    intervalRef.current = setInterval(() => {
-      const currentTime = audioRef.current.currentTime
-      const duration = audioRef.current.duration
+    intervalRef.current = window.setInterval(() => {
+      const currentTime = audioRef?.current?.currentTime
+      const duration = audioRef?.current?.duration
 
       setLoading(currentTime === time)
-      setTime(currentTime)
-      setProgress(currentTime / duration)
+      setTime(currentTime || 0)
+      setProgress((currentTime || 0) / (duration || 1))
 
-      window.localStorage.setItem(`${slug}_time`, currentTime.toString())
+      window.localStorage.setItem(`${slug}_time`, currentTime?.toString() || "")
 
-      if (currentTime >= duration) {
+      if (currentTime && duration && currentTime >= duration) {
         setPlaying(false)
         setLoading(false)
 
         window.localStorage.removeItem(`${slug}_time`)
 
-        clearInterval(intervalRef.current)
+        intervalRef.current && window.clearInterval(intervalRef.current)
       }
     }, 100)
   }, [onPlay, slug, time])
@@ -137,7 +138,7 @@ export const usePlayerState = ({
 
     setPlaying(false)
 
-    clearInterval(intervalRef.current)
+    intervalRef.current && window.clearInterval(intervalRef.current)
   }, [onPause])
 
   const metadataHandler = useCallback(

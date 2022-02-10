@@ -1,7 +1,7 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import styles from "./heading.module.scss"
 
-const Heading = ({ children }) => {
+const Heading = ({ children }: { children: ReactNode }) => {
   return <h2 className={styles.heading}>{children}</h2>
 }
 

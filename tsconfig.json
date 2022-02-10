@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "ES5",
+    "lib": ["dom", "esnext"],
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "resolveJsonModule": true
+  },
+  "include": ["./src/**/*", "./@types/**/*", "./helpers/**/*"],
+  "exclude": ["node_modules"]
+}

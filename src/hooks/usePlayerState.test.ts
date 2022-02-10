@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { usePlayerState } from "./usePlayerState"
 import { renderHook, act } from "@testing-library/react-hooks"
 

@@ -14,7 +14,7 @@ module.exports = {
     title: `Require Podcast`,
     description: `Polski podcast na temat JavaScriptu i nie tylko. "Na luzie" o technologiach frontendowych, przez nowości ze świata IT, po frameworki na backendzie!`,
     author: `Adam Siekierski & Artur Dudek`,
-    siteUrl: `https://require.podcast.gq`,
+    siteUrl: `https://require.pl`,
   },
   plugins: [
     {

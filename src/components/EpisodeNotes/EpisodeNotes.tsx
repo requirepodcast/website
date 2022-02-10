@@ -4,7 +4,7 @@ import styles from "./episodeNotes.module.scss"
 import { Episode } from "../../types"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-function getDownloadLink(link) {
+function getDownloadLink(link: string) {
   const [uri] = link.split("/").slice(-1)
   return decodeURIComponent(uri)
 }
