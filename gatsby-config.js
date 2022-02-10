@@ -40,11 +40,10 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-source-git`,
+      resolve: `gatsby-source-filesystem`,
       options: {
         name: `episodes`,
-        remote: `https://github.com/requirepodcast/episodes.git`,
-        patterns: `episodes/*.md`,
+        path: `${__dirname}/episodes`,
       },
     },
     {
