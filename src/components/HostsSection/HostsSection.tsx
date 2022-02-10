@@ -35,8 +35,8 @@ const HostsSection = () => {
           <OutboundLink className={styles.link} href="mailto:artur@dudek.ga">
             artur@dudek.ga
           </OutboundLink>
-          <OutboundLink className={styles.link} href="https://twitter.com/arturdudek_">
-            @arturdudek_
+          <OutboundLink className={styles.link} href="https://dudek.ga">
+            dudek.ga
           </OutboundLink>
         </section>
         <section className={styles.host}>
