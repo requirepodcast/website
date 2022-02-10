@@ -10,10 +10,11 @@ slug: "/32/dostepnosc-olaf-sulich-interview"
 
 Pierwszy odcinek w formacie require().interview - serii, w której rozmawiamy z gośćmi... ale tak jak na rozmowie rekrutacyjnej - konkretne, techniczne pytania i dokładne precyzyjne odpowiedzi.
 
-Pierwszy na ruszt wpadł Olaf Sulich - autor bloga Frontlive.pl z którym rozmawialiśmy na temat dostępności! Dostępność, to jak się dowiadujemy bardzo istotny temat który często umyka uwadze frontendowców, a nie powinien, bo pozwala wnieść dużo dobrego zarówno od strony etycznej, jak i biznesowej, czy programisty!
+Pierwszy na ruszt wpadł **Olaf Sulich - autor bloga [Frontlive.pl](https://frontlive.pl)** z którym rozmawialiśmy na temat **dostępności**! Dostępność, to jak się dowiadujemy bardzo istotny temat który często umyka uwadze frontendowców, a nie powinien, bo pozwala wnieść dużo dobrego zarówno od strony etycznej, jak i biznesowej, czy programisty!
 
 ## 📎 Linki
 
+- https://frontlive.pl/
 - https://whocanuse.com/
 - https://wave.webaim.org/
 - https://www.deque.com/axe/
