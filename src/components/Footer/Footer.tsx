@@ -3,48 +3,47 @@ import styles from "./footer.module.scss"
 
 const links = [
   {
-    href: "https://letter.podcast.gq",
+    href: "https://require.pl/newsletter",
     name: "Newsletter",
   },
   {
-    href: "https://require.podcast.gq/youtube",
+    href: "https://require.pl/youtube",
     name: "YouTube",
   },
   {
-    href: "https://open.spotify.com/show/55IXMbPmncm67FA5ZAydtL",
+    href: "https://require.pl/spotify",
     name: "Spotify",
   },
   {
-    href: "https://anchor.fm/s/139df89c/podcast/rss",
+    href: "https://require.pl/rss",
     name: "RSS",
   },
   {
-    href: "https://www.instagram.com/requirepodcast",
+    href: "https://require.pl/instagram",
     name: "Instagram",
   },
   {
-    href: "https://facebook.com/requirepodcast",
+    href: "https://require.pl/facebook",
     name: "Facebook",
   },
   {
-    href: "https://twitter.com/requirepodcast",
+    href: "https://require.pl/twitter",
     name: "Twitter",
   },
   {
-    href: "https://require.podcast.gq/discord",
+    href: "https://require.pl/discord",
     name: "Discord",
   },
   {
-    href: "https://github.com/requirepodcast",
+    href: "https://require.pl/github",
     name: "GitHub",
   },
   {
-    href: "https://podcasts.apple.com/podcast/id1502694357",
+    href: "https://require.pl/apple",
     name: "Apple Podcasts",
   },
   {
-    href:
-      "https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8xMzlkZjg5Yy9wb2RjYXN0L3Jzcw==",
+    href: "https://require.pl/google",
     name: "Google Podcasts",
   },
 ]
