@@ -2,6 +2,8 @@
 
 > Polski podcast na temat JavaScriptu i nie tylko. "Na luzie" o technologiach frontendowych, przez nowości ze świata IT, po frameworki na backendzie!
 
+[![Powered by Vercel](/powered-by-vercel.svg)](https://www.vercel.com/?utm_source=nextui&utm_marketing=oss)
+
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Frequire.pl%2F)](https://require.pl)
 [![Built with Gatsby](https://img.shields.io/badge/built%20with-gatsby-%23663399)](https://www.gatsbyjs.org/)
 [![codecov](https://codecov.io/gh/requirepodcast/website/branch/main/graph/badge.svg?token=SbfrTKKb9F)](https://codecov.io/gh/requirepodcast/website)
