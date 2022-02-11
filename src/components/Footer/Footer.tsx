@@ -1,6 +1,9 @@
 import React from "react"
 import styles from "./footer.module.scss"
 
+import vercelLogo from "../../images/powered-by-vercel.svg"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
+
 const links = [
   {
     href: "https://require.pl/newsletter",
@@ -56,6 +59,11 @@ const Footer = () => (
           {name}
         </a>
       ))}
+    </section>
+    <section className={styles.vercelLogoWrapper}>
+      <OutboundLink href="https://www.vercel.com?utm_source=require-podcast&utm_campaign=oss">
+        <img src={vercelLogo} alt="Powered by Vercel" />
+      </OutboundLink>
     </section>
     <section className={styles.text}>
       <p>Copyright © {new Date().getFullYear()} Require Podcast</p>
