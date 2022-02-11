@@ -61,7 +61,7 @@ const Footer = () => (
       ))}
     </section>
     <section className={styles.vercelLogoWrapper}>
-      <OutboundLink href="https://www.vercel.com?utm_source=require-podcast&utm_campaign=oss">
+      <OutboundLink href="https://www.vercel.com/?utm_source=require&utm_campaign=oss">
         <img src={vercelLogo} alt="Powered by Vercel" />
       </OutboundLink>
     </section>
